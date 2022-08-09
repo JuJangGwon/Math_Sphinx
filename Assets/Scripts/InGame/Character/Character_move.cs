@@ -11,16 +11,19 @@ enum CharacterState
 
 public class Character_move : MonoBehaviour
 {
+    Vector move_dir;
     CharacterState _characterstate = 0;
     
     void Start()
     {
-    }
 
+    }
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-        }
+       if (!(move_dir == new Vector2(0,0)))
+       {
+            transform.position = Vector2.Lerp(transform.position, transform.position + move_dir)
+       }
+
     }
 }

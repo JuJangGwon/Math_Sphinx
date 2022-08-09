@@ -10,6 +10,7 @@ public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public GameObject smallCircle;
     public Vector2 smallCircle_Direction;
     Vector2 localCursor;
+    float smallCircle_positionLimits = 100f;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -35,7 +36,7 @@ public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     void SetSmallCirclePosition()
     {
         Vector2 smallCircle_pos = localCursor;
-        smallCircle_pos = Vector2.ClampMagnitude(smallCircle_pos, 100f);
+        smallCircle_pos = Vector2.ClampMagnitude(smallCircle_pos, smallCircle_positionLimits);
         smallCircle.transform.localPosition = smallCircle_pos;
     }
 
