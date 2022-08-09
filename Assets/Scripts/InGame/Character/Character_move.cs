@@ -15,15 +15,12 @@ public class Character_move : MonoBehaviour
     
     void Start()
     {
-        
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.W))
         {
-            
-         //   debug.log("1");
         }
     }
 }
