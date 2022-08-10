@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum CharacterState
+public enum CharacterState
 {
     none,
     idle,
@@ -11,8 +11,10 @@ enum CharacterState
 
 public class Character_move : MonoBehaviour
 {
-    Vector move_dir;
-    CharacterState _characterstate = 0;
+    public CharacterState _characterstate = 0; // 캐릭터 상태
+    public Vector3 move_dir;
+    float Character_speed = 5f;
+
     
     void Start()
     {
@@ -20,10 +22,9 @@ public class Character_move : MonoBehaviour
     }
     void Update()
     {
-       if (!(move_dir == new Vector2(0,0)))
+       if (_characterstate == CharacterState.move)
        {
-            transform.position = Vector2.Lerp(transform.position, transform.position + move_dir)
+            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir,Time.deltaTime * Character_speed);
        }
-
     }
 }

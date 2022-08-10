@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    public Character_move cm;
     public GameObject smallCircle;
     public Vector2 smallCircle_Direction;
     Vector2 localCursor;
@@ -17,7 +18,7 @@ public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera, out localCursor))
             return;
         smallCircle.transform.localPosition = localCursor;
-
+        cm._characterstate = CharacterState.move;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -25,11 +26,12 @@ public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             return;
         SetSmallCirclePosition();
         smallCircle_Direction = smallCircle.transform.localPosition.normalized;
-        print(smallCircle_Direction);
+        cm.move_dir = smallCircle_Direction;
     }
     
     public void OnPointerUp(PointerEventData eventData)
     {
+        cm._characterstate = CharacterState.none;
         smallCircle.transform.localPosition = new Vector2(0, 0);
     }
 
