@@ -15,10 +15,6 @@ public class InGameManeger : MonoBehaviour
 {
     public GameState gameState = GameState.none;
 
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
