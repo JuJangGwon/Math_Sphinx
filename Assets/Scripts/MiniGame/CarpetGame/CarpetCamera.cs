@@ -14,6 +14,5 @@ public class CarpetCamera : MonoBehaviour
         Vector3 desired_position = player.position + offset;
         Vector3 smoothed_position = Vector3.Lerp(transform.position, desired_position, smooth_speed);
         transform.position = smoothed_position;
-        //transform.position = player.position;
     }
 }

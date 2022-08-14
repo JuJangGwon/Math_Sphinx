@@ -24,7 +24,7 @@ public class CarpetJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             return;
         SetSmallCirclePosition();
         smallCircle_Direction = smallCircle.transform.localPosition.normalized;
-        cp.move_dir = new Vector3(smallCircle_Direction.x, 0, 0);
+        //cp.move_dir = new Vector3(smallCircle_Direction.x, 0, 0);
     }
 
     public void OnPointerUp(PointerEventData eventData)
