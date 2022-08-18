@@ -10,6 +10,6 @@ public class CameraMove : MonoBehaviour
     
     void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, Character.transform.position + v3, Time.deltaTime*4);
+        transform.position = Vector3.Lerp(transform.position, Character.transform.position + v3, Time.deltaTime*8);
     }
 }
