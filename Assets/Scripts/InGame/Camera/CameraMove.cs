@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public GameObject Character;
-    public Vector3 v3 = new Vector3(0,0,-5);
+    public Vector3 v3 = new Vector3(0,0,-35);
   
     
     void FixedUpdate()

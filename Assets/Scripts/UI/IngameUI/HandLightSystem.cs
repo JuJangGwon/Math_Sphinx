@@ -29,7 +29,6 @@ public class HandLightSystem : MonoBehaviour
 
 
 
-
     void Start()
     {
         inGameManeger_cs.gameState = GameState.playingInGame;
@@ -129,7 +128,7 @@ public class HandLightSystem : MonoBehaviour
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
-            case 3:
+            case 3:                         // 리소스 필요함. 
                 //edge_dark2_obj.SetActive(true);                   // 맵 어둠으로 덮어버리기
                 //edge_dark_obj.transform.localScale = new Vector3(1.0f, 1.0f, 1);
                 //for (int i = 0; i <= 10; i++)
