@@ -6,6 +6,10 @@ TagManager:
   tags:
   - MakeProblem
   - ABC
+  - AnswerFootBoard1
+  - AnswerFootBoard2
+  - AnswerFootBoard3
+  - AnswerFootBoard4
   layers:
   - Default
   - TransparentFX
