@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CarpetJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    public CarpetPlayer cp;
+    public RugPlayer cp;
     public GameObject smallCircle;
     public Vector2 smallCircle_Direction;
     Vector2 localCursor;
