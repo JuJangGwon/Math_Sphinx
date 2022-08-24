@@ -7,7 +7,10 @@ public class RugMathProblem : MonoBehaviour
 {
     public WJ_Conn scWJ_Conn;
     public TextMeshProUGUI txQuestion;
+    public GameObject rug_prefab;
     public Rug[] btAnsr = new Rug[2];
+    public Vector3 spawn_position;
+    public RugPlayer player;
 
     //public GameObject btStart;
 
@@ -94,6 +97,7 @@ public class RugMathProblem : MonoBehaviour
             case STATE.DN_PROG:
                 {
                     // 다음문제 출제
+                    Spawn_Rug();
                     DoDN_Prog(txAnsr[_nIndex].text);
                 }
                 break;
@@ -212,8 +216,6 @@ public class RugMathProblem : MonoBehaviour
             else
                 txAnsr[i].text = tmWrAnswer[q];
         }
-
-
     }
 
 
@@ -224,6 +226,21 @@ public class RugMathProblem : MonoBehaviour
         txQuestion.text = "";
         for (int i = 0; i < btAnsr.Length; ++i)
             btAnsr[i].gameObject.active = _bActive;
+    }
+
+    void Spawn_Rug()
+    {
+        txAnsr = new TextMeshProUGUI[btAnsr.Length];
+
+        GameObject rugs = Instantiate(rug_prefab, player.transform.position + spawn_position, Quaternion.identity);
+        for (int i = 0; i < btAnsr.Length; i++)
+        {
+            btAnsr[i] = rugs.transform.GetChild(i).GetComponent<Rug>();
+            btAnsr[i].rmp = this;
+            btAnsr[i].player = player;
+
+            txAnsr[i] = btAnsr[i].answer;
+        }
     }
 
 

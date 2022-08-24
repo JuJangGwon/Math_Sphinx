@@ -24,7 +24,14 @@ public class RugPlayer : MonoBehaviour
 
     void Select_Answer()
     {
-        Debug.Log(0);
-        rmp.OnClick_Ansr(select_rug.answer_num);
+        if(select_rug != null)
+        {
+            int destroy_num = (select_rug.answer_num == 0) ? 1 : 0;
+            Destroy(rmp.btAnsr[destroy_num].gameObject);
+
+            rmp.OnClick_Ansr(select_rug.answer_num);
+
+            select_rug = null;
+        }
     }
 }
