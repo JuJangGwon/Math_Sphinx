@@ -7,8 +7,8 @@ using UnityEngine.Networking;
 
 public class WJ_Conn : MonoBehaviour
 {
-    // 요청 : 게임 진단 문항요청     
-    public class Request_DN_Setting
+    // ???? : ???? ???? ????????     
+    public class Request_DN_Setting             // ?? ??
     {
         public string mbrId;
         //public string deviceScnCd;
@@ -30,8 +30,8 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 요청 : 게임 진단 결과전송
-    public class Request_DN_Resut
+    // ???? : ???? ???? ????????
+    public class Request_DN_Resut                  // ?? ?	
     {
         public string gameCd;
         public string mbrId;
@@ -61,7 +61,7 @@ public class WJ_Conn : MonoBehaviour
         public string langCd;
         public int timeZone;
         public string nationCd;
-        public string mathpidId;        // v-Famr0.011 추가(API에서는 이전부터 추가되어 있었음. 내가 적용안한것임)
+        public string mathpidId;        // v-Famr0.011 ????(API?????? ???????? ???????? ??????. ???? ????????????)
 
         public Request_Learning()
         {
@@ -193,17 +193,17 @@ public class WJ_Conn : MonoBehaviour
     #endregion // Learning
 
 
-    public string strGameCD;
-    public string strGameKey;
+    public string strGameCD;                // ? ???? ?? ??
+    public string strGameKey;               
 
     protected string strMBR_ID;
-    protected int nState_Request;          // 서버 요청 상태(0: 전송   1: 전송 성공   -1: 전송 실패   -2: 결과 파씽 에러)   
+    protected int nState_Request;        
 
 
-    protected string strDeviceScnCd;    // 디바이스 장치
+    protected string strDeviceScnCd;    // ???????? ????
     protected string strDeviceNm;
     protected string strGameVer;
-    protected string strCountryCD;      // 국가 코드
+    protected string strCountryCD;      // ???? ????
 
     protected string strOS;     // OS 
 
@@ -229,7 +229,7 @@ public class WJ_Conn : MonoBehaviour
 
         strGameVer = "Test_1.0";
 
-        // 15자리 제한
+        // 15???? ????
         strOS = SystemInfo.operatingSystem;
         if (strOS.Length >= 15)
             strOS = strOS.Substring(0, 14);
@@ -243,7 +243,7 @@ public class WJ_Conn : MonoBehaviour
 
 
     #region Interface
-    // 진단평가 요청 사용자가 선택한 학습 수준 전송 및 문제 요청
+    // ???????? ???? ???????? ?????? ???? ???? ???? ?? ???? ????
     public void OnRequest_DN_Setting(int _nLevel)
     {        
         Make_MBR_ID();
@@ -255,7 +255,7 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 진단평가 진행 중! 사용자 답안 전송 및 다음 문제 요청
+    // ???????? ???? ??! ?????? ???? ???? ?? ???? ???? ????
     public void OnRequest_DN_Progress(string _prgsCd, string _qstCd, string _qstCransr, string _ansrCwYn, long _sid, long _nQstDelayTime)
     {
         StartCoroutine(SendProgress_Diagnosis(_prgsCd, _qstCd, _qstCransr, _ansrCwYn, _sid, _nQstDelayTime));
@@ -264,7 +264,7 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 학습 문제 요청(진단평가 이후)
+    // ???? ???? ????(???????? ????)
     public void OnRequest_Learning()
     {
         StartCoroutine(GetLearning());
@@ -273,7 +273,7 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 학습 결과 전송
+    // ???? ???? ????
     public void OnLearningResult(Learning_Data _data, string[] _strQstCransr, long[] _nQstDelayTime)
     {
         StartCoroutine(SendLearning_Result(_data, _strQstCransr, _nQstDelayTime));
@@ -281,7 +281,7 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 요청 상태 체크
+    // ???? ???? ????
     public int CheckState_Request()
     {
         return nState_Request;
@@ -310,7 +310,7 @@ public class WJ_Conn : MonoBehaviour
 
 
     #region Fuction Progress
-    // 진단평가 유저 선택 정보 전송
+    // ???????? ???? ???? ???? ????
     protected IEnumerator Send_Diagnosis(int _nSelectLevel)
     {
         Request_DN_Setting request = new Request_DN_Setting();
@@ -379,17 +379,17 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 진단 학습 진행중! 유저 답안 제출 및 다음 문제 호출
+    // ???? ???? ??????! ???? ???? ???? ?? ???? ???? ????
     protected IEnumerator SendProgress_Diagnosis(string _prgsCd, string _qstCd, string _qstCransr, string _ansrCwYn, long _sid, long _nQstDelayTime)
     {
         Request_DN_Resut request = new Request_DN_Resut();
         request.mbrId = strMBR_ID;
         request.gameCd = strGameCD;
-        request.prgsCd = _prgsCd;// "W";    // W: 진단 진행    E: 진단 완료    X: 기타 취소?
-        request.qstCd = _qstCd;             // 문항 코드
-        request.qstCransr = _qstCransr;     // 입력한 답내용
-        request.ansrCwYn = _ansrCwYn;//"Y"; // 정답 여부
-        request.sid = _sid;                 // 진단 ID
+        request.prgsCd = _prgsCd;// "W";    // W: ???? ????    E: ???? ????    X: ???? ?????
+        request.qstCd = _qstCd;             // ???? ????
+        request.qstCransr = _qstCransr;     // ?????? ??????
+        request.ansrCwYn = _ansrCwYn;//"Y"; // ???? ????
+        request.sid = _sid;                 // ???? ID
         request.slvTime = _nQstDelayTime;//5000;
 
 
@@ -443,7 +443,7 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 게임 학습 문항 요청
+    // ???? ???? ???? ????
     protected IEnumerator GetLearning()
     {
         Request_Learning request = new Request_Learning();
@@ -508,7 +508,7 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // 학습 결과 전송
+    // ???? ???? ????
     protected IEnumerator SendLearning_Result(Learning_Data _data, string[] _strQstCransr, long[] _nQstDelayTime)
     {
         Request_Learning_Result request = new Request_Learning_Result();
@@ -590,18 +590,18 @@ public class WJ_Conn : MonoBehaviour
 
 
 
-    // MBR ID 생성 ->   MBR ID가 등록되어 있지 않으면 신규 생성.
+    // MBR ID ???? ->   MBR ID?? ???????? ???? ?????? ???? ????.
     protected void Make_MBR_ID()
     {
         DateTime dt = DateTime.Now;
-        strMBR_ID = string.Format("{0}{1:0000}{2:00}{3:00}{4:00}{5:00}{6:00}{7:000}", strGameCD, dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);    // 매쓰팜용 리얼 MBR_ID
+        strMBR_ID = string.Format("{0}{1:0000}{2:00}{3:00}{4:00}{5:00}{6:00}{7:000}", strGameCD, dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);    // ???????? ???? MBR_ID
     }
 
 
 
 
 
-    // WJ API를 통해 수신 받은 Latex 코드를 TexDraw에 출력되는 형태로 일부 변환
+    // WJ API?? ???? ???? ???? Latex ?????? TexDraw?? ???????? ?????? ???? ????
     public string GetLatexCode(string _strLatex)
     {
         string strRT = _strLatex;

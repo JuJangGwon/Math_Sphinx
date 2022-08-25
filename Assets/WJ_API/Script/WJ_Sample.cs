@@ -17,23 +17,26 @@ public class WJ_Sample : MonoBehaviour
     protected Text []txAnsr;
 
 
-
-    protected enum STATE
+   
+    protected enum STATE        //  wjapi ?? ?? enum 
     {
-        DN_SET,         // 진단평가 진행해야 하는 단계
-        DN_PROG,        // 진단평가 진행중
-        LEARNING,       // 학습 진행중
+        DN_SET,       // ???? ? ??
+        DN_PROG,      // ???? ?? 
+        LEARNING,     // ??
     }
 
-    protected STATE eState;
-    protected bool bRequest;
+    protected STATE eState;         // wjapi ????
 
-    protected int nDigonstic_Idx;   // 진단평가 인덱스
+
+    //
+    protected bool bRequest;        
+
+    protected int nDigonstic_Idx;  
 
     protected WJ_Conn.Learning_Data cLearning;
-    protected int nLearning_Idx;     // Learning 문제 인덱스
-    protected string[] strQstCransr = new string[8];        // 사용자가 보기에서 선택한 답 내용
-    protected long[] nQstDelayTime = new long[8];           // 풀이에 소요된 시간
+    protected int nLearning_Idx;    
+    protected string[] strQstCransr = new string[8];     
+    protected long[] nQstDelayTime = new long[8];         
 
 
 
@@ -43,13 +46,12 @@ public class WJ_Sample : MonoBehaviour
     {
         NativeLeakDetection.Mode = NativeLeakDetectionMode.EnabledWithStackTrace;
 
-        eState = STATE.DN_SET;
+        eState = STATE.LEARNING;
         goPopup_Level_Choice.active = false;
 
         cLearning = null;
         nLearning_Idx = 0;
 
-        txState.text = "상태 : 진단 평가 미수행";
 
         txAnsr = new Text[btAnsr.Length];
         for (int i = 0; i < btAnsr.Length; ++i)
@@ -63,13 +65,13 @@ public class WJ_Sample : MonoBehaviour
 
 
 
-    // 문제 출제 버튼 클릭시 호출
+    // ???? ???? ???? ?????? ????
     public void OnClick_MakeQuestion()
     {        
         switch (eState)
         {
             case STATE.DN_SET: DoDN_Start(); break;
-            //호출 안됨. case STATE.DN_PROG: DoDN_Prog(); break;
+            //???? ????.
             case STATE.LEARNING: DoLearning(); break;
         }        
     }
@@ -77,41 +79,40 @@ public class WJ_Sample : MonoBehaviour
 
 
 
-    // 학습 수준 선택 팝업에서 사용자가 수준에 맞는 학습을 선택시 호출
+    // ???? ???? ???? ???????? ???????? ?????? ???? ?????? ?????? ????
     public void OnClick_Level(int _nLevel)
     {
         nDigonstic_Idx = 0;
         SetActive_Question(true);
         btStart.gameObject.active = false;
 
-        // 문제 요청
+        // ???? ????
         scWJ_Conn.OnRequest_DN_Setting(_nLevel);
 
-        // 수준 선택 팝업 닫기
+        // ???? ???? ???? ????
         goPopup_Level_Choice.active = false;
 
         bRequest = true;
     }
 
 
-    // 보기 선택
+    // ???? ????
     public void OnClick_Ansr(int _nIndex)
     {
+        print(eState);
         switch (eState)
         {
             case STATE.DN_SET:
             case STATE.DN_PROG:
                 {
-                    // 다음문제 출제
+                    // ???????? ????
                     DoDN_Prog(txAnsr[_nIndex].text);
                 }
                 break;
             case STATE.LEARNING:
                 {
-                    // 선택한 정답을 저장함
                     strQstCransr[nLearning_Idx - 1] = txAnsr[_nIndex].text;
-                    nQstDelayTime[nLearning_Idx - 1] = 5000;        // 임시값
-                    // 다음문제 출제
+                    nQstDelayTime[nLearning_Idx - 1] = 5000;        // ??????
                     DoLearning();
                 }
                 break;
@@ -135,11 +136,11 @@ public class WJ_Sample : MonoBehaviour
             strYN = "Y";
 
         scWJ_Conn.OnRequest_DN_Progress("W",
-                                         scWJ_Conn.cDiagnotics.data.qstCd,          // 문제 코드
-                                         _qstCransr,                                // 선택한 답내용 -> 사용자가 선택한 문항 데이터 입력
-                                         strYN,                                     // 정답여부("Y"/"N")
-                                         scWJ_Conn.cDiagnotics.data.sid,            // 문제 SID
-                                         5000);                                     // 임시값 - 문제 풀이에 소요된 시간
+                                         scWJ_Conn.cDiagnotics.data.qstCd,          // ???? ????
+                                         _qstCransr,                                // ?????? ?????? -> ???????? ?????? ???? ?????? ????
+                                         strYN,                                     // ????????("Y"/"N")
+                                         scWJ_Conn.cDiagnotics.data.sid,            // ???? SID
+                                         5000);                                     // ?????? - ???? ?????? ?????? ????
 
         bRequest = true;
     }
@@ -149,20 +150,20 @@ public class WJ_Sample : MonoBehaviour
     {
         if (cLearning == null)
         {
+            print("a");
             nLearning_Idx = 0;
             SetActive_Question(true);
             btStart.gameObject.active = false;
 
-            scWJ_Conn.OnRequest_Learning();            
-
+            scWJ_Conn.OnRequest_Learning();
             bRequest = true;
         }
         else
         {            
             if (nLearning_Idx >= scWJ_Conn.cLearning_Info.data.qsts.Count)
             {
-                txState.text = "상태 : 학습 완료";
-                scWJ_Conn.OnLearningResult(cLearning, strQstCransr, nQstDelayTime);      // 학습 결과 처리
+                txState.text = "9999 : 9999 9999";
+                scWJ_Conn.OnLearningResult(cLearning, strQstCransr, nQstDelayTime);      // ???? ???? ????
                 cLearning = null;
 
                 SetActive_Question(false);
@@ -172,7 +173,7 @@ public class WJ_Sample : MonoBehaviour
 
             MakeQuestion(cLearning.qsts[nLearning_Idx].qstCn, cLearning.qsts[nLearning_Idx].qstCransr, cLearning.qsts[nLearning_Idx].qstWransr);
 
-            txState.text = "상태 : 문제 학습 " + (nLearning_Idx + 1).ToString();
+            txState.text = "???? : ???? ???? " + (nLearning_Idx + 1).ToString();
 
 
             ++nLearning_Idx;
@@ -187,25 +188,24 @@ public class WJ_Sample : MonoBehaviour
 
     protected void MakeQuestion(string _qstCn, string _qstCransr, string _qstWransr)
     {
+        print("MakeQuestion");
         char[] SEP = { ',' };
         string[] tmWrAnswer;
         
-        txQuestion.text = scWJ_Conn.GetLatexCode(_qstCn);// 문제 출력
+        txQuestion.text = scWJ_Conn.GetLatexCode(_qstCn);// ???? ????
 
-        string strAnswer = _qstCransr;  // 문제 정답을 메모리에 넣어둠                
-        tmWrAnswer = _qstWransr.Split(SEP, System.StringSplitOptions.None);   // 오답 리스트
-        for(int i = 0; i < tmWrAnswer.Length; ++i)
-            tmWrAnswer[i] = scWJ_Conn.GetLatexCode(tmWrAnswer[i]);
+        string strAnswer = _qstCransr;  // ???? ?????? ???????? ??????                
+         tmWrAnswer = _qstWransr.Split(SEP, System.StringSplitOptions.None);   // ???? ??????
+         for(int i = 0; i < tmWrAnswer.Length; ++i)
+             tmWrAnswer[i] = scWJ_Conn.GetLatexCode(tmWrAnswer[i]);
 
-
-
-        int nWrCount = tmWrAnswer.Length;
-        if (nWrCount >= 4)       // 5지선다형 이상은 강제로 4지선다로 변경함
+        int nWrCount = 3;
+        if (nWrCount >= 4)       // 5???????? ?????? ?????? 4???????? ??????
             nWrCount = 3;
 
 
-        int nAnsrCount = nWrCount + 1;       // 보기 갯수
-        for (int i = 0; i < btAnsr.Length; ++i)
+        int nAnsrCount = nWrCount + 1;       // ???? ????
+       /* for (int i = 0; i < btAnsr.Length; ++i)
         {
             if (i < nAnsrCount)
                 btAnsr[i].gameObject.active = true;
@@ -213,9 +213,9 @@ public class WJ_Sample : MonoBehaviour
                 btAnsr[i].gameObject.active = false;
         }
 
-
-        // 보기 리스트에 정답을 넣음.
-        int nAnsridx = UnityEngine.Random.Range(0, nAnsrCount);        // 정답 인덱스! 랜덤으로 배치
+        */
+        // ???? ???????? ?????? ????.
+        int nAnsridx = UnityEngine.Random.Range(0, nAnsrCount);        
         for (int i = 0, q = 0; i < nAnsrCount; ++i, ++q)
         {
             if (i == nAnsridx)
@@ -224,7 +224,7 @@ public class WJ_Sample : MonoBehaviour
                 --q;
             }
             else
-                txAnsr[i].text = tmWrAnswer[q];
+                txAnsr[i].text = i.ToString();
         }
 
 
@@ -253,7 +253,7 @@ public class WJ_Sample : MonoBehaviour
                     {
                         MakeQuestion(scWJ_Conn.cDiagnotics.data.qstCn, scWJ_Conn.cDiagnotics.data.qstCransr, scWJ_Conn.cDiagnotics.data.qstWransr);
 
-                        txState.text = "상태 : 진단평가 " + (nDigonstic_Idx + 1).ToString();
+                        txState.text = "1 : 1234 " + (nDigonstic_Idx + 1).ToString();
                         ++nDigonstic_Idx;
 
                         eState = STATE.DN_PROG;
@@ -266,25 +266,26 @@ public class WJ_Sample : MonoBehaviour
                             SetActive_Question(false);
 
                             nDigonstic_Idx = 0;
-                            txState.text = "상태 : 진단평가 완료";
+                            txState.text = "???? : ???????? ????";
                             btStart.gameObject.active = true;
                             
-                            eState = STATE.LEARNING;            // 진단 학습 완료
+                            eState = STATE.LEARNING;            // ???? ???? ????
                         }
                         else
                         {
                             MakeQuestion(scWJ_Conn.cDiagnotics.data.qstCn, scWJ_Conn.cDiagnotics.data.qstCransr, scWJ_Conn.cDiagnotics.data.qstWransr);
 
-                            txState.text = "상태 : 진단평가 " + (nDigonstic_Idx + 1).ToString();
+                            txState.text = "???? : ???????? " + (nDigonstic_Idx + 1).ToString();
                             ++nDigonstic_Idx;
                         }
                     }
                     break;
                 case STATE.LEARNING:
                     {
+                        print("B");
                         cLearning = scWJ_Conn.cLearning_Info.data;
                         MakeQuestion(cLearning.qsts[nLearning_Idx].qstCn, cLearning.qsts[nLearning_Idx].qstCransr, cLearning.qsts[nLearning_Idx].qstWransr);
-                        txState.text = "상태 : 문제 학습 " + (nLearning_Idx + 1).ToString();
+                        txState.text = "???? : ???? ???? " + (nLearning_Idx + 1).ToString();
 
                         ++nLearning_Idx;                        
                     }
