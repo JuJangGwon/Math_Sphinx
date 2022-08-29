@@ -17,7 +17,7 @@ public class WJAPI : MonoBehaviour
 
     //
 
-    public WJ_Conn scWJ_Conn;
+    public WJAPI2 WJAPI2;
     public TextMeshProUGUI txQuestion;
     //public Rug[] btAnsr = new Rug[2];
 
@@ -38,7 +38,7 @@ public class WJAPI : MonoBehaviour
 
     protected int nDigonstic_Idx;   
 
-    protected WJ_Conn.Learning_Data cLearning;
+    protected WJAPI2.Learning_Data cLearning;
     protected int nLearning_Idx;    
     protected string[] strQstCransr = new string[8];       
     protected long[] nQstDelayTime = new long[8];       
@@ -46,12 +46,13 @@ public class WJAPI : MonoBehaviour
 
     void Awake()
     {
-        eState = STATE.LEARNING;              // 진단 단계 설정하는 곳 
+        eState = STATE.DN_SET;              // 진단 단계 설정하는 곳 
 
         cLearning = null;
         nLearning_Idx = 0;
         bRequest = false;
-        scWJ_Conn.OnRequest_DN_Setting(0);              // 0 레벨 문제로 시작 
+        WJAPI2.OnRequest_DN_Setting(0);              // 0 레벨 문제로 시작
+        MakeQuestion();
 
     }
 
@@ -90,7 +91,7 @@ public class WJAPI : MonoBehaviour
     protected void DoDN_Start()
     {
         nDigonstic_Idx = 0;
-        scWJ_Conn.OnRequest_DN_Setting(0);
+        WJAPI2.OnRequest_DN_Setting(0);
         bRequest = true;
     }
 
@@ -98,14 +99,14 @@ public class WJAPI : MonoBehaviour
     protected void DoDN_Prog(string _qstCransr)
     {
         string strYN = "N";
-        if (scWJ_Conn.cDiagnotics.data.qstCransr.CompareTo(_qstCransr) == 0)
+        if (WJAPI2.cDiagnotics.data.qstCransr.CompareTo(_qstCransr) == 0)
             strYN = "Y";
 
-        scWJ_Conn.OnRequest_DN_Progress("W",
-                                         scWJ_Conn.cDiagnotics.data.qstCd,          // ???? ????
+        WJAPI2.OnRequest_DN_Progress("W",
+                                         WJAPI2.cDiagnotics.data.qstCd,          // ???? ????
                                          _qstCransr,                                // ?????? ?????? -> ???????? ?????? ???? ?????? ????
                                          strYN,                                     // ????????("Y"/"N")
-                                         scWJ_Conn.cDiagnotics.data.sid,            // ???? SID
+                                         WJAPI2.cDiagnotics.data.sid,            // ???? SID
                                          5000);                                     // ?????? - ???? ?????? ?????? ????
 
         bRequest = true;
@@ -117,17 +118,17 @@ public class WJAPI : MonoBehaviour
         if (cLearning == null)
         {
             nLearning_Idx = 0;
-         //   SetActive_Question(true);
+            //   SetActive_Question(true);
 
-            scWJ_Conn.OnRequest_Learning();
+            WJAPI2.OnRequest_Learning();
 
             bRequest = true;
         }
         else
         {
-            if (nLearning_Idx >= scWJ_Conn.cLearning_Info.data.qsts.Count)
+            if (nLearning_Idx >= WJAPI2.cLearning_Info.data.qsts.Count)
             {
-                scWJ_Conn.OnLearningResult(cLearning, strQstCransr, nQstDelayTime);      // ???? ???? ????
+                WJAPI2.OnLearningResult(cLearning, strQstCransr, nQstDelayTime);      // ???? ???? ????
                 cLearning = null;
 
              //   SetActive_Question(false);
@@ -149,12 +150,12 @@ public class WJAPI : MonoBehaviour
         char[] SEP = { ',' };
         string[] tmWrAnswer;
 
-        txQuestion.text = scWJ_Conn.GetLatexCode(_qstCn);  // <- 문제 지문임 라텍스 변환 필요
+        txQuestion.text = WJAPI2.GetLatexCode(_qstCn);  // <- 문제 지문임 라텍스 변환 필요
 
         Problem_Answer = _qstCransr;                      // 문제 정답          
         tmWrAnswer = _qstWransr.Split(SEP, System.StringSplitOptions.None);   // 답을 제외한 선택지 받아주는 코드  , 단위로 스플릿해줌 
         for (int i = 0; i < tmWrAnswer.Length; ++i)
-            tmWrAnswer[i] = scWJ_Conn.GetLatexCode(tmWrAnswer[i]);
+            tmWrAnswer[i] = WJAPI2.GetLatexCode(tmWrAnswer[i]);
 
 
 
@@ -185,13 +186,13 @@ public class WJAPI : MonoBehaviour
     void Update()
     {
         if (bRequest == true &&
-           scWJ_Conn.CheckState_Request() == 1)
+           WJAPI2.CheckState_Request() == 1)
         {
             switch (eState)
             {
                 case STATE.DN_SET:
                     {
-                        MakeQuestion(scWJ_Conn.cDiagnotics.data.qstCn, scWJ_Conn.cDiagnotics.data.qstCransr, scWJ_Conn.cDiagnotics.data.qstWransr);
+                        MakeQuestion(WJAPI2.cDiagnotics.data.qstCn, WJAPI2.cDiagnotics.data.qstCransr, WJAPI2.cDiagnotics.data.qstWransr);
 
                         ++nDigonstic_Idx;
 
@@ -200,7 +201,7 @@ public class WJAPI : MonoBehaviour
                     break;
                 case STATE.DN_PROG:
                     {
-                        if (scWJ_Conn.cDiagnotics.data.prgsCd == "E")
+                        if (WJAPI2.cDiagnotics.data.prgsCd == "E")
                         {
                          //   SetActive_Question(false);
 
@@ -210,7 +211,7 @@ public class WJAPI : MonoBehaviour
                         }
                         else
                         {
-                            MakeQuestion(scWJ_Conn.cDiagnotics.data.qstCn, scWJ_Conn.cDiagnotics.data.qstCransr, scWJ_Conn.cDiagnotics.data.qstWransr);
+                            MakeQuestion(WJAPI2.cDiagnotics.data.qstCn, WJAPI2.cDiagnotics.data.qstCransr, WJAPI2.cDiagnotics.data.qstWransr);
 
                             ++nDigonstic_Idx;
                         }
@@ -218,7 +219,7 @@ public class WJAPI : MonoBehaviour
                     break;
                 case STATE.LEARNING:
                     {
-                        cLearning = scWJ_Conn.cLearning_Info.data;
+                        cLearning = WJAPI2.cLearning_Info.data;
                         MakeQuestion(cLearning.qsts[nLearning_Idx].qstCn, cLearning.qsts[nLearning_Idx].qstCransr, cLearning.qsts[nLearning_Idx].qstWransr);
 
                         ++nLearning_Idx;

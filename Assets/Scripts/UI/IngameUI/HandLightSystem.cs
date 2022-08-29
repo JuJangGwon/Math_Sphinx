@@ -40,6 +40,7 @@ public class HandLightSystem : MonoBehaviour
     {
         if (handlight_left_battery_percentage <= 0f)            // 배터리나갔을때
         {
+            Character_move._characterstate = CharacterState.die;
             battery_lv = Battery_lv.none;
             StartCoroutine(CircleFadeIn(3));
             inGameManeger_cs.gameState = GameState.timeout;
