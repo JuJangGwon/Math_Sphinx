@@ -26,7 +26,19 @@ public class Character_move : MonoBehaviour
     Animator _animator;
     float Character_speed = 5f;
 
-    
+    public void Set_character_speed(bool _buttonOn)
+    {
+        if (_buttonOn)
+        {
+            Character_speed = 9f;
+            _animator.speed = 1.5f;
+        }
+        else
+        {
+            Character_speed = 9f;
+            _animator.speed = 1.5f;
+        }
+    }
     void Start()
     {
         _animator = GetComponent<Animator>();

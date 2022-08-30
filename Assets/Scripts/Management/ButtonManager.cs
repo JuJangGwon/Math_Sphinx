@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
+    public void DashButtonTouchDown()
+    {
+       // Character_move._dash_button_pushed = true;
+    }
+    public void DashButtonTouchUp()
+    {
+    //    Character_move._dash_button_pushed = false;
+    }
     public void MathProblemSolveButton(int num)
     {
         switch(num)
