@@ -31,7 +31,7 @@ public class HandLightSystem : MonoBehaviour
 
     void Start()
     {
-        inGameManeger_cs.gameState = GameState.playingInGame;
+        InGameManeger.gameState = GameState.playingInGame;
         battery_lv = Battery_lv.Full;
         light_img.color = new Color(255, 255, 255, 255);
     }
@@ -43,7 +43,7 @@ public class HandLightSystem : MonoBehaviour
             Character_move._characterstate = CharacterState.die;
             battery_lv = Battery_lv.none;
             StartCoroutine(CircleFadeIn(3));
-            inGameManeger_cs.gameState = GameState.timeout;
+            InGameManeger.gameState = GameState.timeout;
         }
         else if (handlight_left_battery_percentage <= 0.1f)
         {
@@ -69,7 +69,7 @@ public class HandLightSystem : MonoBehaviour
     }
     void Update()
     {
-        if (inGameManeger_cs.gameState == GameState.playingInGame)
+        if (InGameManeger.gameState == GameState.playingInGame)
         {
             handlight_now_left_time -= Time.deltaTime;
             handlight_left_battery_percentage = handlight_now_left_time / Max_handlight_time;

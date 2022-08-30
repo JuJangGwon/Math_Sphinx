@@ -8,6 +8,7 @@ public class Character_Animator : MonoBehaviour
 
     void Awake()
     {
+        _charactor_animator.SetBool("_isFront", true);
         //_charactor_animator.GetComponent<Animator>();
     }
 
@@ -20,6 +21,21 @@ public class Character_Animator : MonoBehaviour
         if (Character_move._characterstate == CharacterState.move)
         {
             _charactor_animator.SetBool("_isMove", true);
+            switch (Character_move._characterdirection)
+            {
+                case CharacterDirection.back_left:
+                    _charactor_animator.SetBool("_isFront", false);
+                    break;
+                case CharacterDirection.back_right:
+                    _charactor_animator.SetBool("_isFront", false);
+                    break;
+                case CharacterDirection.front_left:
+                    _charactor_animator.SetBool("_isFront", true);
+                    break;
+                case CharacterDirection.front_right:
+                    _charactor_animator.SetBool("_isFront", true);
+                    break;
+            }
         }
         if (Character_move._characterstate == CharacterState.die)
         {
