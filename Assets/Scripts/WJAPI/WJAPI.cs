@@ -9,7 +9,7 @@ public class WJAPI : MonoBehaviour
     public string Problem_Answer;          // 문제가 생성된후 api로 부터 알아온 정답
     public string[] Answer_Selection;      // 4지선다 문제 정답 선택지
     public int Answer_num;                 // 위 4개 배열중 어느번째 선택지가 정답인.
-
+    public string Problem_Explain;         // 문제 설명
 
 
 
@@ -52,8 +52,6 @@ public class WJAPI : MonoBehaviour
         nLearning_Idx = 0;
         bRequest = false;
         WJAPI2.OnRequest_DN_Setting(0);              // 0 레벨 문제로 시작
-        MakeQuestion();
-
     }
 
 
@@ -150,7 +148,8 @@ public class WJAPI : MonoBehaviour
         char[] SEP = { ',' };
         string[] tmWrAnswer;
 
-        txQuestion.text = WJAPI2.GetLatexCode(_qstCn);  // <- 문제 지문임 라텍스 변환 필요
+        Problem_Explain = WJAPI2.GetLatexCode(_qstCn);
+        txQuestion.text = Problem_Explain;  // <- 문제 지문임 라텍스 변환 필요
 
         Problem_Answer = _qstCransr;                      // 문제 정답          
         tmWrAnswer = _qstWransr.Split(SEP, System.StringSplitOptions.None);   // 답을 제외한 선택지 받아주는 코드  , 단위로 스플릿해줌 
