@@ -83,7 +83,9 @@ public class HandLightSystem : MonoBehaviour
 
     public void Get_handlightbettery()
     {
-        //handlight_lifetime += 30;
+        handlight_now_left_time = 20;
+        battery_lv = Battery_lv.Full;
+        edge_dark_obj.SetActive(false);
     }
 
 

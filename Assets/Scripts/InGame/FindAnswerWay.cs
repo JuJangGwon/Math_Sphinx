@@ -23,9 +23,8 @@ public class FindAnswerWay : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        if (time > 2 && a== true)
+        if (time > 10 && a== true)
         {
-            print("#");
             a = false;
             CreateProblem();
         }
@@ -56,7 +55,6 @@ public class FindAnswerWay : MonoBehaviour
 
     public void PlayerSelectAnswer(int selectedAnswer)
     {
-        print("3");
         wjapi_cs.OnClick_Ansr(selectedAnswer-1);
         clear_text();
         StartCoroutine(ShowProblem_Popup(false));
@@ -64,6 +62,7 @@ public class FindAnswerWay : MonoBehaviour
 
     IEnumerator ShowProblem_Popup(bool _on)
     {
+        
         if (_on == true)
         {
             for (int i = 0; i <= 20; i++)
