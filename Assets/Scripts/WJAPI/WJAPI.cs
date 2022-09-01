@@ -10,7 +10,7 @@ public class WJAPI : MonoBehaviour
     public string[] Answer_Selection;      // 4지선다 문제 정답 선택지
     public int Answer_num;                 // 위 4개 배열중 어느번째 선택지가 정답인.
     public string Problem_Explain;         // 문제 설명
-
+    public int Answer_Count;               // 보기 개수
 
 
 
@@ -160,7 +160,7 @@ public class WJAPI : MonoBehaviour
 
         int nWrCount = tmWrAnswer.Length;
         //if (nWrCount >= 2)       
-            nWrCount = 3;
+            nWrCount = Answer_Count - 1;
 
 
         int nAnsrCount = nWrCount + 1;      

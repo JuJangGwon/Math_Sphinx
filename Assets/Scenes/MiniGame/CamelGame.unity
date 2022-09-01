@@ -707,7 +707,8 @@ GameObject:
   m_Component:
   - component: {fileID: 765580349}
   - component: {fileID: 765580351}
-  - component: {fileID: 765580350}
+  - component: {fileID: 765580353}
+  - component: {fileID: 765580352}
   m_Layer: 0
   m_Name: WJAPI
   m_TagString: Untagged
@@ -730,20 +731,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &765580350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765580348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c5f578a5a26984094b96180666ebfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strGameCD: D24
-  strGameKey: km28YZCG30tb5fXNu_CwlsqQNlZOAy-bcII5kLASPm8
 --- !u!114 &765580351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,14 +743,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d60d2d1b4c6ed49ade3242bbcfcc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Problem_Answer: 
-  Answer_Selection: []
-  Answer_num: 0
-  scWJ_Conn: {fileID: 765580350}
-  txQuestion: {fileID: 1250715656}
-  txAnsr:
+  scWJAPI: {fileID: 765580353}
+  texPorblem: {fileID: 1250715656}
+  texSelection:
   - {fileID: 327184563}
   - {fileID: 652986714}
+  Answer: 0
+--- !u!114 &765580352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765580348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf691aae9d64c519159c51b2fa1a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strGameCD: D24
+  strGameKey: km28YZCG30tb5fXNu_CwlsqQNlZOAy-bcII5kLASPm8
+--- !u!114 &765580353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765580348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d91a99294a994929a15ecf8bfedc420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Problem_Answer: 
+  Answer_Selection:
+  - 
+  - 
+  Answer_num: 0
+  Problem_Explain: 
+  WJAPI2: {fileID: 765580352}
+  txQuestion: {fileID: 1250715656}
   eState: 0
 --- !u!1 &865267353
 GameObject:
