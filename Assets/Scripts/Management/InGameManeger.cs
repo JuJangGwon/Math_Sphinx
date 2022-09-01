@@ -13,7 +13,7 @@ public enum GameState
 
 public class InGameManeger : MonoBehaviour
 {
-    public GameState gameState = GameState.none;
+    public static GameState gameState = GameState.none;
 
 
     void Update()

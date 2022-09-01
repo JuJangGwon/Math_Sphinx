@@ -10,6 +10,7 @@ TagManager:
   - AnswerFootBoard2
   - AnswerFootBoard3
   - AnswerFootBoard4
+  - Battery
   layers:
   - Default
   - TransparentFX

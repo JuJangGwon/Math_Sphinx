@@ -13,6 +13,8 @@ public enum NowPushedFootBoard
 
 public class Character_Collider : MonoBehaviour
 {
+    //public WJAPI WJAPI_CS;
+    public HandLightSystem handlightsystem_cs;
     public FindAnswerWay findAnswerWay_cs;
     public GameObject Problem_popup;
     public NowPushedFootBoard nowPushedFootboard = NowPushedFootBoard.none;
@@ -51,7 +53,11 @@ public class Character_Collider : MonoBehaviour
         if (other.gameObject.tag == "AnswerFootBoard1" || other.gameObject.tag == "AnswerFootBoard2" ||
              other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
         {
-            findAnswerWay_cs.PlayerStart((int)nowPushedFootboard);
+            findAnswerWay_cs.PlayerSelectAnswer((int)nowPushedFootboard);
+        }
+        if (other.gameObject.tag == "Battery")
+        {
+            handlightsystem_cs.Get_handlightbettery();
         }
     }
 

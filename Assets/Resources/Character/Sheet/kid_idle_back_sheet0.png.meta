@@ -1,0 +1,662 @@
+fileFormatVersion: 2
+guid: 0aaff3f6c7ca2408783a54c0cbd3e1ae
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe6ce62fa90a64d6c8ad6b21605d4714
+      internalID: -318638509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_1
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec56328040486484ab5b85c00f938868
+      internalID: -1429155008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_2
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c0cbe1aec134eba9ab702dae7a4d17
+      internalID: -774175579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_3
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cedb845e7b24c34b0be3dcbc4c8cea
+      internalID: 763201801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_4
+      rect:
+        serializedVersion: 2
+        x: 1744
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32b85f89d16cb4fd8bec31e3076cbbc9
+      internalID: 193055570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_5
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b33af855224144251b875ac228f67a8d
+      internalID: 1446707050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_6
+      rect:
+        serializedVersion: 2
+        x: 2616
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d437ab55ee1d462fa18db28d4cef093
+      internalID: -1450219058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_7
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a8bee5e9fed408d9fabe34e3e28d3d
+      internalID: -244711506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_8
+      rect:
+        serializedVersion: 2
+        x: 3488
+        y: 1454
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d121249f21444c59b71604e44e74e6
+      internalID: -525701153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f91571259c5d48f8b4beca502526bf0
+      internalID: -40129656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_10
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e373c1cebf17443f98118cc51590e097
+      internalID: -345381343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_11
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a2ea1441a8946fdbaf93be28819624
+      internalID: -1849156361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_12
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8385ea42c25b34453b0e8a2d23fb6d0a
+      internalID: -1602720423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_13
+      rect:
+        serializedVersion: 2
+        x: 1744
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3712f326598d41a283616a92e1bbcfc
+      internalID: -204413390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_14
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06063a788146243f39cbc5a853c349c5
+      internalID: -1347538630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_15
+      rect:
+        serializedVersion: 2
+        x: 2616
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad65b492bac504dffad98b79b10e3839
+      internalID: 1697263065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_16
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c4a7499b72a4d199afee0768c42b9a
+      internalID: -697203615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_17
+      rect:
+        serializedVersion: 2
+        x: 3488
+        y: 860
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9032f8035c894403f88d948eb3d88c4c
+      internalID: 335051848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 266
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8ddb14e43a34c9daee053f0b19a1fa
+      internalID: 1828299537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_19
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 266
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 946cd87d5f3074c039894607fc1cdcd1
+      internalID: -869676936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_20
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 266
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61be67bd8079a4e348a2dd9471f21155
+      internalID: 1650569157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_21
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 266
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 104b3817c127d4a418ca321878bf4962
+      internalID: -429018581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_22
+      rect:
+        serializedVersion: 2
+        x: 1744
+        y: 266
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4448eaa99298c49a5a461ce49d3e9501
+      internalID: 235881013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kid_idle_back_sheet0_23
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 266
+        width: 436
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2cf514e11b044af792944cd2d5188c8
+      internalID: -1391666668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      kid_idle_back_sheet0_2: -774175579
+      kid_idle_back_sheet0_17: 335051848
+      kid_idle_back_sheet0_1: -1429155008
+      kid_idle_back_sheet0_5: 1446707050
+      kid_idle_back_sheet0_11: -1849156361
+      kid_idle_back_sheet0_18: 1828299537
+      kid_idle_back_sheet0_14: -1347538630
+      kid_idle_back_sheet0_19: -869676936
+      kid_idle_back_sheet0_20: 1650569157
+      kid_idle_back_sheet0_4: 193055570
+      kid_idle_back_sheet0_9: -40129656
+      kid_idle_back_sheet0_8: -525701153
+      kid_idle_back_sheet0_13: -204413390
+      kid_idle_back_sheet0_3: 763201801
+      kid_idle_back_sheet0_21: -429018581
+      kid_idle_back_sheet0_10: -345381343
+      kid_idle_back_sheet0_6: -1450219058
+      kid_idle_back_sheet0_0: -318638509
+      kid_idle_back_sheet0_7: -244711506
+      kid_idle_back_sheet0_22: 235881013
+      kid_idle_back_sheet0_12: -1602720423
+      kid_idle_back_sheet0_16: -697203615
+      kid_idle_back_sheet0_23: -1391666668
+      kid_idle_back_sheet0_15: 1697263065
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

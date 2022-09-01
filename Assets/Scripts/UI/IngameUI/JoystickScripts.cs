@@ -18,7 +18,7 @@ public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera, out localCursor))
             return;
         smallCircle.transform.localPosition = localCursor;
-        cm._characterstate = CharacterState.move;
+        Character_move._characterstate = CharacterState.move;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -31,7 +31,7 @@ public class JoystickScripts : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     
     public void OnPointerUp(PointerEventData eventData)
     {
-        cm._characterstate = CharacterState.none;
+        Character_move._characterstate = CharacterState.none;
         smallCircle.transform.localPosition = new Vector2(0, 0);
     }
 
