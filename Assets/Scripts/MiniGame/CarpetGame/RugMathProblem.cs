@@ -40,7 +40,7 @@ public class RugMathProblem : MonoBehaviour
     protected string[] strQstCransr = new string[8];        // 사용자가 보기에서 선택한 답 내용
     protected long[] nQstDelayTime = new long[8];           // 풀이에 소요된 시간
 
-
+    
 
 
     // Start is called before the first frame update

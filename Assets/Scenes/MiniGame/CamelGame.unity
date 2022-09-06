@@ -242,7 +242,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1484770672}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -706,9 +707,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765580349}
-  - component: {fileID: 765580351}
-  - component: {fileID: 765580353}
   - component: {fileID: 765580352}
+  - component: {fileID: 765580353}
+  - component: {fileID: 765580351}
   m_Layer: 0
   m_Name: WJAPI
   m_TagString: Untagged
@@ -748,7 +749,16 @@ MonoBehaviour:
   texSelection:
   - {fileID: 327184563}
   - {fileID: 652986714}
-  Answer: 0
+  current_life: 3
+  life_images:
+  - {fileID: 1930953607}
+  - {fileID: 957969431}
+  - {fileID: 688692351}
+  life_colours:
+  - {r: 0.83137256, g: 0, b: 0, a: 1}
+  - {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  camel_object: {fileID: 0}
+  camera_camel: {fileID: 0}
 --- !u!114 &765580352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +791,7 @@ MonoBehaviour:
   - 
   Answer_num: 0
   Problem_Explain: 
+  Answer_Count: 2
   WJAPI2: {fileID: 765580352}
   txQuestion: {fileID: 1250715656}
   eState: 0
@@ -867,7 +878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865267356}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 765580351}
+        m_TargetAssemblyTypeName: CamelQuestion, Assembly-CSharp
+        m_MethodName: Click_Answer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &865267356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,13 +1216,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484770670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.68, y: -2.32, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.68, y: -2.32, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 214865966}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1515192376
 GameObject:
@@ -1360,7 +1383,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930953605
 GameObject:
@@ -1521,7 +1544,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1964501915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 765580351}
+        m_TargetAssemblyTypeName: CamelQuestion, Assembly-CSharp
+        m_MethodName: Click_Answer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1964501915
 MonoBehaviour:
   m_ObjectHideFlags: 0
