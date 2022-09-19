@@ -26,7 +26,7 @@ public class Character_move : MonoBehaviour
     public Vector3 move_dir;
     Animator _animator;
     Rigidbody2D _rigidbody2D;
-    float Character_speed = 5f;
+    float Character_speed = 8f;
 
     public void Set_character_speed(bool _buttonOn)
     {
