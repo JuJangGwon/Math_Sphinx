@@ -22,12 +22,14 @@ public class FindAnswerWay : MonoBehaviour
     bool a = true;
     private void Update()
     {
+        /*
         time += Time.deltaTime;
         if (time > 10 && a== true)
         {
             a = false;
             CreateProblem();
         }
+        */
 
     }
     void clear_text()

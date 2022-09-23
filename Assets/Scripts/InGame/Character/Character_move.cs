@@ -20,11 +20,13 @@ public enum CharacterDirection
 
 public class Character_move : MonoBehaviour
 {
+   
     public static CharacterState _characterstate = 0; // 캐릭터 상태
     public static CharacterDirection _characterdirection = 0;
     public Vector3 move_dir;
     Animator _animator;
-    float Character_speed = 5f;
+    Rigidbody2D _rigidbody2D;
+    float Character_speed = 8f;
 
     public void Set_character_speed(bool _buttonOn)
     {
@@ -42,13 +44,15 @@ public class Character_move : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
         if (_characterstate == CharacterState.move && InGameManeger.gameState == GameState.playingInGame)
         {
 
-            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir, Time.deltaTime * Character_speed);
+            //transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir, Time.deltaTime * Character_speed);
+            _rigidbody2D.velocity = move_dir * Character_speed;
             if (move_dir.x >= 0)
             {
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -65,6 +69,10 @@ public class Character_move : MonoBehaviour
                 else
                     _characterdirection = CharacterDirection.front_left;
             }
+        }
+        else
+        {
+            _rigidbody2D.velocity = move_dir * 0;
         }
     }
 }
