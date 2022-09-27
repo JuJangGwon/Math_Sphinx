@@ -13,6 +13,9 @@ public enum Now_text
 
 public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 {
+    public GameObject darkgb;
+    public Image darkimg;
+    public InGameManeger ingameManeger_cs;
     public GameObject text_board;
     int now_textline = 0;
     bool now_typing = false;
@@ -39,23 +42,26 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
         return 0;
     }
-    void Start()
+    public void darkfadeoutf()
     {
-        prog_gametext(now_textline++);
+        StartCoroutine(Darkfadeout());
     }
 
     public void prog_gametext(int i)
     {
+        now_textline = i;
         now_text = Now_text.prog_game;
         if (i != 7)
         {
             StartCoroutine(Typing(1, prog_game_text[i], m_Speed));
         }
-        if (i == 7)
+        if (i >= 7)
         {
             now_textline = 0;
             now_text = Now_text.none;
+            InGameManeger.ingamestate = InGameState.proggamestart;
             text_board.SetActive(false);
+            darkgb.SetActive(false);
         }
     }
 
@@ -77,6 +83,17 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
         yield return new WaitForSeconds(0.0f);
     }
+
+    public IEnumerator Darkfadeout()
+    {
+        darkgb.SetActive(true);
+        for (int i = 0; i < 32;i++)
+        {
+            darkimg.color = new Vector4(0, 0,0, 1 - i * 0.02f);
+            yield return new WaitForSeconds(0.03f);
+        }
+        InGameManeger.ingamestate = InGameState.texttyping;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         if (now_typing == true)
@@ -88,7 +105,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             switch (now_text)
             {
                 case Now_text.prog_game:
-                    prog_gametext(now_textline++);
+                    prog_gametext(++now_textline);
                     break;
             }
         }

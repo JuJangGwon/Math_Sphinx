@@ -4573,7 +4573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &482132388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12455,6 +12455,7 @@ MonoBehaviour:
   - 
   Answer_num: 0
   Problem_Explain: 
+  Answer_Count: 0
   WJAPI2: {fileID: 1293377701}
   txQuestion: {fileID: 1423455}
   eState: 0

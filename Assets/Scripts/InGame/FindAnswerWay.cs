@@ -41,7 +41,7 @@ public class FindAnswerWay : MonoBehaviour
         Problem_text.text = "";
     }
 
-    void CreateProblem()
+    public void CreateProblem()
     {
         wjapi_cs.MakeQuestion();
         StartCoroutine(Problem_TEXT_setting());
