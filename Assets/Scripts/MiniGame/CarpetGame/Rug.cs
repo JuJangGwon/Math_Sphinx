@@ -9,7 +9,7 @@ public class Rug : MonoBehaviour
     public RugPlayer player;
     public bool move;
     public TextMeshProUGUI answer;
-    public RugMathProblem rmp;
+    public RugQuestion rq;
     public int answer_num;
 
     void Start()
@@ -24,9 +24,9 @@ public class Rug : MonoBehaviour
             player.transform.position = Vector2.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 7f);
             if(player.transform.position == transform.position)
             {
+                player.is_moving = false;
                 player.anime.SetTrigger(player.ani_idle);
                 move = false;
-                player.is_moving = false;
             }
         }
     }
@@ -34,10 +34,10 @@ public class Rug : MonoBehaviour
     {
         if(!player.is_moving)
         {
-            player.select_rug = this;
-            player.is_moving = true;
-            move = true;
             player.anime.SetTrigger(player.ani_jump);
+
+            player.select_rug = this;
+            //move = true;
         }
     }
 }
