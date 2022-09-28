@@ -16,6 +16,7 @@ TagManager:
   - prog_next_stage
   - none
   - potal
+  - return
   layers:
   - Default
   - TransparentFX
