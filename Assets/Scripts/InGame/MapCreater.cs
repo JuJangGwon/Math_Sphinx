@@ -63,6 +63,7 @@ public class MapCreater : MonoBehaviour
                               { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 , 2 }
 
 };
+    // 16, 10
    // 5,1 | 5,3 | 5,3 | 1, 5 
    // 4,1 | 4,3 | 3,4 | 4, 1
     public void maketile(GameObject gb,int num)
@@ -184,6 +185,10 @@ public class MapCreater : MonoBehaviour
         findanswerway_cs.answerboard[1].transform.tag = "AnswerFootBoard2";
         findanswerway_cs.answerboard[2].transform.tag = "AnswerFootBoard3";
         findanswerway_cs.answerboard[3].transform.tag = "AnswerFootBoard3";
+
+        GameObject portal = Instantiate(prefebs[7]);
+        portal.transform.SetParent(MapParent.transform);
+        portal.transform.transform.localPosition = new Vector3((10 * 3.4f) + (15 * -3.7f), (10 * 3f) + (15 * 3.1f), 0);
 
     }
 

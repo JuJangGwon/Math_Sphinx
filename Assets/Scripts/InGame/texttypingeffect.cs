@@ -8,6 +8,7 @@ public enum Now_text
 {
     none,
     prog_game,
+    prog_game2,
 
 }
 
@@ -30,7 +31,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                    "스핑크스: 좋다. 이것으로 널 테스트하지.",
                                    "이곳으로 간다면 피라미드로 가는 길이 있다.",
                                    "하지만 여러 갈래의 길이 있고, 어떤 길을 선택하느냐에 따라 \n 네가 마주하는 피라미드가 달라질 것이다. 음하하하."};
+    string[] prog_game_text2 = { "탐험가 : 어라? 손전등 배터리가 얼마 남지 않았어",
+                                 "스핑크스 : 손전등의 배터리는 미니게임과 보물상자를 통해 얻을 수 있지",
+                                 "탐험가 : 그럼 미니게임은 어디서 할 수 있는데 ?",
+                                 "스핑크스 : 저기 저 앞에 파란색 포탈에 들어가봐 ... "
 
+    };
     int findWho(string str)
     {
         for (int i = 0; i < str.Length;i++)
@@ -46,7 +52,10 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     {
         StartCoroutine(Darkfadeout());
     }
-
+    public void darkfadeinf()
+    {
+        StartCoroutine(DarkfadeIn());
+    }
     public void prog_gametext(int i)
     {
         now_textline = i;
@@ -64,7 +73,23 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             darkgb.SetActive(false);
         }
     }
-
+    public void prog_gametext2(int i)
+    {
+        now_textline = i;
+        now_text = Now_text.prog_game2;
+        if (i != 4)
+        {
+            StartCoroutine(Typing(1, prog_game_text2[i], m_Speed));
+        }
+        if (i >= 4)
+        {
+            now_textline = 0;
+            now_text = Now_text.none;
+            text_board.SetActive(false);
+            darkgb.SetActive(false);
+            InGameManeger.gameState = GameState.playingInGame;
+        }
+    }
 
     IEnumerator Typing(int who, string message, float speed)
     {
@@ -94,6 +119,16 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
         InGameManeger.ingamestate = InGameState.texttyping;
     }
+    public IEnumerator DarkfadeIn()
+    {
+        darkgb.SetActive(true);
+        for (int i = 0; i < 33; i++)
+        {
+            darkimg.color = new Vector4(0, 0, 0, 0 + i * 0.03f);
+            yield return new WaitForSeconds(0.03f);
+        }
+        InGameManeger.ingamestate = InGameState.batteryex4;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         if (now_typing == true)
@@ -106,6 +141,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             {
                 case Now_text.prog_game:
                     prog_gametext(++now_textline);
+                    break;
+                case Now_text.prog_game2:
+                    prog_gametext2(++now_textline);
                     break;
             }
         }

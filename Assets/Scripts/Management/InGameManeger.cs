@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -18,7 +19,10 @@ public enum InGameState
     texttyping,
     proggamestart,
     proggameing,
-
+    batteryex,
+    batteryex2,
+    batteryex3,
+    batteryex4,
 }
 
 public class InGameManeger : MonoBehaviour
@@ -59,6 +63,31 @@ public class InGameManeger : MonoBehaviour
         {
             findanswerway_cs.SetAnswerCreateProblem(1);
             ingamestate++;
+        }
+        if (ingamestate == InGameState.batteryex)
+        {
+            handlightsystem_cs.Max_handlight_time = 30;
+            handlightsystem_cs.handlight_now_left_time = 13f;
+            ingamestate++;
+            _time = 0;
+        }
+        if (ingamestate == InGameState.batteryex2)
+        {
+            if (_time > 3f)
+            {
+                gameState = GameState.playingMiniGame;
+                texttypingeffect_cs.prog_gametext2(0);
+                ingamestate = 0;
+            }
+        }
+        if (ingamestate == InGameState.batteryex3)
+        {
+            texttypingeffect_cs.darkfadeinf();
+            ingamestate = 0;
+        }
+        if (ingamestate == InGameState.batteryex4)
+        {
+            SceneManager.LoadScene(1);
         }
     }
 }

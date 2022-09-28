@@ -16,6 +16,7 @@ public class Character_Collider : MonoBehaviour
     Rigidbody2D _rigidbody2d;
     BoxCollider2D _boxcollider2d;
     //public WJAPI WJAPI_CS;
+
     public HandLightSystem handlightsystem_cs;
     public FindAnswerWay findAnswerWay_cs;
     public GameObject Problem_popup;
@@ -71,9 +72,9 @@ public class Character_Collider : MonoBehaviour
              other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
         {
             findAnswerWay_cs.PlayerSelectAnswer((int)nowPushedFootboard);
-            if (mapcreate_cs.stage >= 3)
+            if (mapcreate_cs.stage == 3)
             {
-                Debug.Log("42");
+                InGameManeger.ingamestate = InGameState.batteryex;
                 findAnswerWay_cs.delete_answerboard();
             }
         }
@@ -86,6 +87,12 @@ public class Character_Collider : MonoBehaviour
             mapcreate_cs.progstage();
             findAnswerWay_cs.progress();
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "potal")
+        {
+    
+            Destroy(other.gameObject);
+            InGameManeger.ingamestate = InGameState.batteryex3;
         }
     }
 
