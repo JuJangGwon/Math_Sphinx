@@ -352,6 +352,87 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &257967057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257967058}
+  - component: {fileID: 257967060}
+  - component: {fileID: 257967059}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &257967058
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257967057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115583957}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -3.8411, y: 300}
+  m_SizeDelta: {x: 716.7, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &257967059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257967057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11dd23e08e5cb942a6a6b4da8d43711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Alignment: {x: 0.5, y: 0.5}
+  m_Text: $$TEXDraw$$
+  m_Size: 47
+  m_ScrollArea:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_Padding:
+    left: 2
+    right: 2
+    top: 2
+    bottom: 2
+  m_Overflow: 0
+--- !u!222 &257967060
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257967057}
+  m_CullTransparentMesh: 1
 --- !u!1 &327184561
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,9 +788,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765580349}
+  - component: {fileID: 765580351}
   - component: {fileID: 765580352}
   - component: {fileID: 765580353}
-  - component: {fileID: 765580351}
   m_Layer: 0
   m_Name: WJAPI
   m_TagString: Untagged
@@ -749,6 +830,7 @@ MonoBehaviour:
   texSelection:
   - {fileID: 327184563}
   - {fileID: 652986714}
+  dialogue_box: {fileID: 0}
   current_life: 3
   life_images:
   - {fileID: 1930953607}
@@ -757,8 +839,22 @@ MonoBehaviour:
   life_colours:
   - {r: 0.83137256, g: 0, b: 0, a: 1}
   - {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
-  camel_object: {fileID: 0}
-  camera_camel: {fileID: 0}
+  camel_object: {fileID: 214865963}
+  camera_camel: {fileID: 1484770670}
+  question_info:
+    question_count: 0
+    current_question_count: 0
+    target_correct_value: 0
+    current_correct_value: 0
+  camel_dialogue:
+  - "\uB355\uBD84\uC5D0 \uC27D\uAC8C \uC62C \uC218 \uC788\uC5C8\uC5B4!\n\uC544\uB9C8
+    \uC774\uCABD\uC73C\uB85C \uAC00\uBA74 \uBCF4\uBB3C\uC774 \uB098\uC62C \uAC83
+    \uAC19\uC740\uB370?!\n\uBC14\uBCF4\uB294 \uC544\uB2C8\uC600\uAD6C\uB098?"
+  - "\uC624\uB294 \uAE38\uC774 \uB108\uBB34 \uD5F7\uAC08\uB838\uC5B4.\n\uB09C \uC774\uC81C
+    \uC26C\uC5B4\uC57C\uACA0\uC5B4.\n\uC8FC\uC778\uC744 \uC798\uBABB \uB9CC\uB098\uB2C8
+    \uBAB8\uC774 \uB108\uBB34 \uD798\uB4E4\uAC78?"
+  reward_item: {fileID: 0}
+  tdr: {fileID: 257967059}
 --- !u!114 &765580352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1250715655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1807,7 +1903,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 27
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1827,6 +1923,7 @@ RectTransform:
   - {fileID: 2002953377}
   - {fileID: 214089097}
   - {fileID: 223239532}
+  - {fileID: 257967058}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

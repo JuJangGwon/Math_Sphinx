@@ -10,8 +10,11 @@ public class CamelQuestion : MonoBehaviour
     public WJAPI scWJAPI;
 
     [Header("문제 상자")]
-    public TextMeshProUGUI texPorblem;
+    public TEXDraw tdr;
     public TextMeshProUGUI[] texSelection;
+
+    [Header("대사 상자")]
+    public Image dialogue_box;
 
     [Header("플레이어 라이프")]
     public int current_life = 3;
@@ -22,6 +25,19 @@ public class CamelQuestion : MonoBehaviour
     public GameObject camel_object;
     public GameObject camera_camel;
 
+    [System.Serializable] public struct Question_Info
+    {
+        [Header("출제 수")] public int question_count;
+        [Header("현재 문제 수")] public int current_question_count;
+        [Header("목표 정답 수")] public int target_correct_value;
+        [Header("현재 정답 수")] public int current_correct_value;
+    }
+
+    [Header("게임 세팅")]
+    public Question_Info question_info;
+    [TextArea] public string[] camel_dialogue = new string[2]; // 0: 목표치 달성 시 1: 목표치 달성 못할 시
+    public GameObject reward_item;
+
     void Awake()
     {
         StartCoroutine(CreateProblem());
@@ -29,10 +45,12 @@ public class CamelQuestion : MonoBehaviour
 
     IEnumerator CreateProblem()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(1f);
+
+        question_info.current_question_count++;
+
         scWJAPI.MakeQuestion();
         StartCoroutine(Selection_Text_Setting());
-        texPorblem.text = scWJAPI.Problem_Explain;
     }
 
     IEnumerator Selection_Text_Setting()
@@ -40,10 +58,14 @@ public class CamelQuestion : MonoBehaviour
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = scWJAPI.Answer_Selection[i];
+
+        tdr.text = scWJAPI.Problem_Explain;
     }
 
     public void Click_Answer(int _nIndex)
     {
+        question_info.current_question_count++;
+
         if (Check_Answer(_nIndex))
             Move_Camel();
         else
@@ -64,11 +86,15 @@ public class CamelQuestion : MonoBehaviour
 
     void Move_Camel()
     {
-        print("맞았습니다.");
+        print("정답입니다.");
+
+        question_info.current_correct_value++;
     }
 
     void Panelty()
     {
+        print("오답입니다.");
+
         current_life--;
         life_images[current_life].color = life_colours[1];
 
@@ -76,5 +102,16 @@ public class CamelQuestion : MonoBehaviour
         {
             print("으앙 쥬금");
         }
+    }
+
+    void Result()
+    {
+        //보상 아이템 지급
+        //메인게임으로 돌아가기 버튼 활성
+    }
+
+    void Change_Main_Scene()
+    {
+
     }
 }
