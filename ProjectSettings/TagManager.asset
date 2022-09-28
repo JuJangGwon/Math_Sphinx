@@ -11,6 +11,7 @@ TagManager:
   - AnswerFootBoard3
   - AnswerFootBoard4
   - Battery
+  - Wall
   layers:
   - Default
   - TransparentFX

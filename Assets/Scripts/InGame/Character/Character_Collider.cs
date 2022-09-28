@@ -13,12 +13,28 @@ public enum NowPushedFootBoard
 
 public class Character_Collider : MonoBehaviour
 {
+    Rigidbody2D _rigidbody2d;
+    BoxCollider2D _boxcollider2d;
     //public WJAPI WJAPI_CS;
     public HandLightSystem handlightsystem_cs;
     public FindAnswerWay findAnswerWay_cs;
     public GameObject Problem_popup;
     public NowPushedFootBoard nowPushedFootboard = NowPushedFootBoard.none;
+    
+    private void Awake()
+    {
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+        _boxcollider2d = GetComponent<BoxCollider2D>();
+    }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "AnswerFootBoard1" || other.gameObject.tag == "AnswerFootBoard2" ||
+             other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
+        {
+            _boxcollider2d.isTrigger = true;
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "ABC")
@@ -59,6 +75,10 @@ public class Character_Collider : MonoBehaviour
         {
             handlightsystem_cs.Get_handlightbettery();
         }
+        if (other.gameObject.tag == "Wall")
+        {
+            print("벽");
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -67,8 +87,10 @@ public class Character_Collider : MonoBehaviour
             other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
         {
             nowPushedFootboard = NowPushedFootBoard.none;
-            Debug.Log("발판 땜");
+            _boxcollider2d.isTrigger = false;
+                Debug.Log("발판 땜");
         }
     }
 }
+
 
