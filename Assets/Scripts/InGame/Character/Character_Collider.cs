@@ -19,6 +19,7 @@ public class Character_Collider : MonoBehaviour
     public HandLightSystem handlightsystem_cs;
     public FindAnswerWay findAnswerWay_cs;
     public GameObject Problem_popup;
+    public MapCreater mapcreate_cs;
     public NowPushedFootBoard nowPushedFootboard = NowPushedFootBoard.none;
     
     private void Awake()
@@ -70,14 +71,21 @@ public class Character_Collider : MonoBehaviour
              other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
         {
             findAnswerWay_cs.PlayerSelectAnswer((int)nowPushedFootboard);
+            if (mapcreate_cs.stage >= 3)
+            {
+                Debug.Log("42");
+                findAnswerWay_cs.delete_answerboard();
+            }
         }
         if (other.gameObject.tag == "Battery")
         {
             handlightsystem_cs.Get_handlightbettery();
         }
-        if (other.gameObject.tag == "Wall")
+        if (other.gameObject.tag == "prog_next_stage")
         {
-            print("벽");
+            mapcreate_cs.progstage();
+            findAnswerWay_cs.progress();
+            Destroy(other.gameObject);
         }
     }
 

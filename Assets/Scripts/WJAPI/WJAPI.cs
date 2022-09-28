@@ -181,7 +181,25 @@ public class WJAPI : MonoBehaviour
 
     }
 
-
+    public void setAnswer(int num, int selectionnum)
+    {
+        Debug.Log("#");
+        if (Answer_Selection[num-1] != Problem_Answer)
+        {
+            int n = 0;
+            for (int i = 0; i < selectionnum; i++)
+            {
+                if (Answer_Selection[i] == Problem_Answer)
+                {
+                    n = i;
+                    break;
+                }
+            }
+            string temp = Answer_Selection[num - 1];
+            Answer_Selection[num - 1] = Problem_Answer;
+            Answer_Selection[n] = temp;
+        }
+    }
     void Update()
     {
         if (bRequest == true &&

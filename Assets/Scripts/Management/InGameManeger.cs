@@ -57,7 +57,7 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.proggamestart)
         {
-            findanswerway_cs.CreateProblem();
+            findanswerway_cs.SetAnswerCreateProblem(1);
             ingamestate++;
         }
     }

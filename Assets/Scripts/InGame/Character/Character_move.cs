@@ -26,18 +26,18 @@ public class Character_move : MonoBehaviour
     public Vector3 move_dir;
     Animator _animator;
     Rigidbody2D _rigidbody2D;
-    float Character_speed = 8f;
+    float Character_speed = 10f;
 
     public void Set_character_speed(bool _buttonOn)
     {
         if (_buttonOn)
         {
-            Character_speed = 9f;
+            Character_speed = 15f;
             _animator.speed = 1.5f;
         }
         else
         {
-            Character_speed = 9f;
+            Character_speed = 10f;
             _animator.speed = 1.5f;
         }
     }

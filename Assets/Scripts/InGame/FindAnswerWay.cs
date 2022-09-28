@@ -5,46 +5,46 @@ using UnityEngine.UI;
 
 public class FindAnswerWay : MonoBehaviour
 {
+    public TEXDraw txdraw;
     public WJAPI wjapi_cs;
     public GameObject Problem_popup;
-    public Text Problem_text;
     public TextMesh[] selection_text;
+    public GameObject[] answerboard;
     public GameObject go;
     public int Answer = 0;
 
     private void Awake()
     {
-        clear_text();
         Problem_popup.transform.localPosition = new Vector3(0, 1400, 0);
     }
   
     float time = 0;
     bool a = true;
-    private void Update()
-    {
-        /*
-        time += Time.deltaTime;
-        if (time > 10 && a== true)
-        {
-            a = false;
-            CreateProblem();
-        }
-        */
-
-    }
+  
     void clear_text()
     {
         for (int i = 0; i < 4; i++)
         {
             selection_text[i].text = "";
         }
-        Problem_text.text = "";
+        txdraw.text = "";
     }
 
     public void CreateProblem()
     {
         wjapi_cs.MakeQuestion();
-        StartCoroutine(Problem_TEXT_setting());
+        StartCoroutine(Problem_TEXT_setting(false, 0));
+        StartCoroutine(ShowProblem_Popup(true));
+    }
+    public void SetAnswerCreateProblem(int a)
+    {
+        wjapi_cs.MakeQuestion();
+        StartCoroutine(Problem_TEXT_setting(true, a));
+        StartCoroutine(ShowProblem_Popup(true));
+    }
+    public void progress()
+    {
+        StartCoroutine(Problem_TEXT_setting(false,0));
         StartCoroutine(ShowProblem_Popup(true));
     }
     void Selection_text_settings()
@@ -58,10 +58,9 @@ public class FindAnswerWay : MonoBehaviour
     public void PlayerSelectAnswer(int selectedAnswer)
     {
         wjapi_cs.OnClick_Ansr(selectedAnswer-1);
-        clear_text();
         StartCoroutine(ShowProblem_Popup(false));
     }
-
+    
     IEnumerator ShowProblem_Popup(bool _on)
     {
         
@@ -75,26 +74,38 @@ public class FindAnswerWay : MonoBehaviour
         }
         else
         {
+            yield return new WaitForSeconds(1.0f);
             for (int i = 0; i <= 20; i++)
             {
                 Problem_popup.transform.localPosition = new Vector3(0, 800 + i * 30, 0);
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(0.025f);
             }
+            clear_text();
         }
         yield return new WaitForSeconds(0.1f);
     }
-    IEnumerator Problem_TEXT_setting()
+    IEnumerator Problem_TEXT_setting(bool set_answer,int a)
     {
         while (true)
         {
             if (wjapi_cs.Problem_Explain.Length > 2)
             {
-                Problem_text.text = wjapi_cs.Problem_Explain;
+                if (set_answer == true)
+                {
+                    wjapi_cs.setAnswer(a, 4);
+                }
+                txdraw.text = wjapi_cs.Problem_Explain;
                 Selection_text_settings();
-                wjapi_cs.Problem_Explain = "";
                 break;
             }
             yield return new WaitForSeconds(0.05f);
+        }
+    }
+    public void delete_answerboard()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            answerboard[i].transform.tag = "none";
         }
     }
 }
