@@ -94,6 +94,12 @@ public class Character_Collider : MonoBehaviour
             Destroy(other.gameObject);
             InGameManeger.ingamestate = InGameState.batteryex3;
         }
+        if (other.gameObject.tag == "return")
+        {
+            handlightsystem_cs.handlight_now_left_time = 8;
+            handlightsystem_cs.handlight_now_left_time = 1;
+
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)

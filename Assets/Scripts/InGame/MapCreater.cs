@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 1 = 땅 , 2 벽, 3 배터리아이템, 4 표지판 , 5 발판 ,6 nextstage
+// 1 = 땅 , 2 벽, 3 리턴 , 4 표지판 , 5 발판 ,6 nextstage
 
 // 맵 배열 알고리즘 x = i * 3.4f + j * -3.7f,           y = i * 3f + j * 3.1f
 
@@ -42,14 +42,14 @@ public class MapCreater : MonoBehaviour
     int[,] map = new int[,] { { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 , 2 },
                               { 2, 1, 1, 1, 4, 5, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
                               { 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 1 , 2 },
-                              { 2, 1, 1, 1, 4, 5, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1 , 2 },
+                              { 2, 1, 1, 1, 4, 5, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1 , 2 },
                               { 2, 4, 2, 4, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1 , 2 },
-                              { 2, 5, 2, 5, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1 , 2 },
-                              { 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1 , 2 },
-                              { 2, 1, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
-                              { 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1 , 2 },
-                              { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1 , 2 },
-                              { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 , 2 },
+                              { 2, 5, 2, 5, 2, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1 , 2 },
+                              { 2, 1, 2, 3, 1, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1 , 2 },
+                              { 2, 3, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
+                              { 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1 , 2 },
+                              { 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1 , 2 },
+                              { 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 , 2 },
                               { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
                               { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
                               { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
@@ -80,9 +80,19 @@ public class MapCreater : MonoBehaviour
                 int num = map[i, j];
                 GameObject gb;
 
-                if (num == 5)
+                if (num == 3)
                 {
                     gb = Instantiate(prefebs[1]);
+                    GameObject ngb = Instantiate(answerboard_prefeb);
+                    ngb.transform.SetParent(MapParent.transform);
+                    ngb.transform.localPosition = new Vector3((i * 3.4f) + (j * -3.7f), (i * 3f) + (j * 3.1f), 0);
+                    ngb.transform.tag = "return";
+
+                }
+                else if (num == 5)
+                {
+                    gb = Instantiate(prefebs[1]);
+
                 }
                 else if (num == 6)
                 {
@@ -95,7 +105,6 @@ public class MapCreater : MonoBehaviour
                 else
                 {
                     gb = Instantiate(prefebs[num]);
-                    gb.transform.tag = "prog_next_stage";
                 }
                 gb.transform.SetParent(MapParent.transform);
                 gb.transform.localPosition = new Vector3((i * 3.4f) + (j * -3.7f), (i * 3f) + (j * 3.1f),0 );

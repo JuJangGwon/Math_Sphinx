@@ -18,6 +18,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     public Image darkimg;
     public InGameManeger ingameManeger_cs;
     public GameObject text_board;
+
+    public GameObject joystick_b;
+    public GameObject dash_b;
     int now_textline = 0;
     bool now_typing = false;
     public Text m_TypingText;
@@ -58,6 +61,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     }
     public void prog_gametext(int i)
     {
+        joystick_b.SetActive(false);
+        dash_b.SetActive(false);
+
         now_textline = i;
         now_text = Now_text.prog_game;
         if (i != 7)
@@ -66,6 +72,8 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
         if (i >= 7)
         {
+            joystick_b.SetActive(true);
+            dash_b.SetActive(true);
             now_textline = 0;
             now_text = Now_text.none;
             InGameManeger.ingamestate = InGameState.proggamestart;
@@ -75,6 +83,8 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     }
     public void prog_gametext2(int i)
     {
+        joystick_b.SetActive(false);
+        dash_b.SetActive(false);
         now_textline = i;
         now_text = Now_text.prog_game2;
         if (i != 4)
@@ -87,6 +97,8 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             now_text = Now_text.none;
             text_board.SetActive(false);
             darkgb.SetActive(false);
+            joystick_b.SetActive(true);
+            dash_b.SetActive(true);
             InGameManeger.gameState = GameState.playingInGame;
         }
     }
