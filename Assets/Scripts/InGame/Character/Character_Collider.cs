@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public enum NowPushedFootBoard
 {
     none = 0,
@@ -17,6 +17,8 @@ public class Character_Collider : MonoBehaviour
     BoxCollider2D _boxcollider2d;
     //public WJAPI WJAPI_CS;
 
+    public GameObject darkgb;
+    public Image darkimg;
     public HandLightSystem handlightsystem_cs;
     public FindAnswerWay findAnswerWay_cs;
     public GameObject Problem_popup;
@@ -98,7 +100,7 @@ public class Character_Collider : MonoBehaviour
         {
             handlightsystem_cs.handlight_now_left_time = 8;
             handlightsystem_cs.handlight_now_left_time = 1;
-
+            StartCoroutine(DarkfadeIn());
         }
     }
 
@@ -111,6 +113,17 @@ public class Character_Collider : MonoBehaviour
             _boxcollider2d.isTrigger = false;
                 Debug.Log("발판 땜");
         }
+    }
+    public IEnumerator DarkfadeIn()
+    {
+        yield return new WaitForSeconds(2f);
+        darkgb.SetActive(true);
+        for (int i = 0; i < 33; i++)
+        {
+            darkimg.color = new Vector4(0, 0, 0, 0 + i * 0.03f);
+            yield return new WaitForSeconds(0.03f);
+        }
+        InGameManeger.ingamestate = InGameState.batteryex4;
     }
 }
 

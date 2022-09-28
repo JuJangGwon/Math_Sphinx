@@ -9113,6 +9113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781f42e09f2d344a39c3350678f75a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  darkgb: {fileID: 1200896942}
+  darkimg: {fileID: 1200896944}
   handlightsystem_cs: {fileID: 998994339}
   findAnswerWay_cs: {fileID: 1928188633}
   Problem_popup: {fileID: 0}
