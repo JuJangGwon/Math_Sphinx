@@ -57,6 +57,7 @@ public class FindAnswerWay : MonoBehaviour
 
     public void PlayerSelectAnswer(int selectedAnswer)
     {
+       
         wjapi_cs.OnClick_Ansr(selectedAnswer-1);
         StartCoroutine(ShowProblem_Popup(false));
     }
