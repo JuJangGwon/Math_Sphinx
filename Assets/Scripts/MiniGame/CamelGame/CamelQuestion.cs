@@ -16,11 +16,6 @@ public class CamelQuestion : MonoBehaviour
     [Header("대사 상자")]
     public Image dialogue_box;
 
-    [Header("플레이어 라이프")]
-    public int current_life = 3;
-    public Image[] life_images = new Image[3];
-    public Color[] life_colours = new Color[2];         //추후에 이미지로 변경 예정
-
     [Header("플레이어")]
     public GameObject camel_object;
     public GameObject camera_camel;
@@ -41,13 +36,16 @@ public class CamelQuestion : MonoBehaviour
     void Awake()
     {
         StartCoroutine(CreateProblem());
+
+        question_info.current_question_count++;
+
+        if (question_info.question_count == 0) // 나중에 진단평가 여부에 따라 진단평ㅇ가 안했음 8문제만 제출하게 수정
+            question_info.question_count = 5;
     }
 
     IEnumerator CreateProblem()
     {
         yield return new WaitForSeconds(1f);
-
-        question_info.current_question_count++;
 
         scWJAPI.MakeQuestion();
         StartCoroutine(Selection_Text_Setting());
@@ -59,21 +57,27 @@ public class CamelQuestion : MonoBehaviour
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = scWJAPI.Answer_Selection[i];
 
-        tdr.text = scWJAPI.Problem_Explain;
+        tdr.text = "\\scdd" + scWJAPI.Problem_Explain;
     }
 
     public void Click_Answer(int _nIndex)
     {
-        question_info.current_question_count++;
-
         if (Check_Answer(_nIndex))
             Move_Camel();
         else
             Panelty();
 
-        scWJAPI.OnClick_Ansr(_nIndex);
+        if (question_info.current_question_count < question_info.question_count)
+        {
+            scWJAPI.OnClick_Ansr(_nIndex);
+            question_info.current_question_count++;
 
-        StartCoroutine(Selection_Text_Setting());
+            StartCoroutine(Selection_Text_Setting());
+        }
+        else
+        {
+
+        }
     }
 
     bool Check_Answer(int button_num)
@@ -86,22 +90,22 @@ public class CamelQuestion : MonoBehaviour
 
     void Move_Camel()
     {
-        print("정답입니다.");
-
+        Clear_Answer_Box(true);
         question_info.current_correct_value++;
     }
 
     void Panelty()
     {
-        print("오답입니다.");
+        Clear_Answer_Box(false);
+    }
 
-        current_life--;
-        life_images[current_life].color = life_colours[1];
+    void Clear_Answer_Box(bool b)
+    {
+        for (int i = 0; i < texSelection.Length; i++)
+            texSelection[i].text = "";
 
-        if (current_life == 0)
-        {
-            print("으앙 쥬금");
-        }
+        if (b) { tdr.text = "\\scdd 정답이에요 !"; }
+        else { tdr.text = "\\scdd 틀렸어요...!"; }
     }
 
     void Result()

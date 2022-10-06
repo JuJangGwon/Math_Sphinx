@@ -40,6 +40,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                  "스핑크스 : 저기 저 앞에 파란색 포탈에 들어가봐 ... "
 
     };
+    //낙타게임
+    string[] prog_game_text3 = { "낙타 : 덕분에 쉽게 올 수 있었어! \n 아마 이쪽으로 가면 보물이 나올 것 같은데?" };
+    string[] prog_game_text4 = { "낙타 : 오는 길이 너무 헷갈렸어. \n 난 이제 쉬어야겠어." };
     int findWho(string str)
     {
         for (int i = 0; i < str.Length;i++)
