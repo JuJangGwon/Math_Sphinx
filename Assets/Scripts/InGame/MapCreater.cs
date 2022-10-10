@@ -34,6 +34,8 @@ using UnityEngine;
 
 public class MapCreater : MonoBehaviour
 {
+    float tileX = 6.5f;
+    float tileY = 4.8f;
     public int stage = 2;
     public FindAnswerWay findanswerway_cs;
     public GameObject[] prefebs;
@@ -107,7 +109,7 @@ public class MapCreater : MonoBehaviour
                     gb = Instantiate(prefebs[num]);
                 }
                 gb.transform.SetParent(MapParent.transform);
-                gb.transform.localPosition = new Vector3((i * 3.4f) + (j * -3.7f), (i * 3f) + (j * 3.1f),0 );
+                gb.transform.localPosition = new Vector3((i * tileY) + (j * -tileX/2), (i * tileX/2) + (j * tileY/2),0 );
                 first(gb, i, j);
             }
         }
