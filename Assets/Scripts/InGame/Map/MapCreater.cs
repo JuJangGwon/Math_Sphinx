@@ -34,20 +34,20 @@ using UnityEngine;
 
 public class MapCreater : MonoBehaviour
 {
-    float tileX = 6.5f;
-    float tileY = 4.8f;
+    float tileX = 6f;
+    float tileY = 4.3f;
     public int stage = 2;
     public FindAnswerWay findanswerway_cs;
     public GameObject[] prefebs;
     public GameObject MapParent;
     public GameObject answerboard_prefeb;
     int[,] map = new int[,] { { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 , 2 },
-                              { 2, 1, 1, 1, 4, 5, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
-                              { 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 1 , 2 },
-                              { 2, 1, 1, 1, 4, 5, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1 , 2 },
-                              { 2, 4, 2, 4, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1 , 2 },
-                              { 2, 5, 2, 5, 2, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1 , 2 },
-                              { 2, 1, 2, 3, 1, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1 , 2 },
+                              { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
+                              { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1 , 2 },
+                              { 2, 1, 1, 1, 2, 2, 2, 2, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1 , 2 },
+                              { 2, 4, 2, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1 , 2 },
+                              { 2, 5, 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1 , 2 },
+                              { 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1 , 2 },
                               { 2, 3, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1 , 2 },
                               { 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1 , 2 },
                               { 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1 , 2 },
@@ -109,8 +109,8 @@ public class MapCreater : MonoBehaviour
                     gb = Instantiate(prefebs[num]);
                 }
                 gb.transform.SetParent(MapParent.transform);
-                gb.transform.localPosition = new Vector3((i * tileY) + (j * -tileX/2), (i * tileX/2) + (j * tileY/2),0 );
-                first(gb, i, j);
+                gb.transform.localPosition = new Vector3((i * tileX/2) + (j * -tileX/2), (i * tileY/2) + (j * tileY/2),0 );
+                //first(gb, i, j);
             }
         }
       
