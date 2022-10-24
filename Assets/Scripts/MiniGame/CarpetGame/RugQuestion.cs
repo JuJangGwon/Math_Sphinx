@@ -65,7 +65,7 @@ public class RugQuestion : MonoBehaviour
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = scWJAPI.Answer_Selection[i];
 
-        tdr.text = "\\scdd" + scWJAPI.Problem_Explain;
+        tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
     }
 
     public void Click_Answer(int _nIndex)

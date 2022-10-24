@@ -11,7 +11,8 @@ public class CamelQuestion : MonoBehaviour
 
     [Header("문제 상자")]
     public TEXDraw tdr;
-    public TextMeshProUGUI[] texSelection;
+    //public TextMeshProUGUI[] texSelection;
+    public TEXDraw[] texSelection;
 
     [Header("대사 상자")]
     public Image dialogue_box;
@@ -19,6 +20,8 @@ public class CamelQuestion : MonoBehaviour
     [Header("플레이어")]
     public GameObject camel_object;
     public GameObject camera_camel;
+    public Animator player_anime;
+    int move_hash_code = Animator.StringToHash("Move");
 
     [System.Serializable] public struct Question_Info
     {
@@ -32,6 +35,10 @@ public class CamelQuestion : MonoBehaviour
     public Question_Info question_info;
     [TextArea] public string[] camel_dialogue = new string[2]; // 0: 목표치 달성 시 1: 목표치 달성 못할 시
     public GameObject reward_item;
+    public float bg_speed;
+    public GameObject bg_image;
+    public texttypingeffect texttypingeffect_cs;
+    WaitForSeconds wait_time = new WaitForSeconds(1f);
 
     void Awake()
     {
@@ -43,21 +50,31 @@ public class CamelQuestion : MonoBehaviour
             question_info.question_count = 5;
     }
 
+    void Update()
+    {
+        if (player_anime.GetBool(move_hash_code))
+            bg_image.transform.Translate(Vector3.left * bg_speed);
+    }
+
     IEnumerator CreateProblem()
     {
-        yield return new WaitForSeconds(1f);
+        yield return wait_time;
 
         scWJAPI.MakeQuestion();
         StartCoroutine(Selection_Text_Setting());
+        wait_time = new WaitForSeconds(4f);
     }
 
     IEnumerator Selection_Text_Setting()
     {
-        yield return new WaitForSeconds(1f);
+        yield return wait_time;
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = scWJAPI.Answer_Selection[i];
 
-        tdr.text = "\\scdd" + scWJAPI.Problem_Explain;
+        if (player_anime.GetBool(move_hash_code))
+            player_anime.SetBool(move_hash_code, false);
+
+        tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
     }
 
     public void Click_Answer(int _nIndex)
@@ -76,7 +93,7 @@ public class CamelQuestion : MonoBehaviour
         }
         else
         {
-
+            Result();
         }
     }
 
@@ -91,7 +108,13 @@ public class CamelQuestion : MonoBehaviour
     void Move_Camel()
     {
         Clear_Answer_Box(true);
+        player_anime.SetBool(move_hash_code, true);
         question_info.current_correct_value++;
+    }
+
+    void Stop_Camel()
+    {
+        player_anime.SetBool(move_hash_code, false);
     }
 
     void Panelty()
@@ -112,6 +135,16 @@ public class CamelQuestion : MonoBehaviour
     {
         //보상 아이템 지급
         //메인게임으로 돌아가기 버튼 활성
+        if (question_info.current_correct_value >= question_info.target_correct_value)
+        {
+            texttypingeffect_cs.text_board.SetActive(true);
+            texttypingeffect_cs.prog_gametext3(0);
+        }
+        else
+        {
+            texttypingeffect_cs.text_board.SetActive(true);
+            texttypingeffect_cs.prog_gametext4(0);
+        }
     }
 
     void Change_Main_Scene()

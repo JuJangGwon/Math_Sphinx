@@ -9,6 +9,8 @@ public enum Now_text
     none,
     prog_game,
     prog_game2,
+    prog_game3,
+    prog_game4
 
 }
 
@@ -106,6 +108,44 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    public void prog_gametext3(int i)
+    {
+        darkgb.SetActive(true);
+        now_textline = i;
+        now_text = Now_text.prog_game3;
+        if (i != 1)
+        {
+            StartCoroutine(Typing(1, prog_game_text3[i], m_Speed));
+        }
+        if (i >= 1)
+        {
+            now_textline = 0;
+            now_text = Now_text.none;
+            text_board.SetActive(false);
+            darkgb.SetActive(false);
+            InGameManeger.gameState = GameState.playingInGame;
+        }
+    }
+
+    public void prog_gametext4(int i)
+    {
+        darkgb.SetActive(true);
+        now_textline = i;
+        now_text = Now_text.prog_game4;
+        if (i != 1)
+        {
+            StartCoroutine(Typing(1, prog_game_text4[i], m_Speed));
+        }
+        if (i >= 1)
+        {
+            now_textline = 0;
+            now_text = Now_text.none;
+            text_board.SetActive(false);
+            darkgb.SetActive(false);
+            InGameManeger.gameState = GameState.playingInGame;
+        }
+    }
+
     IEnumerator Typing(int who, string message, float speed)
     {
         text_board.SetActive(true);
@@ -159,6 +199,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.prog_game2:
                     prog_gametext2(++now_textline);
+                    break;
+                case Now_text.prog_game3:
+                    prog_gametext3(++now_textline);
+                    break;
+                case Now_text.prog_game4:
+                    prog_gametext4(++now_textline);
                     break;
             }
         }
