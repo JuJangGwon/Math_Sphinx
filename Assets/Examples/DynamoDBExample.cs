@@ -12,7 +12,7 @@
 // for the specific language governing permissions and 
 // limitations under the License.
 //
-
+/*
 using UnityEngine;
 using System.Collections;
 using Amazon.DynamoDBv2;
@@ -53,3 +53,4 @@ namespace AWSSDK.Examples
         }
     }
 }
+*/

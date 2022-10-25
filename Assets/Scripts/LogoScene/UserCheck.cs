@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,13 @@ using Amazon.DynamoDBv2.DataModel;
 
 public class UserCheck : MonoBehaviour
 {
-    [Header("로그인 팝업")]
+    [Header("?????? ????")]
     public GameObject login_popup;
     public TextMeshProUGUI login_id;
     public TextMeshProUGUI login_pw;
 
     [Space]
-    [Header("회원가입 팝업")]
+    [Header("???????? ????")]
     public GameObject signup_popup;
     public TextMeshProUGUI signup_id;
     public TextMeshProUGUI signup_pw;
@@ -66,7 +67,7 @@ public class UserCheck : MonoBehaviour
     void test()
     {
         UnityInitializer.AttachToGameObject(this.gameObject);
-        credentials = new CognitoAWSCredentials("자신의 자격 증명 풀 ID", RegionEndpoint.APNortheast2);
+        credentials = new CognitoAWSCredentials("?????? ???? ???? ?? ID", RegionEndpoint.APNortheast2);
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(DBclient);
     }
@@ -87,3 +88,4 @@ class User_Info
 
     public User_Info() { }
 }
+*/
