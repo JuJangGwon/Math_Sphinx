@@ -17,6 +17,7 @@ TagManager:
   - none
   - potal
   - return
+  - Monster
   layers:
   - Default
   - TransparentFX
