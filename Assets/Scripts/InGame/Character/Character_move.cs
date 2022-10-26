@@ -17,10 +17,12 @@ public enum CharacterDirection
     back_left,
     back_right
 }
+// (-15, 15) ,(-11, 17) (-11,13,) , (-7,15)
+// 8, 6
 
 public class Character_move : MonoBehaviour
 {
-   
+    
     public static CharacterState _characterstate = 0; // 캐릭터 상태
     public static CharacterDirection _characterdirection = 0;
     public Vector3 move_dir;
@@ -46,11 +48,29 @@ public class Character_move : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
+    void FindMyposition()
+    {
+
+        int dx, dy, tx, ty;
+       
+
+        int x = (int)transform.position.x + 0;
+        int y = (int)transform.position.y + 0;
+
+        dx = x / 4;
+        dy = y / 3;
+        tx = x % 4;
+        ty = y % 3;
+        int mx = 0 + dx + dy;
+        int my = 0 - dx + dy;
+        Debug.Log(my+ " , "+ mx);
+    }
+
     void Update()
     {
         if (_characterstate == CharacterState.move && InGameManeger.gameState == GameState.playingInGame)
         {
-
+            FindMyposition();
             //transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir, Time.deltaTime * Character_speed);
             _rigidbody2D.velocity = move_dir * Character_speed;
             if (move_dir.x >= 0)
