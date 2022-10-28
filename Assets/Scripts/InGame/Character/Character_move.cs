@@ -63,7 +63,6 @@ public class Character_move : MonoBehaviour
         ty = y % 3;
         int mx = 0 + dx + dy;
         int my = 0 - dx + dy;
-        Debug.Log(my+ " , "+ mx);
     }
 
     void Update()

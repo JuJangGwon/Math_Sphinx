@@ -85,7 +85,6 @@ public class Monster : MonoBehaviour
         Vector2 v = FindMyposition();
         my = (int)v.y;
         mx = (int)v.x;
-        Debug.Log(v);
         switch (monsterdirction)
         {
             case MonsterDirection.downleft:
