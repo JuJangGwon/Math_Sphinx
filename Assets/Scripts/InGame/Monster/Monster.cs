@@ -125,7 +125,7 @@ public class Monster : MonoBehaviour
                 animator.SetBool("move", true);
                 MonsterSetRotation();
                 Movetranslate();
-                WallCollider();
+               // WallCollider();
         }
         else
             {
