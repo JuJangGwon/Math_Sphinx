@@ -11,111 +11,90 @@ enum MonsterState
 
 public enum MonsterDirection
 {
-    upleft,
+    upleft = 0,
     upright,
-    downleft,
+    downleft ,
     downright
 }
+
+
 public class Monster : MonoBehaviour
 {
     public Animator animator;
 
 
     MonsterState monsterstate = MonsterState.move;
-    MonsterDirection monsterdirction = MonsterDirection.upleft;
-    float monster_speed = 1f;
+    public MonsterDirection monsterdirction = MonsterDirection.upleft;
+    float monster_speed = 8f;
     Vector3 monster_dir;
+    Vector2[] move_forward = new Vector2[4];
     int my = 0;
     int mx = 0;
 
 
     private void Start()
     {
+        move_forward[0] = new Vector2(-1, 1);
+        move_forward[1] = new Vector2(3, 2);
+        move_forward[2] = new Vector2(-3, -2);
+        move_forward[3] = new Vector2(1, -1);
+
         monsterstate = MonsterState.move;
-        //monsterdirction = _monsterDirection;
-        MonsterSetRotation();
+        MonsterSetRotation(MonsterDirection.upleft);
     }
 
-    void MonsterSetRotation()
+    void MonsterSetRotation(MonsterDirection _monsterDirection)
     {
-        if (monsterdirction == MonsterDirection.upleft && monsterdirction == MonsterDirection.downleft)
-            transform.rotation = Quaternion.Euler(0, -180, 0);
+        monsterdirction = _monsterDirection;
+        if (monsterdirction == MonsterDirection.upleft || monsterdirction == MonsterDirection.downleft)
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);
     }
-    Vector2 FindMyposition()
-    {
 
-        int dx, dy;
-
-
-        int x = (int)transform.position.x + 0;
-        int y = (int)transform.position.y + 0;
-
-        dx = x / 4;
-        dy = y / 3;
-        int my = 0 + dx + dy;
-        int mx = 0 - dx + dy;
-        return new Vector2(mx, my);
-
-    }
     void Movetranslate()
     {
         switch (monsterdirction)
         {
             case MonsterDirection.downleft:
-                monster_dir = new Vector3(-1, -1, 0);
+                monster_dir = new Vector2(-1, -1);
                 break;
             case MonsterDirection.downright:
-                monster_dir = new Vector3(1, -1, 0);
+                monster_dir = new Vector2(1, -1);
                 break;
             case MonsterDirection.upright:
-                monster_dir = new Vector3(1, 1, 0);
+                monster_dir = new Vector2(1, 1);
                 break;
             case MonsterDirection.upleft:
-                monster_dir = new Vector3(-1, 1, 0);
+                monster_dir = new Vector2(-1, 1);
                 break;
         }
-
-        transform.Translate(monster_dir * monster_speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
     }
 
-    void WallCollider()
+    void Layc()
     {
-        Vector2 v = FindMyposition();
-        my = (int)v.y;
-        mx = (int)v.x;
-        switch (monsterdirction)
+        float max_dis = 0;
+        int next_dir = 0;
+        for (int i = 0; i < 4; i++)
         {
-            case MonsterDirection.downleft:
-                if (MapCreater.map[my, mx-1] == 2)
-                {
-                    monsterdirction = MonsterDirection.upright;
+            if (i == (int)monsterdirction)
+                continue;
+            Debug.DrawRay(transform.position + new Vector3(2, -2), (move_forward[i])* 15, Color.red, 1f);
+            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(2,-2), move_forward[i]* 15);
+            if (hitinf.collider.name != null)
+            {
+                    float now_dis = hitinf.distance;
+                    if (max_dis < now_dis)
+                    {
+                        next_dir = i;
+                        max_dis = now_dis;
+                    }
+            }
+            Debug.Log(max_dis);
 
-                }
-                break;
-            case MonsterDirection.downright:
-                if (MapCreater.map[my-1, mx] == 2)
-                {
-                    monsterdirction = MonsterDirection.upleft;
-
-                }
-                break;
-            case MonsterDirection.upright:
-                if (MapCreater.map[my-1, mx] == 2)
-                {
-                    monsterdirction = MonsterDirection.downleft;
-
-                }
-                break;
-            case MonsterDirection.upleft:
-                if (MapCreater.map[my, mx + 1] == 2)
-                {
-                    monsterdirction = MonsterDirection.downright;
-                }
-                break;
-            
         }
+        MonsterSetRotation((MonsterDirection)next_dir);
     }
         void Update()
         {
@@ -123,9 +102,7 @@ public class Monster : MonoBehaviour
             if (monsterstate == MonsterState.move)
             {
                 animator.SetBool("move", true);
-                MonsterSetRotation();
                 Movetranslate();
-               // WallCollider();
         }
         else
             {
@@ -133,4 +110,12 @@ public class Monster : MonoBehaviour
 
             }
         }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Wall")
+        {
+            Debug.Log("부딪");
+            Layc();
+        }
     }
+}
