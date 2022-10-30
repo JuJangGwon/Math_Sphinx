@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 915952941287121274}
   - component: {fileID: 915952941287121273}
   - component: {fileID: 915952941287121255}
-  - component: {fileID: 500420197144324501}
-  m_Layer: 0
+  - component: {fileID: 8316131013962302729}
+  m_Layer: 4
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915952941287121275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 3}
+  m_LocalPosition: {x: 0, y: -5.88, z: 3}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -108,8 +108,8 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!60 &500420197144324501
-PolygonCollider2D:
+--- !u!68 &8316131013962302729
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,36 +122,17 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.565, y: 5.969258}
-    newSize: {x: 9.071, y: 9.071}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_EdgeRadius: 0
   m_Points:
-    m_Paths:
-    - - {x: 3.3687892, y: -0.50236326}
-      - {x: 3.7825, y: -0.14775391}
-      - {x: 3.7825, y: 0.08865234}
-      - {x: 3.5460937, y: 0.3250586}
-      - {x: 1.9503516, y: 1.625293}
-      - {x: 0.17730469, y: 2.984629}
-      - {x: -0.17730469, y: 2.984629}
-      - {x: -1.6548438, y: 1.9208008}
-      - {x: -2.2458594, y: 1.3888867}
-      - {x: -3.3687892, y: 0.50236326}
-      - {x: -3.7825, y: 0.14775391}
-      - {x: -3.7825, y: -0.08865234}
-      - {x: -3.5460937, y: -0.3250586}
-      - {x: -1.0047265, y: -2.3345118}
-      - {x: -0.23640625, y: -2.984629}
-      - {x: 0.17730469, y: -2.984629}
-      - {x: 1.1229297, y: -2.2754102}
-      - {x: 1.6548438, y: -1.8616992}
-      - {x: 2.7777734, y: -0.9751758}
+  - {x: 0.03049609, y: 2.2849395}
+  - {x: -3.184177, y: -0.46954897}
+  - {x: -0.062358662, y: -2.8759544}
+  - {x: 2.8090532, y: -0.33247113}
+  - {x: -0.010373831, y: 2.2616217}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &4060347489523366675
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +143,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1062264422098770762}
   - component: {fileID: 4279486125909192348}
-  - component: {fileID: 1088328233}
   - component: {fileID: 1088328232}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: picturewall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,32 +218,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1088328233
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4060347489523366675}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.76, y: 11.23}
-    newSize: {x: 9.76, y: 11.23}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.76, y: 11.23}
-  m_EdgeRadius: 0
 --- !u!114 &1088328232
 MonoBehaviour:
   m_ObjectHideFlags: 0

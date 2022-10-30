@@ -22,10 +22,14 @@ public class Monster : MonoBehaviour
 {
     public Animator animator;
 
-
+    bool collider_b = false;
+    float coollider_time = 0;
+    Vector3 v;
+    float _time = 0;
+    Rigidbody2D rid2d;
     MonsterState monsterstate = MonsterState.move;
     public MonsterDirection monsterdirction = MonsterDirection.upleft;
-    float monster_speed = 8f;
+    float monster_speed = 1f;
     Vector3 monster_dir;
     Vector2[] move_forward = new Vector2[4];
     int my = 0;
@@ -34,10 +38,11 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        move_forward[0] = new Vector2(-1, 1);
-        move_forward[1] = new Vector2(3, 2);
-        move_forward[2] = new Vector2(-3, -2);
-        move_forward[3] = new Vector2(1, -1);
+        rid2d = GetComponent<Rigidbody2D>();
+        move_forward[0] = new Vector2(-7, 4);
+        move_forward[1] = new Vector2(7, 6);
+        move_forward[2] = new Vector2(-7, -6);
+        move_forward[3] = new Vector2(7, -4);
 
         monsterstate = MonsterState.move;
         MonsterSetRotation(MonsterDirection.upleft);
@@ -57,46 +62,75 @@ public class Monster : MonoBehaviour
         switch (monsterdirction)
         {
             case MonsterDirection.downleft:
-                monster_dir = new Vector2(-1, -1);
+                monster_dir = new Vector2(-7, -4);
                 break;
             case MonsterDirection.downright:
-                monster_dir = new Vector2(1, -1);
+                monster_dir = new Vector2(5, -7);
                 break;
             case MonsterDirection.upright:
-                monster_dir = new Vector2(1, 1);
+                monster_dir = new Vector2(7, 5);
                 break;
             case MonsterDirection.upleft:
-                monster_dir = new Vector2(-1, 1);
+                monster_dir = new Vector2(-4, 7);
                 break;
         }
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
+        rid2d.velocity = monster_dir * monster_speed;
+        //transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
     }
 
     void Layc()
     {
         float max_dis = 0;
-        int next_dir = 0;
+        int next_dir = (int)monsterdirction; 
         for (int i = 0; i < 4; i++)
         {
             if (i == (int)monsterdirction)
                 continue;
-            Debug.DrawRay(transform.position + new Vector3(2, -2), (move_forward[i])* 15, Color.red, 1f);
-            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(2,-2), move_forward[i]* 15);
-            if (hitinf.collider.name != null)
+            int layerMask = 1 << LayerMask.NameToLayer("Water");
+            Debug.DrawRay(transform.position + new Vector3(0, 0f), (move_forward[i])* 15, Color.red, layerMask);
+            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(0,0f), move_forward[i]* 15, layerMask);
+            if (hitinf.collider != null)
             {
-                    float now_dis = hitinf.distance;
-                    if (max_dis < now_dis)
+                float now_dis = Mathf.Abs(Vector2.Distance(gameObject.transform.position, hitinf.collider.transform.position));
+                Debug.Log(hitinf.collider.transform);
+                if (max_dis < now_dis)
                     {
-                        next_dir = i;
+                    Debug.Log(now_dis);
+
+                    next_dir = i;
                         max_dis = now_dis;
                     }
             }
-            Debug.Log(max_dis);
+           Debug.Log(max_dis);
+           Debug.Log((MonsterDirection)next_dir);
 
         }
         MonsterSetRotation((MonsterDirection)next_dir);
     }
-        void Update()
+    private void Update()
+    {
+        _time += Time.deltaTime;
+        if (_time >0.5f)
+        {
+            _time = 0;
+            if (v.x == (int)transform.position.x && v.y == (int)transform.position.y)
+            {
+                Layc();
+            }
+            v = new Vector3((int)transform.position.x, (int)transform.position.y, 0);
+          //  Debug.Log(v);
+        }
+        if (collider_b == true)
+        {
+            coollider_time += Time.deltaTime;
+            if (coollider_time > 0.7f)
+            {
+                collider_b = false;
+                coollider_time = 0;
+            }
+        }
+    }
+    void FixedUpdate()
         {
 
             if (monsterstate == MonsterState.move)
@@ -112,10 +146,14 @@ public class Monster : MonoBehaviour
         }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Wall")
+        if (collider_b == false)
         {
-            Debug.Log("부딪");
-            Layc();
+            if (other.gameObject.tag == "Wall")
+            {
+                Debug.Log("부딪");
+                Layc();
+                collider_b = true;
+            }
         }
     }
 }
