@@ -80,6 +80,16 @@ public class UserCheck : MonoBehaviour
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(DBclient);
     }
+
+    public void Open_Sign_Up_Popup()
+    {
+
+    }
+
+    public void Close_Sign_Up_Popup()
+    {
+
+    }
 }
 
 class User_Info
