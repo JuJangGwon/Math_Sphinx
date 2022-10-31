@@ -1,0 +1,1190 @@
+fileFormatVersion: 2
+guid: f2f6f020f6f68497ead83fe1120d72db
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6278f779f98ad42909b1e4cb59dd806b
+      internalID: 257629916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 100f3e858e548493ca3914c089cfd33c
+      internalID: 1579317169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 148afb45b582b4a3ea01f0bf5c815464
+      internalID: -657015115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7c9b7dc13534ffbab621f04aa3b228
+      internalID: 1746751796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d516557c26246472e9a8749210575708
+      internalID: -47644916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ad33762243f4506b994bf23ee19415
+      internalID: 688774341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa23e55f2ea346feb35f36aa5339756
+      internalID: 1950649831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 3417
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42698d7023e7b42498a753e8e9e7acc1
+      internalID: 1557131237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17dc3b030147b4b9ab3dcd1f230824f8
+      internalID: 69835877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe27dbd71da84979b86f3c1f4cfe98a
+      internalID: -1647377122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbe6984aa51c4321843bf698853907b
+      internalID: 289835565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dbb25118635b434baed2e54a26fc3df
+      internalID: 1360101947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa4651fdaea9437eb61b9e2b91368ea
+      internalID: -1848097697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb11eade216b94b599952c3891159d5f
+      internalID: 416844170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e222bddf97514a9cb28a73d6d0ea53c
+      internalID: -1125278181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 2738
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7df4611cc97243f790b5d3c7e724936
+      internalID: 1888660950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3cd8aaefc83d49ffa8c47e4b7853655
+      internalID: 1668947324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e7e6cffe05f4d7f964cd0553681ab5
+      internalID: 264017333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de140b9c3f5a4132aca9414de386237
+      internalID: -897257365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19914503359ca4570a84d84c0ba98d3a
+      internalID: -381083090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5481cf844418444e1b279f18b939c659
+      internalID: 1526098027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e1abc22eb2a466d9eb14d65b8c566a
+      internalID: -994411188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aad8096c7adc412a8ad627862d30ec2
+      internalID: -1524793285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 2059
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92649b928d9aa425aa1327d17b377c8f
+      internalID: 1984877520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5bafb265ae824f88b44a7167683f701
+      internalID: -672698610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b57bdf2fb2a47bca5b76fbc7f99ee8
+      internalID: -1121273942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b386d347e0a5d4d66a03bf1c7febde35
+      internalID: -938657112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b5e20bbe05614212a9a50225c89cdff
+      internalID: 715739522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd26459638b0f41f9960e12df5477ee8
+      internalID: 1605819054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 022a0e8ebdff847f58825e98529a5a28
+      internalID: -883354921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 677a40fdadc7b4d7e8b4b73d219c7b73
+      internalID: -1361792128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 1380
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c34b430b3e74e5cb2e3356fadf933f
+      internalID: -477530645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5910cec8193694961a20e010595d4f98
+      internalID: 107700152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e53bc7007c1a4a44ba8ccd9abaabaa7
+      internalID: -222812602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da30d3af7fda045008e4f934fb01a97f
+      internalID: -103111599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0940c304a8c68466fac975936a6fc423
+      internalID: 873946303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_36
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2330fdcc1ac7e48aa959460c8c27042c
+      internalID: -30083079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911a3c4b7b8f74bdc9f51533bf2de7ab
+      internalID: -1478666331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_38
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ebe4e7f62874dd7ab1601c61c02b85
+      internalID: 1707803342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_39
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 701
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 494d77867e2b64719a1e8b4a02ff29f1
+      internalID: -2034535562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dba81170c1334f02bb7c63698835ae8
+      internalID: -61351802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_41
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a0b6b1cccbf4e95a0e90ecd613ef3e
+      internalID: 1460980414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_42
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a460affee4e4a58b39eacced3860eb
+      internalID: 307714843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_43
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10457c5894e3446bdb17718342088956
+      internalID: 2008450065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_44
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a87d3de3979f43e8835e412cc179105
+      internalID: -367164377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_45
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b701017d7d1842718caf3bb4b1cc211
+      internalID: -1739979622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_46
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab856a140c184ef390621eca037da51
+      internalID: 653929984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_move_sheet_47
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 22
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 898cc253aa40e416c91f16eea43c2c2e
+      internalID: 1892532916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      monster_mummy_move_sheet_32: 107700152
+      monster_mummy_move_sheet_9: -1647377122
+      monster_mummy_move_sheet_21: -994411188
+      monster_mummy_move_sheet_46: 653929984
+      monster_mummy_move_sheet_39: -2034535562
+      monster_mummy_move_sheet_1: 1579317169
+      monster_mummy_move_sheet_41: 1460980414
+      monster_mummy_move_sheet_18: -897257365
+      monster_mummy_move_sheet_30: -1361792128
+      monster_mummy_move_sheet_44: -367164377
+      monster_mummy_move_sheet_16: 1668947324
+      monster_mummy_move_sheet_24: -672698610
+      monster_mummy_move_sheet_47: 1892532916
+      monster_mummy_move_sheet_26: -938657112
+      monster_mummy_move_sheet_14: -1125278181
+      monster_mummy_move_sheet_0: 257629916
+      monster_mummy_move_sheet_38: 1707803342
+      monster_mummy_move_sheet_45: -1739979622
+      monster_mummy_move_sheet_19: -381083090
+      monster_mummy_move_sheet_20: 1526098027
+      monster_mummy_move_sheet_29: -883354921
+      monster_mummy_move_sheet_2: -657015115
+      monster_mummy_move_sheet_4: -47644916
+      monster_mummy_move_sheet_36: -30083079
+      monster_mummy_move_sheet_13: 416844170
+      monster_mummy_move_sheet_37: -1478666331
+      monster_mummy_move_sheet_23: 1984877520
+      monster_mummy_move_sheet_27: 715739522
+      monster_mummy_move_sheet_43: 2008450065
+      monster_mummy_move_sheet_22: -1524793285
+      monster_mummy_move_sheet_10: 289835565
+      monster_mummy_move_sheet_11: 1360101947
+      monster_mummy_move_sheet_28: 1605819054
+      monster_mummy_move_sheet_8: 69835877
+      monster_mummy_move_sheet_15: 1888660950
+      monster_mummy_move_sheet_40: -61351802
+      monster_mummy_move_sheet_42: 307714843
+      monster_mummy_move_sheet_7: 1557131237
+      monster_mummy_move_sheet_34: -103111599
+      monster_mummy_move_sheet_17: 264017333
+      monster_mummy_move_sheet_31: -477530645
+      monster_mummy_move_sheet_25: -1121273942
+      monster_mummy_move_sheet_35: 873946303
+      monster_mummy_move_sheet_3: 1746751796
+      monster_mummy_move_sheet_6: 1950649831
+      monster_mummy_move_sheet_33: -222812602
+      monster_mummy_move_sheet_5: 688774341
+      monster_mummy_move_sheet_12: -1848097697
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

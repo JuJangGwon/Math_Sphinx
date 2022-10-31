@@ -1,0 +1,662 @@
+fileFormatVersion: 2
+guid: ab2a4077a6f75477aaae9a1850aeb274
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326b5969fbe164498bec3cde8449ec15
+      internalID: 1585707496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c12a021d22124e09b8d3ab628f1e00e
+      internalID: 1149279844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4ddb99ce38040ab86bc3173c3a481f
+      internalID: 1107260751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a56c0ad32649418f9d28ad3ff720ca5
+      internalID: 1995294971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec1d37755e254fdaa03ab412fa39cbf
+      internalID: -2034090781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb26e6e0fbfb94ec19cbe4ff1755647f
+      internalID: 170661429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e23026937c941ca93c490ae28f1d70
+      internalID: -1997082275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 1369
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 555ee4c57f75147ceafbf93ad859ec35
+      internalID: 1806347469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f4e66a622eb4879873de549bc183cf
+      internalID: 1567880253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61702a9f465a54ad6b050b3d0240a5d3
+      internalID: -2142148204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3226be4cfd3634c7280b4d34b43cfea7
+      internalID: 447119545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4ee3a3d7ec1473c8adbfd86d8b2440
+      internalID: -24848559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c9488d1bd6145dfaeed490c53a788f
+      internalID: -385252976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533d27eb334e74b9cb3a2385f94db546
+      internalID: 1612361969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f36005f13f943d9b2df06a633d2060
+      internalID: -1915862292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 690
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9337bc1aff54c95945123ee40f27ec
+      internalID: -713932604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43723446d83da42fb896dcb402b0912a
+      internalID: -295649370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6813abd0e73584240b3bb96b8a8f6e61
+      internalID: -422982680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deecc58eb05354cee9c414598ea79807
+      internalID: 1835855324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ca6f86723244e4dbad8d2f9c318c8c
+      internalID: -1667736046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc2f253ad531441d86f0c9232c4b5fa
+      internalID: -651211102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a43acada71a42028a4be214e91c112
+      internalID: 1471359257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d28010327f74c9dbf714371293b86c
+      internalID: 1660390451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_mummy_idle_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 3451
+        y: 11
+        width: 493
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d8576d634d04c9bbb7b78ce9bfa0c9
+      internalID: 1031311566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      monster_mummy_idle_sheet_3: 1995294971
+      monster_mummy_idle_sheet_19: -1667736046
+      monster_mummy_idle_sheet_7: 1806347469
+      monster_mummy_idle_sheet_14: -1915862292
+      monster_mummy_idle_sheet_15: -713932604
+      monster_mummy_idle_sheet_16: -295649370
+      monster_mummy_idle_sheet_20: -651211102
+      monster_mummy_idle_sheet_21: 1471359257
+      monster_mummy_idle_sheet_2: 1107260751
+      monster_mummy_idle_sheet_9: -2142148204
+      monster_mummy_idle_sheet_8: 1567880253
+      monster_mummy_idle_sheet_17: -422982680
+      monster_mummy_idle_sheet_0: 1585707496
+      monster_mummy_idle_sheet_11: -24848559
+      monster_mummy_idle_sheet_23: 1031311566
+      monster_mummy_idle_sheet_13: 1612361969
+      monster_mummy_idle_sheet_5: 170661429
+      monster_mummy_idle_sheet_18: 1835855324
+      monster_mummy_idle_sheet_10: 447119545
+      monster_mummy_idle_sheet_12: -385252976
+      monster_mummy_idle_sheet_6: -1997082275
+      monster_mummy_idle_sheet_22: 1660390451
+      monster_mummy_idle_sheet_4: -2034090781
+      monster_mummy_idle_sheet_1: 1149279844
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
