@@ -45,7 +45,7 @@ public class stage1 : MonoBehaviour
                 key_prefebs.transform.localPosition = new Vector3(-59.3f, 74.2f, 2.1f);
                 break;
             case 3:
-                key_prefebs.transform.localPosition = new Vector3(-38.8f,33.6f, 2.1f);
+                key_prefebs.transform.localPosition = new Vector3(-47f, 37.6f, 2.1f);
                 break;
         }
     }

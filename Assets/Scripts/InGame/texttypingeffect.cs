@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public enum Now_text
 {
     none,
+    findkey,
     prog_game,
     prog_game2,
     prog_game3,
@@ -16,18 +17,23 @@ public enum Now_text
 
 public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 {
+    public Character_move character_move_cs;
+    public InGameManeger ingameManeger_cs;
+
     public GameObject darkgb;
     public Image darkimg;
-    public InGameManeger ingameManeger_cs;
     public GameObject text_board;
-
     public GameObject joystick_b;
     public GameObject dash_b;
+
     int now_textline = 0;
     bool now_typing = false;
     public Text m_TypingText;
     Now_text now_text = Now_text.none;
+
     float m_Speed = 0.04f;
+
+    string[] findkey_text = { "탐험가 : 키를 발견했어!" };
 
     string[] prog_game_text = { "탐험가 : 분명히 여기에 보물이 있다고 했는데? 어? 이상하다?" ,
                                    "스핑크스: 뭐라? 감히 내게 반말이라니! 용서할 수 없다!",
@@ -56,6 +62,39 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
         return 0;
     }
+    void hideUI(bool _onoff)
+    {
+        if (_onoff)
+        {
+            character_move_cs.CharacterStop(true);
+            joystick_b.SetActive(false);
+            dash_b.SetActive(false);
+        }
+        else
+        {
+            joystick_b.SetActive(true);
+            dash_b.SetActive(true);
+            now_textline = 0;
+            now_text = Now_text.none;
+            text_board.SetActive(false);
+            darkgb.SetActive(false);
+        }
+    }
+    public void findkey(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.findkey;
+        if (i != 1)
+            StartCoroutine(Typing(1, findkey_text[i], m_Speed));
+        else if(i >= 1)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+    //
+
     public void darkfadeoutf()
     {
         StartCoroutine(Darkfadeout());
@@ -205,6 +244,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.prog_game4:
                     prog_gametext4(++now_textline);
+                    break;
+                case Now_text.findkey:
+                    findkey(++now_textline);
                     break;
             }
         }

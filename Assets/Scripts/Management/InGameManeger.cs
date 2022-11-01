@@ -17,7 +17,10 @@ public enum InGameState
     createMap,
     darkfadeout,
     texttyping,
- 
+    findkey,
+    texttyping2,
+    playgame,
+
 }
 
 public class InGameManeger : MonoBehaviour
@@ -48,6 +51,11 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.darkfadeout)
         {
             stage1_cs.stage1_createproblem();
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.findkey)
+        {
+            texttypingeffect_cs.findkey(0);
             ingamestate++;
         }
     }

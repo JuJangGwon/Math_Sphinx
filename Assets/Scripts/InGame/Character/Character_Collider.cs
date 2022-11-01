@@ -38,6 +38,11 @@ public class Character_Collider : MonoBehaviour
         {
             _boxcollider2d.isTrigger = true;
         }
+        if (other.gameObject.tag == "key")
+        {
+            InGameManeger.ingamestate = InGameState.findkey;
+            Destroy(other.gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
