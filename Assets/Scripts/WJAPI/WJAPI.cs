@@ -8,7 +8,7 @@ public class WJAPI : MonoBehaviour
     // 우리가 필요한거 
     public string Problem_Answer;          // 문제가 생성된후 api로 부터 알아온 정답
     public string[] Answer_Selection;      // 4지선다 문제 정답 선택지
-    public int Answer_num;                 // 위 4개 배열중 어느번째 선택지가 정답인.
+    public static int Answer_num;                 // 위 4개 배열중 어느번째 선택지가 정답인.
     public string Problem_Explain;         // 문제 설명
     public int Answer_Count;               // 보기 개수
 

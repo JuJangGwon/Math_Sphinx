@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum MakeProblemProgress
+{
+none,
+making,
+finish
+}
+
 public class FindAnswerWay : MonoBehaviour
 {
+    public MakeProblemProgress makeProblemProgress = MakeProblemProgress.none;
     public TEXDraw txdraw;
     public WJAPI wjapi_cs;
     public GameObject Problem_popup;
-    public TextMesh[] selection_text;
+    public string[] selection_text;
     public GameObject[] answerboard;
     public GameObject go;
     public int Answer = 0;
@@ -16,25 +24,27 @@ public class FindAnswerWay : MonoBehaviour
     private void Awake()
     {
         Problem_popup.transform.localPosition = new Vector3(0, 1400, 0);
+        //CreateProblem();
     }
   
     float time = 0;
     bool a = true;
-  
+ 
     void clear_text()
     {
         for (int i = 0; i < 4; i++)
         {
-            selection_text[i].text = "";
+            selection_text[i] = "";
         }
         txdraw.text = "";
     }
 
     public void CreateProblem()
     {
+        makeProblemProgress = MakeProblemProgress.making;
         wjapi_cs.MakeQuestion();
         StartCoroutine(Problem_TEXT_setting(false, 0));
-        StartCoroutine(ShowProblem_Popup(true));
+        //StartCoroutine(ShowProblem_Popup(true));
     }
     public void SetAnswerCreateProblem(int a)
     {
@@ -42,6 +52,7 @@ public class FindAnswerWay : MonoBehaviour
         StartCoroutine(Problem_TEXT_setting(true, a));
         StartCoroutine(ShowProblem_Popup(true));
     }
+
     public void progress()
     {
         StartCoroutine(Problem_TEXT_setting(false,0));
@@ -51,9 +62,15 @@ public class FindAnswerWay : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            selection_text[i].text = wjapi_cs.Answer_Selection[i];
+            selection_text[i] = wjapi_cs.Answer_Selection[i];
         }
+        makeProblemProgress = MakeProblemProgress.finish;
     }
+    public string getselection_text(int i)
+    {
+        return selection_text[i];
+    }
+
 
     public void PlayerSelectAnswer(int selectedAnswer)
     {

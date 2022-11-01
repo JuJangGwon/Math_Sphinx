@@ -76,7 +76,7 @@ public class Character_Collider : MonoBehaviour
             findAnswerWay_cs.PlayerSelectAnswer((int)nowPushedFootboard);
             if (mapcreate_cs.stage == 3)
             {
-                InGameManeger.ingamestate = InGameState.batteryex;
+         //       InGameManeger.ingamestate = InGameState.batteryex;
                 findAnswerWay_cs.delete_answerboard();
             }
         }
@@ -94,7 +94,7 @@ public class Character_Collider : MonoBehaviour
         {
     
             Destroy(other.gameObject);
-            InGameManeger.ingamestate = InGameState.batteryex3;
+          //  InGameManeger.ingamestate = InGameState.batteryex3;
         }
         if (other.gameObject.tag == "return")
         {
@@ -123,7 +123,7 @@ public class Character_Collider : MonoBehaviour
             darkimg.color = new Vector4(0, 0, 0, 0 + i * 0.03f);
             yield return new WaitForSeconds(0.03f);
         }
-        InGameManeger.ingamestate = InGameState.batteryex4;
+        //InGameManeger.ingamestate = InGameState.batteryex4;
     }
 }
 

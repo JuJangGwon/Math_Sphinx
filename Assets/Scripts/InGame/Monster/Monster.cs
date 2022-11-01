@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-enum MonsterState
+public enum MonsterState
 {
     none,
     move
@@ -78,17 +78,18 @@ public class Monster : MonoBehaviour
         //transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
     }
 
-    void Layc()
+void Layc()
     {
         float max_dis = 0;
-        int next_dir = (int)monsterdirction; 
-        for (int i = 0; i < 4; i++)
+        int next_dir = (int)monsterdirction;
+         int layerMask = 1 << LayerMask.NameToLayer("Water");
+
+            for (int i = 0; i < 4; i++)
         {
             if (i == (int)monsterdirction)
                 continue;
-            int layerMask = 1 << LayerMask.NameToLayer("Water");
-            Debug.DrawRay(transform.position + new Vector3(0, 0f), (move_forward[i])* 15, Color.red, layerMask);
-            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(0,0f), move_forward[i]* 15, layerMask);
+            Debug.DrawRay(transform.position + new Vector3(0, -2f), (move_forward[i])* 15, Color.red, layerMask);
+            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(0,-2f), move_forward[i]* 15, layerMask);
             if (hitinf.collider != null)
             {
                 float now_dis = Mathf.Abs(Vector2.Distance(gameObject.transform.position, hitinf.collider.transform.position));
@@ -115,7 +116,7 @@ public class Monster : MonoBehaviour
             _time = 0;
             if (v.x == (int)transform.position.x && v.y == (int)transform.position.y)
             {
-                Layc();
+                //Layc();
             }
             v = new Vector3((int)transform.position.x, (int)transform.position.y, 0);
           //  Debug.Log(v);
@@ -151,7 +152,6 @@ public class Monster : MonoBehaviour
             if (other.gameObject.tag == "Wall")
             {
                 Debug.Log("부딪");
-                Layc();
                 collider_b = true;
             }
         }

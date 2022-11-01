@@ -197,19 +197,19 @@ public class MapCreater : MonoBehaviour
         }
         else if (i == 4 && j == 1)
         {
-            findanswerway_cs.selection_text[3] = gb.transform.GetChild(0).GetComponent<TextMesh>();
+          //  findanswerway_cs.selection_text[3] = gb.transform.GetChild(0).GetComponent<TextMesh>();
         }
         else if (i == 4 && j == 3)
         {
-            findanswerway_cs.selection_text[2] = gb.transform.GetChild(0).GetComponent<TextMesh>();
+         //   findanswerway_cs.selection_text[2] = gb.transform.GetChild(0).GetComponent<TextMesh>();
         }
         else if (i == 3 && j == 4)
         {
-            findanswerway_cs.selection_text[1] = gb.transform.GetChild(0).GetComponent<TextMesh>();
+         //   findanswerway_cs.selection_text[1] = gb.transform.GetChild(0).GetComponent<TextMesh>();
         }
         else if (i == 1 && j == 4)
         {
-            findanswerway_cs.selection_text[0] = gb.transform.GetChild(0).GetComponent<TextMesh>();
+       //     findanswerway_cs.selection_text[0] = gb.transform.GetChild(0).GetComponent<TextMesh>();
         }
         else if (i == 3 && j == 5)
         {
@@ -246,7 +246,7 @@ public class MapCreater : MonoBehaviour
             GameObject gb = Instantiate(prefebs[4]);
             gb.transform.SetParent(MapParent.transform);
             gb.transform.transform.localPosition = new Vector3((y2[i] * 3.4f) + (x2[i] * -3.7f), (y2[i] * 3f) + (x2[i] * 3.1f), 0);
-            findanswerway_cs.selection_text[i] = gb.transform.GetChild(0).GetComponent<TextMesh>();
+         //   findanswerway_cs.selection_text[i] = gb.transform.GetChild(0).GetComponent<TextMesh>();
             findanswerway_cs.answerboard[i] = Instantiate(answerboard_prefeb);
             findanswerway_cs.answerboard[i].SetActive(true);
             findanswerway_cs.answerboard[i].transform.SetParent(MapParent.transform);

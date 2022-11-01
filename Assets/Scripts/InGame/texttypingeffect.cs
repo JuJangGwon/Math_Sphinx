@@ -81,7 +81,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             dash_b.SetActive(true);
             now_textline = 0;
             now_text = Now_text.none;
-            InGameManeger.ingamestate = InGameState.proggamestart;
+          //  InGameManeger.ingamestate = InGameState.proggamestart;
             text_board.SetActive(false);
             darkgb.SetActive(false);
         }
@@ -182,7 +182,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             darkimg.color = new Vector4(0, 0, 0, 0 + i * 0.03f);
             yield return new WaitForSeconds(0.03f);
         }
-        InGameManeger.ingamestate = InGameState.batteryex4;
+       // InGameManeger.ingamestate = InGameState.batteryex4;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
