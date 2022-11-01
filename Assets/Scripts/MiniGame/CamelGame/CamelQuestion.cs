@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
+using UnityEngine.SceneManagement;
 
 public class CamelQuestion : MonoBehaviour
 {
@@ -58,6 +61,8 @@ public class CamelQuestion : MonoBehaviour
         {
             bg_image.transform.localPosition = Vector3.MoveTowards(bg_image.transform.localPosition, bg_move_position, Time.deltaTime * bg_speed);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space)) { SceneManager.LoadScene("ProblemHistory"); }
     }
 
     IEnumerator CreateProblem()
@@ -80,6 +85,8 @@ public class CamelQuestion : MonoBehaviour
 
     public void Click_Answer(int _nIndex)
     {
+        ProblemHistoryData.instance.Save_Problem(DateTime.Now.ToString("yyyy³â MM¿ù ddÀÏ"), tdr, texSelection, texSelection[_nIndex]);
+
         if (Check_Answer(_nIndex))
             Move_Camel();
         else
@@ -89,8 +96,6 @@ public class CamelQuestion : MonoBehaviour
         {
             scWJAPI.OnClick_Ansr(_nIndex);
             question_info.current_question_count++;
-
-            //StartCoroutine(Selection_Text_Setting());
         }
         else
         {
@@ -101,7 +106,10 @@ public class CamelQuestion : MonoBehaviour
     bool Check_Answer(int button_num)
     {
         if (texSelection[button_num].text == scWJAPI.Problem_Answer)
+        {
+            ProblemHistoryData.instance.Check_Correct();
             return true;
+        }
         else
             return false;
     }
@@ -126,6 +134,7 @@ public class CamelQuestion : MonoBehaviour
     void Panelty()
     {
         Clear_Answer_Box(false);
+        StartCoroutine(Selection_Text_Setting());
     }
 
     void Clear_Answer_Box(bool b)

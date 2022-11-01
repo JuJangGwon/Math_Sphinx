@@ -13,6 +13,6 @@ public class TestLoading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) { LoadingScene.Load_Scene("CamelGame"); }
+        if(Input.GetKeyDown(KeyCode.Space)) { LoadingScene.Load_Scene("InGameScene"); }
     }
 }
