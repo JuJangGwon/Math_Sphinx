@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - MakeProblem
-  - ABC
   - AnswerFootBoard1
   - AnswerFootBoard2
   - AnswerFootBoard3
@@ -20,6 +19,8 @@ TagManager:
   - Monster
   - key
   - Character
+  - Minigame1
+  - Minigame1potal
   layers:
   - Default
   - TransparentFX

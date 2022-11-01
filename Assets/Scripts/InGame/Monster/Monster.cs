@@ -151,7 +151,6 @@ void Layc()
         {
             if (other.gameObject.tag == "Wall")
             {
-                Debug.Log("부딪");
                 collider_b = true;
             }
         }

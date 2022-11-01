@@ -43,6 +43,12 @@ public class Character_Collider : MonoBehaviour
             InGameManeger.ingamestate = InGameState.findkey;
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag == "Minigame1")
+        {
+            InGameManeger.ingamestate = InGameState.minigame1;
+            Destroy(other.gameObject);
+
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {

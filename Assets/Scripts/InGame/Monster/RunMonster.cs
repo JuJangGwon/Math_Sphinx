@@ -53,7 +53,8 @@ public class RunMonster : MonoBehaviour
                 monster_dir = new Vector2(-4, 7);
                 break;
         }
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
+        if (texttypingeffect.now_text == Now_text.none)
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
     }
 
     private void Update()

@@ -9,6 +9,7 @@ public enum GameState
     playingInGame,
     playingMiniGame,
     timeout,
+    texting,
     death
 }
 public enum InGameState
@@ -20,6 +21,9 @@ public enum InGameState
     findkey,
     texttyping2,
     playgame,
+    minigame1,
+    minigame1init,
+
 
 }
 
@@ -56,6 +60,11 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.findkey)
         {
             texttypingeffect_cs.findkey(0);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.minigame1)
+        {
+            texttypingeffect_cs.minigame1(0);
             ingamestate++;
         }
     }
