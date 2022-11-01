@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public enum NowPushedFootBoard
 {
     none = 0,
@@ -47,7 +49,10 @@ public class Character_Collider : MonoBehaviour
         {
             InGameManeger.ingamestate = InGameState.minigame1;
             Destroy(other.gameObject);
-
+        }
+        if (other.gameObject.tag == "Minigame1potal")
+        {
+            SceneManager.LoadScene(1);
         }
     }
     void OnTriggerEnter2D(Collider2D other)
