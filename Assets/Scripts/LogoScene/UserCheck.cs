@@ -21,7 +21,17 @@ public class UserCheck : MonoBehaviour
     public GameObject signup_popup;
     public TextMeshProUGUI signup_id;
     public TextMeshProUGUI signup_pw;
-    public TextMeshProUGUI signup_nickname;
+
+    [Space]
+    [Header("´Ð³×ÀÓ ÆË¾÷")]
+    public GameObject nickname_popup;
+    public TextMeshProUGUI nickname_text;
+
+    [Space]
+    [Header("¾Ë¸² ÆË¾÷")]
+    public GameObject Information_popup;
+    public TextMeshProUGUI information_title;
+    public TextMeshProUGUI information_content;
 
     [Space]
     [Header("AWS")]
@@ -70,6 +80,16 @@ public class UserCheck : MonoBehaviour
         credentials = new CognitoAWSCredentials("?????? ???? ???? ?? ID", RegionEndpoint.APNortheast2);
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(DBclient);
+    }
+
+    public void Open_Sign_Up_Popup()
+    {
+
+    }
+
+    public void Close_Sign_Up_Popup()
+    {
+
     }
 }
 

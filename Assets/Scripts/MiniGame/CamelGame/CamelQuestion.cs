@@ -37,6 +37,7 @@ public class CamelQuestion : MonoBehaviour
     public GameObject reward_item;
     public float bg_speed;
     public GameObject bg_image;
+    public Vector3 bg_move_position;
     public texttypingeffect texttypingeffect_cs;
     WaitForSeconds wait_time = new WaitForSeconds(1f);
 
@@ -52,8 +53,11 @@ public class CamelQuestion : MonoBehaviour
 
     void Update()
     {
+        Stop_Camel();
         if (player_anime.GetBool(move_hash_code))
-            bg_image.transform.Translate(Vector3.left * bg_speed);
+        {
+            bg_image.transform.localPosition = Vector3.MoveTowards(bg_image.transform.localPosition, bg_move_position, Time.deltaTime * bg_speed);
+        }
     }
 
     IEnumerator CreateProblem()
@@ -62,7 +66,7 @@ public class CamelQuestion : MonoBehaviour
 
         scWJAPI.MakeQuestion();
         StartCoroutine(Selection_Text_Setting());
-        wait_time = new WaitForSeconds(4f);
+        wait_time = new WaitForSeconds(1f);
     }
 
     IEnumerator Selection_Text_Setting()
@@ -70,9 +74,6 @@ public class CamelQuestion : MonoBehaviour
         yield return wait_time;
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = scWJAPI.Answer_Selection[i];
-
-        if (player_anime.GetBool(move_hash_code))
-            player_anime.SetBool(move_hash_code, false);
 
         tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
     }
@@ -89,7 +90,7 @@ public class CamelQuestion : MonoBehaviour
             scWJAPI.OnClick_Ansr(_nIndex);
             question_info.current_question_count++;
 
-            StartCoroutine(Selection_Text_Setting());
+            //StartCoroutine(Selection_Text_Setting());
         }
         else
         {
@@ -109,12 +110,17 @@ public class CamelQuestion : MonoBehaviour
     {
         Clear_Answer_Box(true);
         player_anime.SetBool(move_hash_code, true);
+        bg_move_position = new Vector3(bg_image.transform.localPosition.x - 1000, bg_image.transform.localPosition.y + 0, bg_image.transform.localPosition.z);
         question_info.current_correct_value++;
     }
 
     void Stop_Camel()
     {
-        player_anime.SetBool(move_hash_code, false);
+        if(player_anime.GetBool(move_hash_code) && bg_move_position == bg_image.transform.localPosition)
+        {
+            player_anime.SetBool(move_hash_code, false);
+            StartCoroutine(Selection_Text_Setting());
+        }
     }
 
     void Panelty()
