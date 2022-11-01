@@ -18,6 +18,8 @@ TagManager:
   - potal
   - return
   - Monster
+  - key
+  - Character
   layers:
   - Default
   - TransparentFX
