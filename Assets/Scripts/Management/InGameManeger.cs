@@ -23,6 +23,8 @@ public enum InGameState
     playgame,
     minigame1,
     minigame1init,
+    minigame2,
+    minigame2init,
 
 
 }
@@ -65,6 +67,11 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.minigame1)
         {
             texttypingeffect_cs.minigame1(0);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.minigame2)
+        {
+            texttypingeffect_cs.minigame2(0);
             ingamestate++;
         }
     }

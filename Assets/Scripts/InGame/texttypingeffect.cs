@@ -47,6 +47,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                 "4 : 아니..",
                                 "4 : 저기 낭떠러지를 건널 수 있는 마법의 양탄자가 있어...",
                                 "6 : 저 마법의 양탄자를 타고 넘어가든지 돌아가든지 알아서 하라구.... 겁쟁이 탐험가..." };
+    string[] minigame2_text = { "4 : 여기서부터는 낙타를 타고 이동해야해",
+                                "2 : 그럼 낙타를 타고 이동해볼까?",
+                                };
     string[] prog_game_text = { "탐험가 : 분명히 여기에 보물이 있다고 했는데? 어? 이상하다?" ,
                                    "스핑크스: 뭐라? 감히 내게 반말이라니! 용서할 수 없다!",
                                    "탐험가: 아아?? 근데 여기 정말 보물이 많아?",
@@ -94,8 +97,22 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             hideUI(false);
             InGameManeger.ingamestate = InGameState.playgame;
         }
-
     }
+    public void minigame2(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.minigame2;
+        if (i != 2)
+            StartCoroutine(Typing(1, minigame1_text[i], m_Speed));
+        else if (i >= 2)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+
+
     public void findkey(int i)
     {
         hideUI(true);
@@ -300,6 +317,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.minigame1:
                     minigame1(++now_textline);
+                    break;
+                case Now_text.minigame2:
+                    minigame2(++now_textline);
                     break;
             }
         }
