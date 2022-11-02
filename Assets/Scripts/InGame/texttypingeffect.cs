@@ -104,7 +104,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         now_textline = i;
         now_text = Now_text.minigame2;
         if (i != 2)
-            StartCoroutine(Typing(1, minigame1_text[i], m_Speed));
+            StartCoroutine(Typing(1, minigame2_text[i], m_Speed));
         else if (i >= 2)
         {
             hideUI(false);

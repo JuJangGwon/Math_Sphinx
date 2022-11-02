@@ -61,7 +61,7 @@ public class Character_Collider : MonoBehaviour
         }
         if (other.gameObject.tag == "Minigame2potal")
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
     void OnTriggerEnter2D(Collider2D other)
