@@ -1,23 +1,22 @@
-/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Amazon;
-using Amazon.CognitoIdentity;
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.DataModel;
+//using Amazon;
+//using Amazon.CognitoIdentity;
+//using Amazon.DynamoDBv2;
+//using Amazon.DynamoDBv2.DataModel;
 
 public class UserCheck : MonoBehaviour
 {
-    [Header("?????? ????")]
+    [Header("로그인 팝업")]
     public GameObject login_popup;
     public TextMeshProUGUI login_id;
     public TextMeshProUGUI login_pw;
 
     [Space]
-    [Header("???????? ????")]
+    [Header("회원가입 팝업")]
     public GameObject signup_popup;
     public TextMeshProUGUI signup_id;
     public TextMeshProUGUI signup_pw;
@@ -32,12 +31,14 @@ public class UserCheck : MonoBehaviour
     public GameObject Information_popup;
     public TextMeshProUGUI information_title;
     public TextMeshProUGUI information_content;
+    public string[] title_text;
+    public string[] content_text;
 
-    [Space]
-    [Header("AWS")]
-    DynamoDBContext context;
-    AmazonDynamoDBClient DBclient;
-    CognitoAWSCredentials credentials;
+    //[Space]
+    //[Header("AWS")]
+    //DynamoDBContext context;
+    //AmazonDynamoDBClient DBclient;
+    //CognitoAWSCredentials credentials;
 
     string user_id = "ID";
     string user_pw = "PW";
@@ -64,9 +65,9 @@ public class UserCheck : MonoBehaviour
 
     public void Sign_Up()
     {
-        User_Info u = new User_Info(signup_id.text, signup_pw.text);
+        //User_Info u = new User_Info(signup_id.text, signup_pw.text);
 
-        context.SaveAsync(u, null);
+        //context.SaveAsync(u, null);
     }
 
     void Set_User_ID()
@@ -76,36 +77,46 @@ public class UserCheck : MonoBehaviour
 
     void test()
     {
-        UnityInitializer.AttachToGameObject(this.gameObject);
-        credentials = new CognitoAWSCredentials("?????? ???? ???? ?? ID", RegionEndpoint.APNortheast2);
-        DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
-        context = new DynamoDBContext(DBclient);
+        //UnityInitializer.AttachToGameObject(this.gameObject);
+        //credentials = new CognitoAWSCredentials("?????? ???? ???? ?? ID", RegionEndpoint.APNortheast2);
+        //DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
+        //context = new DynamoDBContext(DBclient);
     }
 
-    public void Open_Sign_Up_Popup()
+    public void Open_Popup(GameObject pu, int n)
     {
+        switch (n)
+        {
+            case 0:
+            case 1:
+            case 2:
+                information_title.text = title_text[n];
+                break;
+            default:
+                break;
+        }
 
+        pu.SetActive(true);
     }
 
-    public void Close_Sign_Up_Popup()
+    public void Close_Popup(GameObject pu)
     {
-
+        pu.SetActive(false);
     }
 }
 
 class User_Info
 {
-    [DynamoDBHashKey] string user_id;
-    [DynamoDBProperty] string id;
-    [DynamoDBProperty] string pw;
-    [DynamoDBProperty] string nickname;
+    //[DynamoDBHashKey] string user_id;
+    //[DynamoDBProperty] string id;
+    //[DynamoDBProperty] string pw;
+    //[DynamoDBProperty] string nickname;
 
-    public User_Info(string id, string pw)
-    {
-        this.id = id;
-        this.pw = pw;
-    }
+    //public User_Info(string id, string pw)
+    //{
+    //    this.id = id;
+    //    this.pw = pw;
+    //}
 
     public User_Info() { }
 }
-*/
