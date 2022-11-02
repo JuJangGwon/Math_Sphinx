@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene/TestLoading.unity
     guid: e8239b34f892f524a90a013bc4ddba66
+  - enabled: 1
+    path: Assets/Scenes/ProblemHistory.unity
+    guid: 43cb500617c838647bce35c9c20a3913
   m_configObjects: {}

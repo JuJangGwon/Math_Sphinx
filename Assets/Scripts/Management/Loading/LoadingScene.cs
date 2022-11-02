@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LoadingScene : MonoBehaviour
 {
     [SerializeField] Image loading_bar;
+    [SerializeField] TextMeshProUGUI tool_tip;
+    [SerializeField] string[] tool_tip_array;
     static string scene_name;
 
     void Start()
     {
+        Tool_Tip_Setting();
         StartCoroutine(Load_Scene_Process());
     }
 
@@ -18,6 +22,12 @@ public class LoadingScene : MonoBehaviour
     {
         scene_name = scene;
         SceneManager.LoadScene("LoadingScene");
+    }
+
+    void Tool_Tip_Setting()
+    {
+        int i = Random.Range(0, tool_tip_array.Length);
+        tool_tip.text = tool_tip_array[i];
     }
 
     IEnumerator Load_Scene_Process()
