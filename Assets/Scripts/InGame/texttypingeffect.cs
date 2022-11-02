@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 public enum Now_text
 {
     none,
+    findkey,
+    minigame1,
+    minigame2,
     prog_game,
     prog_game2,
     prog_game3,
@@ -16,19 +19,34 @@ public enum Now_text
 
 public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 {
-    public GameObject darkgb;
-    public Image darkimg;
+    public Character_move character_move_cs;
     public InGameManeger ingameManeger_cs;
-    public GameObject text_board;
 
+    public GameObject character_nametag;
+    public GameObject helper_nametag;
+    public GameObject camel_nametag;
+
+    public Image[] talkingcharacterilerstrate;  // 1. 주인공 평범 , 2. 주인공 놀람, 3. 주인공 웃음 ,4 조력자 평범 5. 조력자 놀람, 6. 조력자 웃음 , 7 낙타 
+    public GameObject darkgb;               
+    public Image darkimg;
+    public GameObject text_board;
     public GameObject joystick_b;
     public GameObject dash_b;
+
     int now_textline = 0;
     bool now_typing = false;
     public Text m_TypingText;
-    Now_text now_text = Now_text.none;
+    public static Now_text now_text = Now_text.none;
+
     float m_Speed = 0.04f;
 
+    string[] findkey_text = { "1 : 키를 발견했어!" };
+
+    string[] minigame1_text = { "2 : 어머 낭떠러지야..!",
+                                "2 : 더 이상 지나갈 수 없겠는걸 ...?",
+                                "4 : 아니..",
+                                "4 : 저기 낭떠러지를 건널 수 있는 마법의 양탄자가 있어...",
+                                "6 : 저 마법의 양탄자를 타고 넘어가든지 돌아가든지 알아서 하라구.... 겁쟁이 탐험가..." };
     string[] prog_game_text = { "탐험가 : 분명히 여기에 보물이 있다고 했는데? 어? 이상하다?" ,
                                    "스핑크스: 뭐라? 감히 내게 반말이라니! 용서할 수 없다!",
                                    "탐험가: 아아?? 근데 여기 정말 보물이 많아?",
@@ -43,19 +61,90 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     };
     //낙타게임
-    string[] prog_game_text3 = { "낙타 : 덕분에 쉽게 올 수 있었어! \n 아마 이쪽으로 가면 보물이 나올 것 같은데?" };
-    string[] prog_game_text4 = { "낙타 : 오는 길이 너무 헷갈렸어. \n 난 이제 쉬어야겠어." };
-    int findWho(string str)
+    string[] prog_game_text3 = { "7 : 덕분에 쉽게 올 수 있었어! \n 아마 이쪽으로 가면 보물이 나올 것 같은데?" };
+    string[] prog_game_text4 = { "7 : 오는 길이 너무 헷갈렸어. \n 난 이제 쉬어야겠어." };
+   
+    void hideUI(bool _onoff)
     {
-        for (int i = 0; i < str.Length;i++)
+        if (_onoff)
         {
-            if (str[i] == ':')
-            {
-                return i + 1;
-            }
+            character_move_cs.CharacterStop(true);
+            joystick_b.SetActive(false);
+            dash_b.SetActive(false);
         }
-        return 0;
+        else
+        {
+            joystick_b.SetActive(true);
+            dash_b.SetActive(true);
+            now_textline = 0;
+            now_text = Now_text.none;
+            text_board.SetActive(false);
+            darkgb.SetActive(false);
+        }
     }
+    public void minigame1(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.minigame1;
+        if (i != 5)
+            StartCoroutine(Typing(1, minigame1_text[i], m_Speed));
+        else if (i >= 5)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+
+    }
+    public void findkey(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.findkey;
+        if (i != 1)
+            StartCoroutine(Typing(1, findkey_text[i], m_Speed));
+        else if(i >= 1)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+    //
+    void whostalking(char whos)
+    {
+        character_nametag.SetActive(false);
+        helper_nametag.SetActive(false);
+        camel_nametag.SetActive(false);
+
+        switch (whos)
+        {
+            case '1':
+                character_nametag.SetActive(true);
+                break;
+            case '2':
+                character_nametag.SetActive(true);
+                break;
+            case '3':
+                character_nametag.SetActive(true);
+                break;
+            case '4':
+                helper_nametag.SetActive(true);
+                break;
+            case '5':
+                helper_nametag.SetActive(true);
+                break;
+            case '6':
+                helper_nametag.SetActive(true);
+                break;
+            case '7':
+                camel_nametag.SetActive(true);
+                break;
+
+        }
+        
+    }
+
+
     public void darkfadeoutf()
     {
         StartCoroutine(Darkfadeout());
@@ -149,16 +238,16 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     IEnumerator Typing(int who, string message, float speed)
     {
         text_board.SetActive(true);
-        m_TypingText.text = message.Substring(0, findWho(message));
         now_typing = true;
-        for (int i = who+4; i < message.Length; i++)
+       // whostalking(message[0]);
+        for (int i = 4; i < message.Length - 1; i++)
         {
             if (now_typing == false)
             {
-                m_TypingText.text = message;
+                m_TypingText.text = message.Substring(4, message.Length - 4);
                 break;
             }
-            m_TypingText.text = message.Substring(0, i + 1);
+            m_TypingText.text = message.Substring(4, i-2);
             yield return new WaitForSeconds(speed);
         }
         yield return new WaitForSeconds(0.0f);
@@ -205,6 +294,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.prog_game4:
                     prog_gametext4(++now_textline);
+                    break;
+                case Now_text.findkey:
+                    findkey(++now_textline);
+                    break;
+                case Now_text.minigame1:
+                    minigame1(++now_textline);
                     break;
             }
         }

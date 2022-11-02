@@ -7,6 +7,7 @@ using UnityEngine;
 public class RunMonster : MonoBehaviour
 {
     public Animator animator;
+    public GameObject parents;
 
     float _time = 0;
     Rigidbody2D rid2d;
@@ -52,7 +53,8 @@ public class RunMonster : MonoBehaviour
                 monster_dir = new Vector2(-4, 7);
                 break;
         }
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
+        if (texttypingeffect.now_text == Now_text.none)
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + monster_dir, monster_speed * Time.deltaTime);
     }
 
     private void Update()
@@ -73,6 +75,7 @@ public class RunMonster : MonoBehaviour
        
             if (other.gameObject.tag == "Wall")
             {
+                 Destroy(parents, 4f);
                  monsterstate = MonsterState.none;
                 rid2d.velocity = Vector2.zero;
                 animator.SetBool("move", false);

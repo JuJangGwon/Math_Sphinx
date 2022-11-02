@@ -48,28 +48,22 @@ public class Character_move : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
-    void FindMyposition()
+  
+    public void CharacterStop(bool _stop)
     {
+        if (_stop)
+        {
+            _characterstate = CharacterState.none;
+            _rigidbody2D.velocity = Vector2.zero;
+            _animator.SetBool("move", false);
 
-        int dx, dy, tx, ty;
-       
-
-        int x = (int)transform.position.x + 0;
-        int y = (int)transform.position.y + 0;
-
-        dx = x / 4;
-        dy = y / 3;
-        tx = x % 4;
-        ty = y % 3;
-        int mx = 0 + dx + dy;
-        int my = 0 - dx + dy;
+        }
     }
 
     void Update()
     {
         if (_characterstate == CharacterState.move && InGameManeger.gameState == GameState.playingInGame)
         {
-            FindMyposition();
             //transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir, Time.deltaTime * Character_speed);
             _rigidbody2D.velocity = move_dir * Character_speed;
             if (move_dir.x >= 0)
