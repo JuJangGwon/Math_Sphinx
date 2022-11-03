@@ -54,6 +54,20 @@ public class Character_Collider : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+        if (other.gameObject.tag == "Minigame2")
+        {
+            InGameManeger.ingamestate = InGameState.minigame2;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Minigame2potal")
+        {
+            SceneManager.LoadScene(3);
+        }
+        if (other.gameObject.tag == "treasurefind")
+        {
+            InGameManeger.ingamestate = InGameState.treasurefind;
+            Destroy(other.gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
