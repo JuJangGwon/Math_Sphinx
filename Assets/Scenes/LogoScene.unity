@@ -1216,19 +1216,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac722a3607bdecd4ba68ca4c55efdc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  login_popup: {fileID: 0}
-  login_id: {fileID: 0}
-  login_pw: {fileID: 0}
-  signup_popup: {fileID: 0}
-  signup_id: {fileID: 0}
-  signup_pw: {fileID: 0}
-  nickname_popup: {fileID: 0}
-  nickname_text: {fileID: 0}
-  Information_popup: {fileID: 0}
-  information_title: {fileID: 0}
-  information_content: {fileID: 0}
-  title_text: []
-  content_text: []
+  login_popup: {fileID: 398551521}
+  login_id: {fileID: 1189112116}
+  login_pw: {fileID: 1166508936}
+  signup_popup: {fileID: 245508847}
+  signup_id: {fileID: 1826718423}
+  signup_pw: {fileID: 2088541739}
+  nickname_popup: {fileID: 1766001406}
+  nickname_text: {fileID: 1930103974}
+  Information_popup: {fileID: 1216276376}
+  information_title: {fileID: 1868301354}
+  information_content: {fileID: 1146911522}
+  title_text:
+  - "\uD68C\uC6D0\uAC00\uC785 \uC644\uB8CC"
+  - "\uC544\uC774\uB514 \uC911\uBCF5"
+  - "\uB2C9\uB124\uC784 \uC911\uBCF5"
+  content_text:
+  - "\uB85C\uADF8\uC778 \uD574\uC8FC\uC138\uC694!"
+  - "\uC774\uBBF8 \uC0AC\uC6A9\uC911\uC778 \uC544\uC774\uB514\uC785\uB2C8\uB2E4!"
+  - "\uC774\uBBF8 \uC0AC\uC8F5\uC911\uC778 \uB2C9\uB124\uC784\uC785\uB2C8\uB2E4!"
 --- !u!1 &865527772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,7 +2198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1216276377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2942,7 +2948,7 @@ GameObject:
   - component: {fileID: 1530227448}
   - component: {fileID: 1530227447}
   m_Layer: 5
-  m_Name: SignUp_BTN
+  m_Name: Close_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4254,7 +4260,7 @@ GameObject:
   - component: {fileID: 1949979997}
   - component: {fileID: 1949979996}
   m_Layer: 5
-  m_Name: ID_Text
+  m_Name: PW_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4608,7 +4614,7 @@ GameObject:
   - component: {fileID: 2007477537}
   - component: {fileID: 2007477536}
   m_Layer: 5
-  m_Name: ID_BG
+  m_Name: Nickname_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
