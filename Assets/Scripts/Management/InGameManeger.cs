@@ -25,6 +25,7 @@ public enum InGameState
     minigame1init,
     minigame2,
     minigame2init,
+    treasurefind,
 
 
 }

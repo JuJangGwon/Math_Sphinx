@@ -10,6 +10,7 @@ public enum Now_text
     findkey,
     minigame1,
     minigame2,
+    findtreasure,
     prog_game,
     prog_game2,
     prog_game3,
@@ -40,6 +41,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     float m_Speed = 0.04f;
 
+    string[] findtreasure_text = { "1 : 엇 보물 상자가 나왔어",
+                          "4 : 열쇠가 있다면 열어보라구..!"};
+
     string[] findkey_text = { "1 : 키를 발견했어!" };
 
     string[] minigame1_text = { "2 : 어머 낭떠러지야..!",
@@ -66,7 +70,8 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     //낙타게임
     string[] prog_game_text3 = { "7 : 덕분에 쉽게 올 수 있었어! \n 아마 이쪽으로 가면 보물이 나올 것 같은데?" };
     string[] prog_game_text4 = { "7 : 오는 길이 너무 헷갈렸어. \n 난 이제 쉬어야겠어." };
-   
+
+
     void hideUI(bool _onoff)
     {
         if (_onoff)
@@ -85,6 +90,20 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             darkgb.SetActive(false);
         }
     }
+    public void findtreasure(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.findtreasure;
+        if (i != 2)
+            StartCoroutine(Typing(1, findtreasure_text[i], m_Speed));
+        else if (i >= 2)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+
     public void minigame1(int i)
     {
         hideUI(true);
@@ -320,6 +339,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.minigame2:
                     minigame2(++now_textline);
+                    break;
+                case Now_text.findtreasure:
+                    findtreasure(++now_textline);
                     break;
             }
         }

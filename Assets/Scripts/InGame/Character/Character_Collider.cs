@@ -63,6 +63,11 @@ public class Character_Collider : MonoBehaviour
         {
             SceneManager.LoadScene(3);
         }
+        if (other.gameObject.tag == "treasurefind")
+        {
+            InGameManeger.ingamestate = InGameState.treasurefind;
+            Destroy(other.gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
