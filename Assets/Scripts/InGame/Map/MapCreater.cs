@@ -75,7 +75,11 @@ public class MapCreater : MonoBehaviour
     public GameObject[] prefebs;
     public GameObject MapParent;
     public GameObject answerboard_prefeb;
-    public static int[,] map = new int[,] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,-1, -1, -1,-1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    public int[,] startArea = new int[,]  { { 1,1,1,1,1,1},
+                                            { 1,0,0,0,0,1},
+                                            { -1,-1,-1,-1,-1,-1}
+};
+    public static int[,] map = new int[,] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,-1, -1, -1,-1,1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                                             { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,-1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                             { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,-1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                             { 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1},
@@ -137,6 +141,19 @@ public class MapCreater : MonoBehaviour
 
     public void CreateMap()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                int num = startArea[i, j];
+                if (num == -1)
+                    continue;
+                GameObject gb = Instantiate(prefebs[num + 1]);
+                gb.transform.SetParent(MapParent.transform);
+                gb.transform.localPosition = new Vector3((i * tileX / 2) + (j * -tileX / 2), (i * tileY / 2) + (j * tileY / 2), 0);
+            }
+
+        }
         for (int i = 0; i < 35; i++)
         {
             for (int j = 0; j < 36; j++)

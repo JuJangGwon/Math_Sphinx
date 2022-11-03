@@ -21,6 +21,10 @@ TagManager:
   - Character
   - Minigame1
   - Minigame1potal
+  - Minigame2
+  - Minigame2potal
+  - endText
+  - treasurefind
   layers:
   - Default
   - TransparentFX

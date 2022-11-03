@@ -19,7 +19,7 @@ public class wallclean : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
+            Debug.Log("9");
             color.a = 0.7f;
             sp.color = color;
         }
