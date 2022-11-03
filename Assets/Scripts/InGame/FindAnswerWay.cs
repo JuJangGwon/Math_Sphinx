@@ -38,13 +38,24 @@ public class FindAnswerWay : MonoBehaviour
         }
         txdraw.text = "";
     }
+    public void ShowProblempopup(bool onoff)
+    {
+        if (onoff)
+        {
+            StartCoroutine(ShowProblem_Popup(true));
+        }
+        else
+        {
+            StartCoroutine(ShowProblem_Popup(false));
+        }
+    }
+
 
     public void CreateProblem()
     {
         makeProblemProgress = MakeProblemProgress.making;
         wjapi_cs.MakeQuestion();
         StartCoroutine(Problem_TEXT_setting(false, 0));
-        //StartCoroutine(ShowProblem_Popup(true));
     }
     public void SetAnswerCreateProblem(int a)
     {

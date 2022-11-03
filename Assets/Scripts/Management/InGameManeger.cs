@@ -60,10 +60,15 @@ public class InGameManeger : MonoBehaviour
             stage1_cs.stage1_createproblem();
             ingamestate++;
         }
+        if(ingamestate == InGameState.texttyping)
+        {
+            texttypingeffect_cs.start1stage(0);
+            ingamestate = InGameState.texttyping2;
+        }
         if (ingamestate == InGameState.findkey)
         {
             texttypingeffect_cs.findkey(0);
-            ingamestate++;
+            ingamestate = InGameState.texttyping2;
         }
         if (ingamestate == InGameState.minigame1)
         {
@@ -74,6 +79,11 @@ public class InGameManeger : MonoBehaviour
         {
             texttypingeffect_cs.minigame2(0);
             ingamestate++;
+        }
+        if (ingamestate == InGameState.treasurefind)
+        {
+            texttypingeffect_cs.findtreasure(0);
+            ingamestate = InGameState.texttyping2;
         }
     }
 }
