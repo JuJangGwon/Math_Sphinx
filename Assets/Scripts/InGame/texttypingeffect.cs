@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public enum Now_text
 {
     none,
+    start1stage,
     findkey,
     minigame1,
     minigame2,
@@ -22,6 +23,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 {
     public Character_move character_move_cs;
     public InGameManeger ingameManeger_cs;
+    public FindAnswerWay findanswerway_cs;
 
     public GameObject character_nametag;
     public GameObject helper_nametag;
@@ -41,6 +43,13 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     float m_Speed = 0.04f;
 
+    string[] start1stage_text= {"1 : 분명히 여기에 보물이 있다고 했는데? 어? 이상하다?" ,
+                                   "4 : 뭐라? 감히 내게 반말이라니! 용서할 수 없다!",
+                                   "1 : 아아?? 근데 여기 정말 보물이 많아?",
+                                   "4 : 물론이다.피라미드 안에 미로가 있고, 그 끝에 값비싼 보물들이 많다.\n 여기까지 탐험을 온 네 용기를 높게 사 기회를 주마.",
+                                   "1 : 좋다. 이것으로 널 테스트하지.",
+                                   "1 : 이곳으로 간다면 피라미드로 가는 길이 있다.",
+                                   "1 : 하지만 여러 갈래의 길이 있고, 어떤 길을 선택하느냐에 따라 \n 네가 마주하는 피라미드가 달라질 것이다. 음하하하."};
     string[] findtreasure_text = { "1 : 엇 보물 상자가 나왔어",
                           "4 : 열쇠가 있다면 열어보라구..!"};
 
@@ -90,6 +99,21 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             darkgb.SetActive(false);
         }
     }
+    public void start1stage(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.start1stage;
+        if (i != 6)
+            StartCoroutine(Typing(1, start1stage_text[i], m_Speed));
+        else if (i >= 6)
+        {
+            hideUI(false);
+            findanswerway_cs.ShowProblempopup(true);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+
     public void findtreasure(int i)
     {
         hideUI(true);
@@ -342,6 +366,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.findtreasure:
                     findtreasure(++now_textline);
+                    break;
+                case Now_text.start1stage:
+                    start1stage(++now_textline);
                     break;
             }
         }
