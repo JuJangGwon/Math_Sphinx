@@ -25,6 +25,7 @@ TagManager:
   - Minigame2potal
   - endText
   - treasurefind
+  - spear
   layers:
   - Default
   - TransparentFX

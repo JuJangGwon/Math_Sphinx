@@ -136,7 +136,6 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
            //     camel_nametag.SetActive(true);
                 break;
         }
-            Debug.Log(v.y);
         switch ((int)v.y)
         {
             case 1:

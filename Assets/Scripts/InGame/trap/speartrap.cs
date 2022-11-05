@@ -8,6 +8,7 @@ public class speartrap : MonoBehaviour
     public float operator_cycle = 3f;
     public float start_time = 0f;
     public GameObject spear_gb;
+    public GameObject spear_col;
 
     bool operation = false;
     bool _spear = false;
@@ -35,11 +36,16 @@ public class speartrap : MonoBehaviour
                 else
                 {
                     _spear = true;
+                    spear_col.SetActive(true);
                     spear_gb.SetActive(true);
                 }
                 animator.SetBool("setspear", _spear);
 
             }
         }
+    }
+    public void unactive()
+    {
+        gameObject.SetActive(false);
     }
 }

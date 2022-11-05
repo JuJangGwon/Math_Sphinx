@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2406466024972462783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5082398104609919345}
+  - component: {fileID: 67911283}
+  m_Layer: 0
+  m_Name: spearcollider
+  m_TagString: spear
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5082398104609919345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406466024972462783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3865181267790387898}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &67911283
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406466024972462783}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 4.7051544, y: 0.03601837}
+  - {x: -0.09415436, y: -2.5271797}
+  - {x: -4.528824, y: -0.0353508}
+  - {x: 0.014129639, y: 2.9380264}
+  - {x: 4.6406326, y: -0.21360779}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &3865181265997203684
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +69,7 @@ GameObject:
   - component: {fileID: 3865181265997203683}
   - component: {fileID: 3865181265997203682}
   - component: {fileID: 7932442628933986780}
+  - component: {fileID: 6608561214636448780}
   m_Layer: 0
   m_Name: spear
   m_TagString: Untagged
@@ -75,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80e1894d7b9e4b240af23d6833a76039, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04edb60e650b1a04aa55f679258f7d3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,6 +179,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &6608561214636448780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865181265997203684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6995b3ce56b5e4ec495cf248b092aee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spear_collider: {fileID: 2406466024972462783}
 --- !u!1 &3865181266099302390
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +293,7 @@ MonoBehaviour:
   operator_cycle: 3
   start_time: 0
   spear_gb: {fileID: 3865181265997203684}
+  spear_col: {fileID: 2406466024972462783}
   _time: 0
 --- !u!1 &3865181267790387901
 GameObject:
@@ -246,13 +318,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3865181267790387901}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -72, y: 49, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3865181266099302391}
   - {fileID: 3865181265997203685}
+  - {fileID: 5082398104609919345}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
