@@ -143,6 +143,7 @@ public class MapCreater : MonoBehaviour
 
     public void CreateMap()
     {
+        /*
         for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 11; j++)
@@ -156,6 +157,7 @@ public class MapCreater : MonoBehaviour
             }
 
         }
+        */
         for (int i = 0; i < 35; i++)
         {
             for (int j = 0; j < 36; j++)
