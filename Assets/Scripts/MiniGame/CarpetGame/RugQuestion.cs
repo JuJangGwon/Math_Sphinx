@@ -83,7 +83,7 @@ public class RugQuestion : MonoBehaviour
         }
         else
         {
-            fade_io.SetTrigger(fade_out_hashcode);
+            Result();
         }
         question_info.current_question_count++;
     }
@@ -134,8 +134,7 @@ public class RugQuestion : MonoBehaviour
 
     void Result()
     {
-        //보상 아이템 지급
-        //메인게임으로 돌아가기 버튼 활성
+        fade_io.SetTrigger(fade_out_hashcode);
     }
 
     void Change_Main_Scene()
