@@ -26,7 +26,8 @@ public enum InGameState
     minigame2,
     minigame2init,
     treasurefind,
-
+    finalarea,
+    victory,
 
 }
 
@@ -92,8 +93,18 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.treasurefind)
         {
-            texttypingeffect_cs.findtreasure(0);
-            ingamestate = InGameState.texttyping2;  
+            if (stage1_cs.is_key1 == true)
+            {
+                texttypingeffect_cs.findtreasure(0);
+                ingamestate = InGameState.texttyping2;
+            }
+            else
+            {
+                texttypingeffect_cs.findtreasure_notfoundkey(0);
+                ingamestate = InGameState.texttyping2;
+            }
+
+
         }
     }
 }

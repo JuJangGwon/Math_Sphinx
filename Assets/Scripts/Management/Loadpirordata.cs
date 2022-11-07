@@ -11,9 +11,18 @@ public class Loadpirordata : MonoBehaviour
     public float max_handlight;
     public float now_handlgiht;
 
+    void setPirorData()
+    {
+        PlayerPrefs.SetInt("playerpos",1);
+        PlayerPrefs.GetFloat("max_handlight", 1);
+        PlayerPrefs.GetFloat("playerpos", 1);
+        PlayerPrefs.SetInt("newgame", 1);
+
+    }
 
     public void getPirorData()
     {
+        setPirorData();
         playerpos = PlayerPrefs.GetInt("playerpos");
         max_handlight = PlayerPrefs.GetFloat("max_handlight");
         now_handlgiht = PlayerPrefs.GetFloat("now_handlgiht");

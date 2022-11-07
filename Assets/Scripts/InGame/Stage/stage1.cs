@@ -7,6 +7,9 @@ public class stage1 : MonoBehaviour
 {
     bool trigger = false;
 
+    public bool is_key1 = false;
+    public bool is_key2 = false;
+
     public GameObject map_parent;
     public GameObject key_prefebs;
     public GameObject signboard_prefebs;
@@ -18,6 +21,7 @@ public class stage1 : MonoBehaviour
     // -65, 66 (180  | -59, 52,(-30 | -56.9, 61 (180
     // -95.26 74 .88  2.1   | -62 86 2.1   |   -59.3, 74.2 , 2.1               | -38.8  , 33.6 2 
 
+    //public void stage1
 
     public void stage1_createproblem()
     {

@@ -12,10 +12,12 @@ public enum Now_text
     minigame1,
     minigame2,
     findtreasure,
+    findtresure_not_foundkey,
     prog_game,
     prog_game2,
     prog_game3,
     prog_game4
+
 
 }
 
@@ -57,8 +59,15 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                    "1 : 하지만 여러 갈래의 길이 있고, 어떤 길을 선택하느냐에 따라 \n 네가 마주하는 피라미드가 달라질 것이다. 음하하하."};
     Vector2[] start1stage_who = { new Vector2(2, 4), new Vector2(5, 2), new Vector2(1, 5), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1) };
     string[] findtreasure_text = { "1 : 엇 보물 상자가 나왔어",
-                          "4 : 열쇠가 있다면 열어보라구..!"};
-    Vector2[] findtreasure_who = { new Vector2(2, 4), new Vector2(6, 1) };
+                                   "1 : 하지만... 함정때문에 다가갈 수 없어..!",
+                                   "4 : 후후 여기서부터는 내가 도움을 주지",
+                                   "4 : 내가 문제를 내줄테니, 이 문제의 정답에 해당하는 발판 위에 올라 문제를 맞춘다면 \n 저 앞에있는 함정들을 없애주지...!",
+                                   "4 : 어때 자신있지 ..?"
+};
+    string[] findtreasure_notfoundkey_text = { "1 : 아직 열쇠를 전부 찾지 못했어... ",
+                                               "1 : 열쇠를 다 찾은 후 돌아오도록하자...!" };
+    Vector2[] findtreasure_notfoundkey_who = { new Vector2(1, 0), new Vector2(2, 0) };
+    Vector2[] findtreasure_who = { new Vector2(2, 4), new Vector2(2, 4), new Vector2(6, 1), new Vector2(4, 1), new Vector2(6,1) };
     string[] findkey_text = { "1 : 키를 발견했어!" };
     Vector2[] findkey_who = { new Vector2(1, 4) };
 
@@ -209,8 +218,27 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         hideUI(true);
         now_textline = i;
         now_text = Now_text.findtreasure;
-        if (i != 2)
+        if (i != 5)
+        {
             StartCoroutine(Typing(1, findtreasure_text[i], m_Speed));
+            whostalking(findtreasure_who[i]);
+        }
+        else if (i >= 5)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.finalarea;
+        }
+    }
+    public void findtreasure_notfoundkey(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.findtresure_not_foundkey;
+        if (i != 2)
+        { 
+            StartCoroutine(Typing(1, findtreasure_notfoundkey_text[i], m_Speed));
+            whostalking(findtreasure_notfoundkey_who[i]);
+        }
         else if (i >= 2)
         {
             hideUI(false);
@@ -422,11 +450,14 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                 case Now_text.minigame2:
                     minigame2(++now_textline);
                     break;
+                case Now_text.start1stage:
+                    start1stage(++now_textline);
+                    break;
                 case Now_text.findtreasure:
                     findtreasure(++now_textline);
                     break;
-                case Now_text.start1stage:
-                    start1stage(++now_textline);
+                case Now_text.findtresure_not_foundkey:
+                    findtreasure_notfoundkey(++now_textline);
                     break;
             }
         }
