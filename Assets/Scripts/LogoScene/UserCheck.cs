@@ -8,6 +8,7 @@ using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using System.Text.RegularExpressions;
+using UnityEditor.SceneManagement;
 
 public class UserCheck : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class UserCheck : MonoBehaviour
     public string[] title_text;
     public string[] content_text;
 
+    [Space]
+    [Header("판넬")]
+    public Image panel;
+
     string user_id = "ID";
     string user_pw = "PW";
 
@@ -59,15 +64,26 @@ public class UserCheck : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.GetString(user_id) != null)
+        if (PlayerPrefs.GetString(user_id) != "")
         {
             login_id.text = PlayerPrefs.GetString(user_id);
-            if (PlayerPrefs.GetString(user_pw) != null)
+            if (PlayerPrefs.GetString(user_pw) != "")
             {
                 login_pw.text = PlayerPrefs.GetString(user_pw);
+                Log_In();
             }
         }
-        else { }
+        else
+        { 
+            Open_Popup(4);
+            panel.enabled = true;
+        }
+    }
+
+    //테스트용
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad0)) { PlayerPrefs.DeleteAll(); }
     }
 
     public void Input_Field_Filter(TMP_InputField ip)
@@ -80,12 +96,15 @@ public class UserCheck : MonoBehaviour
         User_Info u = null;
         aws.context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
         {
+            u = null;
             if (result.Exception != null)
             {
                 Debug.LogException(result.Exception);
                 return;
             }
+            print(u);
             u = result.Result;
+            print(u);
             print(u.id);
 
             if (u.id == login_id.text)
@@ -93,6 +112,10 @@ public class UserCheck : MonoBehaviour
                 if(u.pw == login_pw.text)
                 {
                     aws.Input_User(u);
+                    Save_User_Info(u);
+                    Close_Popup(login_popup);
+                    panel.enabled = false;
+                    EditorSceneManager.LoadScene("InGameScene");
                 }
                 else { Open_Popup(3); }
             }
@@ -100,6 +123,12 @@ public class UserCheck : MonoBehaviour
             if (u == null) { Open_Popup(3); }
 
         }, null);
+    }
+
+    public void Save_User_Info(User_Info u)
+    {
+        PlayerPrefs.SetString(user_id, u.id);
+        PlayerPrefs.SetString(user_pw, u.pw);
     }
 
     public void Sign_Up(string ID, string PW, string Nickname)
@@ -147,6 +176,7 @@ public class UserCheck : MonoBehaviour
                 break;
             case 4:
                 Login_Text_Clear();
+                panel.enabled = true;
                 anime.SetTrigger(login_on_hash);
                 break;
             case 5:
