@@ -209,7 +209,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         {
             hideUI(false);
             findanswerway_cs.ShowProblempopup(true);
-            InGameManeger.ingamestate = InGameState.playgame;
+            InGameManeger.ingamestate = InGameState._4selectgame;
         }
     }
 

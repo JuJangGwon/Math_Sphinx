@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Loadpirordata : MonoBehaviour
 {
+    public HandLightSystem handLightsystem_cs;
+
     public GameObject character;
     public int playerpos;
 
@@ -11,19 +13,27 @@ public class Loadpirordata : MonoBehaviour
     public float max_handlight;
     public float now_handlgiht;
 
-    void setPirorData()
+    void setDefaultPirorData()
     {
-        PlayerPrefs.SetInt("playerpos",1);
-        PlayerPrefs.GetFloat("max_handlight", 1);
-        PlayerPrefs.GetFloat("playerpos", 1);
-        PlayerPrefs.SetInt("newgame", 1);
+        PlayerPrefs.SetInt("playerpos",3);
+        PlayerPrefs.SetFloat("max_handlight",30);
+        PlayerPrefs.SetFloat("playerpos", 30);
+        PlayerPrefs.SetInt("newgame", 0);
+    }
 
+    public void setPirorData(int i)   // i = 1 시작지점 ,  i = 2 낙타게임,   i = 3 양탄자게임 
+    {
+        
+        PlayerPrefs.SetInt("playerpos", i + 1);
+        PlayerPrefs.SetFloat("max_handlight", handLightsystem_cs.Max_handlight_time);
+        PlayerPrefs.SetFloat("playerpos", handLightsystem_cs.handlight_now_left_time);
+        PlayerPrefs.SetInt("newgame", 0);
     }
 
     public void getPirorData()
     {
-        setPirorData();
-        playerpos = PlayerPrefs.GetInt("playerpos");
+        setDefaultPirorData();
+        playerpos = 2;
         max_handlight = PlayerPrefs.GetFloat("max_handlight");
         now_handlgiht = PlayerPrefs.GetFloat("now_handlgiht");
         newgame = PlayerPrefs.GetInt("newgame");
@@ -33,12 +43,13 @@ public class Loadpirordata : MonoBehaviour
                 character.transform.localPosition = new Vector3(-72, 49, 0);
                 break;
             case 2:
-                character.transform.localPosition = new Vector3(-15.2f, 10.4f, 0);
+                character.transform.localPosition = new Vector3(-14.4f, 102.8f, 0);
                 break;
             case 3:
-                character.transform.localPosition = new Vector3(10, 13, 0);
+                character.transform.localPosition = new Vector3(-11.2f, 14.6f, 0);
                 break;
         }
+        Debug.Log(playerpos);
     }
     public float getNewgame()
     {

@@ -20,6 +20,7 @@ public enum InGameState
     texttyping,
     findkey,
     texttyping2,
+    _4selectgame,
     playgame,
     minigame1,
     minigame1init,
@@ -69,7 +70,7 @@ public class InGameManeger : MonoBehaviour
             if (Loadpirordata_cs.getNewgame() == 1)
             {
                 texttypingeffect_cs.start1stage(0);
-                ingamestate = InGameState.texttyping2;
+                ingamestate = InGameState._4selectgame;
             }
             else
             {
@@ -103,8 +104,10 @@ public class InGameManeger : MonoBehaviour
                 texttypingeffect_cs.findtreasure_notfoundkey(0);
                 ingamestate = InGameState.texttyping2;
             }
-
-
+        }
+        if (ingamestate == InGameState.finalarea)
+        {
+         
         }
     }
 }
