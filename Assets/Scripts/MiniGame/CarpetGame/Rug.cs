@@ -8,7 +8,7 @@ public class Rug : MonoBehaviour
 {
     public RugPlayer player;
     public bool move;
-    public TextMeshProUGUI answer;
+    public TEXDraw answer;
     public RugQuestion rq;
     public int answer_num;
 

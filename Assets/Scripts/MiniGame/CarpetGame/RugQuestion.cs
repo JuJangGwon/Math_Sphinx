@@ -13,7 +13,7 @@ public class RugQuestion : MonoBehaviour
     public TEXDraw tdr;
     public GameObject rug_prefab;
     public Rug[] btAnsr = new Rug[2];
-    public TextMeshProUGUI[] texSelection;
+    public TEXDraw[] texSelection;
     //public TextMeshProUGUI[] texSelection;
 
     [Header("플레이어 라이프")]
@@ -106,7 +106,7 @@ public class RugQuestion : MonoBehaviour
 
     public void Spawn_Rug()
     {
-        texSelection = new TextMeshProUGUI[btAnsr.Length];
+        texSelection = new TEXDraw[btAnsr.Length];
 
         GameObject rugs = Instantiate(rug_prefab, player.select_rug.transform.position + spawn_position, Quaternion.identity);
         for (int i = 0; i < btAnsr.Length; i++)
