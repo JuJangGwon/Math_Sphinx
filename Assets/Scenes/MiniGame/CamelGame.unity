@@ -961,6 +961,7 @@ MonoBehaviour:
   joystick_b: {fileID: 0}
   dash_b: {fileID: 0}
   m_TypingText: {fileID: 1626004191}
+  cq: {fileID: 765580351}
 --- !u!1 &454318372
 GameObject:
   m_ObjectHideFlags: 0

@@ -104,6 +104,8 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                  "1 : 가 보자고!"
     };
 
+    public CamelQuestion cq;
+
     void whostalking(Vector2 v)
     {
         character_nametag.SetActive(false);
@@ -370,6 +372,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             now_text = Now_text.none;
             text_board.SetActive(false);
             darkgb.SetActive(false);
+            cq.Exit_Camel_Game();
             InGameManeger.gameState = GameState.playingInGame;
         }
     }
@@ -389,6 +392,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             now_text = Now_text.none;
             text_board.SetActive(false);
             darkgb.SetActive(false);
+            cq.Exit_Camel_Game();
             InGameManeger.gameState = GameState.playingInGame;
         }
     }

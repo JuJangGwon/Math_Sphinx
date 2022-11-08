@@ -164,6 +164,11 @@ public class CamelQuestion : MonoBehaviour
         }
     }
 
+    public void Exit_Camel_Game()
+    {
+        SceneManager.LoadScene("InGameScene");
+    }
+
     void Change_Main_Scene()
     {
 
