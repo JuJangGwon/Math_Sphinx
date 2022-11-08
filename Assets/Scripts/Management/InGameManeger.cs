@@ -26,7 +26,8 @@ public enum InGameState
     minigame2,
     minigame2init,
     treasurefind,
-
+    finalarea,
+    victory,
 
 }
 
@@ -35,8 +36,10 @@ public class InGameManeger : MonoBehaviour
     public static GameState gameState = GameState.none;
     public static InGameState ingamestate = InGameState.createMap;
 
+
     public GameObject proces_text;
 
+    public Loadpirordata Loadpirordata_cs;
     public MapCreater mapcreater_cs;
     public FindAnswerWay findanswerway_cs;
     public HandLightSystem handlightsystem_cs;
@@ -52,6 +55,7 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.createMap)
         {
             mapcreater_cs.CreateMap();
+            Loadpirordata_cs.getPirorData();
             gameState = GameState.playingInGame;
             ingamestate++;
         }
@@ -62,8 +66,15 @@ public class InGameManeger : MonoBehaviour
         }
         if(ingamestate == InGameState.texttyping)
         {
-            texttypingeffect_cs.start1stage(0);
-            ingamestate = InGameState.texttyping2;
+            if (Loadpirordata_cs.getNewgame() == 1)
+            {
+                texttypingeffect_cs.start1stage(0);
+                ingamestate = InGameState.texttyping2;
+            }
+            else
+            {
+                ingamestate = InGameState.playgame;
+            }
         }
         if (ingamestate == InGameState.findkey)
         {
@@ -82,8 +93,18 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.treasurefind)
         {
-            texttypingeffect_cs.findtreasure(0);
-            ingamestate = InGameState.texttyping2;
+            if (stage1_cs.is_key1 == true)
+            {
+                texttypingeffect_cs.findtreasure(0);
+                ingamestate = InGameState.texttyping2;
+            }
+            else
+            {
+                texttypingeffect_cs.findtreasure_notfoundkey(0);
+                ingamestate = InGameState.texttyping2;
+            }
+
+
         }
     }
 }

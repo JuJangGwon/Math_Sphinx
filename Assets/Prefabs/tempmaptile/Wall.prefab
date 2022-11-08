@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 915952941287121273}
   - component: {fileID: 915952941287121255}
   - component: {fileID: 8316131013962302729}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 1062264422098770762}
   - component: {fileID: 4279486125909192348}
   - component: {fileID: 1088328232}
+  - component: {fileID: 2733463782886253912}
   m_Layer: 4
   m_Name: picturewall
   m_TagString: Untagged
@@ -232,3 +233,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 4060347489523366675}
   sp: {fileID: 4279486125909192348}
+--- !u!61 &2733463782886253912
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060347489523366675}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12857246, y: -2.1350174}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9.76, y: 11.23}
+    newSize: {x: 9.76, y: 11.23}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.659376, y: 3.673871}
+  m_EdgeRadius: 0

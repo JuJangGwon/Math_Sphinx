@@ -12,10 +12,12 @@ public enum Now_text
     minigame1,
     minigame2,
     findtreasure,
+    findtresure_not_foundkey,
     prog_game,
     prog_game2,
     prog_game3,
     prog_game4
+
 
 }
 
@@ -27,9 +29,14 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     public GameObject character_nametag;
     public GameObject helper_nametag;
-    public GameObject camel_nametag;
+//    public GameObject camel_nametag;
 
-    public Image[] talkingcharacterilerstrate;  // 1. 주인공 평범 , 2. 주인공 놀람, 3. 주인공 웃음 ,4 조력자 평범 5. 조력자 놀람, 6. 조력자 웃음 , 7 낙타 
+    public GameObject character_sprite;
+    public GameObject helper_sprite;
+    public Image character_img;
+    public Image helper_img;
+
+    public Sprite   [] talkingcharacterilerstrate;  // 1. 주인공 평범 , 2. 주인공 놀람, 3. 주인공 웃음 ,4 조력자 평범 5. 조력자 놀람, 6. 조력자 웃음 , 7 낙타 
     public GameObject darkgb;               
     public Image darkimg;
     public GameObject text_board;
@@ -50,10 +57,19 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                    "1 : 좋다. 이것으로 널 테스트하지.",
                                    "1 : 이곳으로 간다면 피라미드로 가는 길이 있다.",
                                    "1 : 하지만 여러 갈래의 길이 있고, 어떤 길을 선택하느냐에 따라 \n 네가 마주하는 피라미드가 달라질 것이다. 음하하하."};
+    Vector2[] start1stage_who = { new Vector2(2, 4), new Vector2(5, 2), new Vector2(1, 5), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1) };
     string[] findtreasure_text = { "1 : 엇 보물 상자가 나왔어",
-                          "4 : 열쇠가 있다면 열어보라구..!"};
-
+                                   "1 : 하지만... 함정때문에 다가갈 수 없어..!",
+                                   "4 : 후후 여기서부터는 내가 도움을 주지",
+                                   "4 : 내가 문제를 내줄테니, 이 문제의 정답에 해당하는 발판 위에 올라 문제를 맞춘다면 \n 저 앞에있는 함정들을 없애주지...!",
+                                   "4 : 어때 자신있지 ..?"
+};
+    string[] findtreasure_notfoundkey_text = { "1 : 아직 열쇠를 전부 찾지 못했어... ",
+                                               "1 : 열쇠를 다 찾은 후 돌아오도록하자...!" };
+    Vector2[] findtreasure_notfoundkey_who = { new Vector2(1, 0), new Vector2(2, 0) };
+    Vector2[] findtreasure_who = { new Vector2(2, 4), new Vector2(2, 4), new Vector2(6, 1), new Vector2(4, 1), new Vector2(6,1) };
     string[] findkey_text = { "1 : 키를 발견했어!" };
+    Vector2[] findkey_who = { new Vector2(1, 4) };
 
     string[] minigame1_text = { "2 : 어머 낭떠러지야..!",
                                 "2 : 더 이상 지나갈 수 없겠는걸 ...?",
@@ -80,7 +96,87 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     string[] prog_game_text3 = { "7 : 덕분에 쉽게 올 수 있었어! \n 아마 이쪽으로 가면 보물이 나올 것 같은데?" };
     string[] prog_game_text4 = { "7 : 오는 길이 너무 헷갈렸어. \n 난 이제 쉬어야겠어." };
 
+    void whostalking(Vector2 v)
+    {
+        character_nametag.SetActive(false);
+        helper_nametag.SetActive(false);
+//        camel_nametag.SetActive(false);
 
+        character_sprite.SetActive(false);
+        helper_sprite.SetActive(false);
+        character_sprite.transform.localScale = new Vector3(1, 1, 1);
+        helper_sprite.transform.localScale = new Vector3(1, 1, 1);
+        character_img.color = new Color(255, 255, 255);
+        helper_img.color = new Color(255, 255, 255);
+
+        switch (v.x)
+        {
+            case 1:
+                character_nametag.SetActive(true);
+                character_sprite.SetActive(true);
+                character_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+                break;
+            case 2:
+                character_nametag.SetActive(true);
+                character_sprite.SetActive(true);
+                character_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+                break;
+            case 3:
+                character_nametag.SetActive(true);
+                character_sprite.SetActive(true);
+                character_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+                break;
+            case 4:
+                helper_nametag.SetActive(true);
+                helper_sprite.SetActive(true);
+                helper_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+                break;
+            case 5:
+                helper_nametag.SetActive(true);
+                helper_sprite.SetActive(true);
+                helper_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+                break;
+            case 6:
+                helper_nametag.SetActive(true);
+                helper_sprite.SetActive(true);
+                helper_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+                break;
+            case '7':
+           //     camel_nametag.SetActive(true);
+                break;
+        }
+        switch ((int)v.y)
+        {
+            case 1:
+                character_sprite.SetActive(true);
+                character_img.color = new Color(0.5f, 0.5f, 0.5f);
+                break;
+            case 2:
+                character_sprite.SetActive(true);
+                character_img.color = new Color(0.5f, 0.5f, 0.5f);
+                break;
+            case 3:
+                character_sprite.SetActive(true);
+                character_img.color = new Color(0.5f, 0.5f, 0.5f);
+                break;
+            case 4:
+                helper_sprite.SetActive(true);
+                helper_img.color = new Color(0.5f, 0.5f, 0.5f);
+                break;
+            case 5:
+                helper_sprite.SetActive(true);
+                helper_img.color = new Color(0.5f, 0.5f, 0.5f);
+                break;
+            case 6:
+                helper_sprite.SetActive(true);
+                helper_img.color = new Color(0.5f, 0.5f, 0.5f);
+                break;
+            case '7':
+            //    camel_nametag.SetActive(true);
+                break;
+        }
+
+    }
     void hideUI(bool _onoff)
     {
         if (_onoff)
@@ -105,7 +201,10 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         now_textline = i;
         now_text = Now_text.start1stage;
         if (i != 6)
+        {
             StartCoroutine(Typing(1, start1stage_text[i], m_Speed));
+            whostalking(start1stage_who[i]);
+        }
         else if (i >= 6)
         {
             hideUI(false);
@@ -119,8 +218,27 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         hideUI(true);
         now_textline = i;
         now_text = Now_text.findtreasure;
-        if (i != 2)
+        if (i != 5)
+        {
             StartCoroutine(Typing(1, findtreasure_text[i], m_Speed));
+            whostalking(findtreasure_who[i]);
+        }
+        else if (i >= 5)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.finalarea;
+        }
+    }
+    public void findtreasure_notfoundkey(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.findtresure_not_foundkey;
+        if (i != 2)
+        { 
+            StartCoroutine(Typing(1, findtreasure_notfoundkey_text[i], m_Speed));
+            whostalking(findtreasure_notfoundkey_who[i]);
+        }
         else if (i >= 2)
         {
             hideUI(false);
@@ -170,39 +288,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
     }
     //
-    void whostalking(char whos)
-    {
-        character_nametag.SetActive(false);
-        helper_nametag.SetActive(false);
-        camel_nametag.SetActive(false);
 
-        switch (whos)
-        {
-            case '1':
-                character_nametag.SetActive(true);
-                break;
-            case '2':
-                character_nametag.SetActive(true);
-                break;
-            case '3':
-                character_nametag.SetActive(true);
-                break;
-            case '4':
-                helper_nametag.SetActive(true);
-                break;
-            case '5':
-                helper_nametag.SetActive(true);
-                break;
-            case '6':
-                helper_nametag.SetActive(true);
-                break;
-            case '7':
-                camel_nametag.SetActive(true);
-                break;
-
-        }
-        
-    }
 
 
     public void darkfadeoutf()
@@ -364,11 +450,14 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                 case Now_text.minigame2:
                     minigame2(++now_textline);
                     break;
+                case Now_text.start1stage:
+                    start1stage(++now_textline);
+                    break;
                 case Now_text.findtreasure:
                     findtreasure(++now_textline);
                     break;
-                case Now_text.start1stage:
-                    start1stage(++now_textline);
+                case Now_text.findtresure_not_foundkey:
+                    findtreasure_notfoundkey(++now_textline);
                     break;
             }
         }

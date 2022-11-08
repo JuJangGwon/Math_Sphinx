@@ -65,10 +65,10 @@ public class Monster : MonoBehaviour
                 monster_dir = new Vector2(-7, -4);
                 break;
             case MonsterDirection.downright:
-                monster_dir = new Vector2(5, -7);
+                monster_dir = new Vector2(4, -7);
                 break;
             case MonsterDirection.upright:
-                monster_dir = new Vector2(7, 5);
+                monster_dir = new Vector2(7, 4);
                 break;
             case MonsterDirection.upleft:
                 monster_dir = new Vector2(-4, 7);
@@ -81,45 +81,43 @@ public class Monster : MonoBehaviour
 void Layc()
     {
         float max_dis = 0;
-        int next_dir = (int)monsterdirction;
-         int layerMask = 1 << LayerMask.NameToLayer("Water");
-
-            for (int i = 0; i < 4; i++)
+        int next_dir = Random.RandomRange(0,3);
+        int layerMask = LayerMask.GetMask("Water");
+          
+        for (int i = 0; i < 4; i++)
         {
             if (i == (int)monsterdirction)
                 continue;
-            Debug.DrawRay(transform.position + new Vector3(0, -2f), (move_forward[i])* 15, Color.red, layerMask);
-            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(0,-2f), move_forward[i]* 15, layerMask);
+            Debug.DrawRay(transform.position + new Vector3(0, -2.5f), (move_forward[i])* 15, Color.red, 1f);
+            RaycastHit2D hitinf = Physics2D.Raycast(this.transform.position + new Vector3(0,-2.5f), move_forward[i]* 15, 1f, layerMask);
             if (hitinf.collider != null)
             {
                 float now_dis = Mathf.Abs(Vector2.Distance(gameObject.transform.position, hitinf.collider.transform.position));
                 Debug.Log(hitinf.collider.transform);
-                if (max_dis < now_dis)
+                  if (max_dis < now_dis)
                     {
-                    Debug.Log(now_dis);
-
-                    next_dir = i;
+                        next_dir = i;
                         max_dis = now_dis;
                     }
             }
-           Debug.Log(max_dis);
-           Debug.Log((MonsterDirection)next_dir);
 
         }
+        Debug.Log(max_dis);
+        Debug.Log(next_dir);
+
         MonsterSetRotation((MonsterDirection)next_dir);
     }
     private void Update()
     {
         _time += Time.deltaTime;
-        if (_time >0.5f)
+        if (_time >1f)
         {
             _time = 0;
             if (v.x == (int)transform.position.x && v.y == (int)transform.position.y)
             {
-                //Layc();
+                Layc();
             }
             v = new Vector3((int)transform.position.x, (int)transform.position.y, 0);
-          //  Debug.Log(v);
         }
         if (collider_b == true)
         {
@@ -151,6 +149,7 @@ void Layc()
         {
             if (other.gameObject.tag == "Wall")
             {
+                Layc();
                 collider_b = true;
             }
         }
