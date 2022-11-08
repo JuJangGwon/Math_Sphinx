@@ -51,9 +51,13 @@ public class InGameManeger : MonoBehaviour
     public stage1 stage1_cs;
     public float _time = 0;
 
+    private void Start()
+    {
+        ingamestate = InGameState.createMap;
+    }
     void Update()
     {
-        _time += Time.deltaTime;
+        
 
         if (ingamestate == InGameState.createMap)
         {
