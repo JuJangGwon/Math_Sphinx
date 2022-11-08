@@ -11,6 +11,10 @@ using System.Text.RegularExpressions;
 
 public class UserCheck : MonoBehaviour
 {
+    [Header("AWS")]
+    public AWS aws;
+    [Space]
+
     [Header("애니메이터")]
     public Animator anime;
 
@@ -18,12 +22,14 @@ public class UserCheck : MonoBehaviour
     public GameObject login_popup;
     public TMP_InputField login_id;
     public TMP_InputField login_pw;
+    public Toggle login_pw_toggle;
 
     [Space]
     [Header("회원가입 팝업")]
     public GameObject signup_popup;
     public TMP_InputField signup_id;
     public TMP_InputField signup_pw;
+    public Toggle signup_pw_toggle;
 
     [Space]
     [Header("닉네임 팝업")]
@@ -39,19 +45,20 @@ public class UserCheck : MonoBehaviour
     public string[] title_text;
     public string[] content_text;
 
-    [Space]
-    [Header("AWS")]
-    DynamoDBContext context;
-    AmazonDynamoDBClient DBclient;
-    CognitoAWSCredentials credentials;
-
     string user_id = "ID";
     string user_pw = "PW";
 
+    int login_on_hash = Animator.StringToHash("LoginOn");
+    int login_off_hash = Animator.StringToHash("LoginOff");
+    int signup_on_hash = Animator.StringToHash("SignupOn");
+    int signup_off_hash = Animator.StringToHash("SignupOff");
+    int nick_on_hash = Animator.StringToHash("NicknameOn");
+    int nick_off_hash = Animator.StringToHash("NicknameOff");
+    int info_on_hash = Animator.StringToHash("InfoOn");
+    int info_off_hash = Animator.StringToHash("InfoOff");
+
     void Awake()
     {
-        test();
-
         if (PlayerPrefs.GetString(user_id) != null)
         {
             login_id.text = PlayerPrefs.GetString(user_id);
@@ -71,7 +78,7 @@ public class UserCheck : MonoBehaviour
     public void Log_In()
     {
         User_Info u;
-        context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
+        aws.context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
         {
             if (result.Exception != null)
             {
@@ -80,8 +87,6 @@ public class UserCheck : MonoBehaviour
             }
             u = result.Result;
             print(u.id);
-            //else
-            //    Open_Information_Popup(0);
         }, null);
     }
 
@@ -94,7 +99,7 @@ public class UserCheck : MonoBehaviour
             nickname = Nickname
         };
 
-        context.SaveAsync(u, (result) =>
+        aws.context.SaveAsync(u, (result) =>
         {
             if (result.Exception == null)
                 Debug.Log("Sccess!");
@@ -108,14 +113,6 @@ public class UserCheck : MonoBehaviour
 
     }
 
-    void test()
-    {
-        UnityInitializer.AttachToGameObject(this.gameObject);
-        credentials = new CognitoAWSCredentials("ap-northeast-2:63ad9b58-0275-494b-8211-cf194cd20758", RegionEndpoint.APNortheast2);
-        DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
-        context = new DynamoDBContext(DBclient);
-    }
-
     public void Open_Information_Popup(int n)
     {
         switch (n)
@@ -125,7 +122,7 @@ public class UserCheck : MonoBehaviour
                 information_content.text = content_text[n];
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(Close_Nickname_Complete);
-                Information_popup.SetActive(true);
+                anime.SetTrigger(info_on_hash);
                 break;
             case 1:
             case 2:
@@ -133,19 +130,19 @@ public class UserCheck : MonoBehaviour
                 information_content.text = content_text[n];
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(delegate { Close_Popup(Information_popup); });
-                Information_popup.SetActive(true);
+                anime.SetTrigger(info_on_hash);
                 break;
             case 3:
                 Login_Text_Clear();
-                login_popup.SetActive(true);
+                anime.SetTrigger(login_on_hash);
                 break;
             case 4:
                 SignUp_Text_Clear();
-                signup_popup.SetActive(true);
+                anime.SetTrigger(signup_on_hash);
                 break;
             case 5:
                 Nickname_Text_Clear();
-                nickname_popup.SetActive(true);
+                anime.SetTrigger(nick_on_hash);
                 break;
         }
     }
@@ -200,7 +197,32 @@ public class UserCheck : MonoBehaviour
 
     public void Close_Popup(GameObject pu)
     {
-        pu.SetActive(false);
+        if (pu == login_popup)
+        {
+            anime.SetTrigger(login_off_hash);
+        }
+        else if (pu == signup_popup)
+        {
+            anime.SetTrigger(signup_off_hash);
+        }
+        else if (pu == Information_popup)
+        {
+            anime.SetTrigger(info_off_hash);
+        }
+        else if (pu == nickname_popup)
+        {
+            anime.SetTrigger(nick_off_hash);
+        }
+    }
+
+    public void Show_Password(Toggle t)
+    {
+        TMP_InputField ifd = null;
+        if(t == login_pw_toggle) { ifd = login_pw; }
+        else if(t == signup_pw_toggle) { ifd = signup_pw; }
+
+        if (t.isOn) { ifd.contentType = TMP_InputField.ContentType.Standard; }
+        else { ifd.contentType = TMP_InputField.ContentType.Password; }
     }
 }
 
