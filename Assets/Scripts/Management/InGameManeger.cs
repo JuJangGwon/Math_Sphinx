@@ -28,6 +28,7 @@ public enum InGameState
     minigame2init,
     treasurefind,
     finalarea,
+    finalareaing,
     victory,
 
 }
@@ -107,7 +108,9 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.finalarea)
         {
-         
+            stage1_cs.final_game_settgings();
+            findanswerway_cs.ShowProblempopup(true);
+            ingamestate++;
         }
     }
 }

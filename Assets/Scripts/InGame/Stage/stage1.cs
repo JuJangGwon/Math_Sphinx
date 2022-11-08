@@ -13,11 +13,14 @@ public class stage1 : MonoBehaviour
     public GameObject[] startgameanswertrigger;
     public GameObject stargame_gb;
 
+    public GameObject[] spears;
     public GameObject map_parent;
     public GameObject key_prefebs;
     public GameObject signboard_prefebs;
     public TEXDraw3D[] first_game_text;
     public GameObject first_textbox;
+
+    public TEXDraw3D[] final_game_text;
     public FindAnswerWay findAnswerWay_cs;
     public InGameManeger inGameManeger_cs;
 
@@ -28,10 +31,22 @@ public class stage1 : MonoBehaviour
 
     public void selected_answer(int answer)
     {
-        Debug.Log("0");
-        for (int i = 0; i < 4; i++)
+        if (InGameManeger.ingamestate == InGameState._4selectgame)
         {
-            Destroy(startgameanswertrigger[i]);
+            for (int i = 0; i < 4; i++)
+            {
+                Destroy(startgameanswertrigger[i]);
+            }
+        }
+        else if (InGameManeger.ingamestate == InGameState.finalarea)
+        {
+            bool _clear = findAnswerWay_cs.AnswerCheck(answer);
+            findAnswerWay_cs.PlayerSelectAnswer2(answer);
+
+//            if (_clear == true)
+            {
+               
+            }
         }
     }
 
@@ -40,7 +55,14 @@ public class stage1 : MonoBehaviour
         findAnswerWay_cs.CreateProblem();
         trigger = true;
     }
-
+    public void final_game_settgings()
+    {
+        stage1_createproblem();
+        for (int i = 0; i < 4; i++)
+        {
+            final_game_text[i].text = findAnswerWay_cs.getselection_text(i);
+        }
+    }
     public void first_game_setttings()
     {
         key_prefebs = Instantiate(key_prefebs);

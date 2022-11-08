@@ -21,11 +21,16 @@ public class Character_trigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "treasurefind" && findtreasuretrigger_onoff == false)
+        if (other.gameObject.tag == "treasurefind" && InGameManeger.ingamestate == InGameState.finalarea)
+        {
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag == "treasurefind" && findtreasuretrigger_onoff == false)
         {
              InGameManeger.ingamestate = InGameState.treasurefind;
             findtreasuretrigger_onoff = true;
         }
+        
         if (other.gameObject.tag == "endpoint")
         {
             InGameManeger.ingamestate = InGameState.victory;

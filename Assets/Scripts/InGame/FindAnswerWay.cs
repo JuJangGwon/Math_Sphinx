@@ -89,7 +89,19 @@ public class FindAnswerWay : MonoBehaviour
         wjapi_cs.OnClick_Ansr(selectedAnswer-1);
         StartCoroutine(ShowProblem_Popup(false));
     }
-    
+
+    public void PlayerSelectAnswer2(int selectedAnswer)
+    {
+        wjapi_cs.OnClick_Ansr(selectedAnswer - 1);
+    }
+
+    public bool AnswerCheck(int i)
+    {
+        if (WJAPI.Answer_num == i-1)
+            return true;
+        return false;
+    }
+
     IEnumerator ShowProblem_Popup(bool _on)
     {
         
