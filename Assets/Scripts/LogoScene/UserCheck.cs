@@ -77,7 +77,7 @@ public class UserCheck : MonoBehaviour
 
     public void Log_In()
     {
-        User_Info u;
+        User_Info u = null;
         aws.context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
         {
             if (result.Exception != null)
@@ -87,6 +87,18 @@ public class UserCheck : MonoBehaviour
             }
             u = result.Result;
             print(u.id);
+
+            if (u.id == login_id.text)
+            {
+                if(u.pw == login_pw.text)
+                {
+                    aws.Input_User(u);
+                }
+                else { Open_Popup(3); }
+            }
+            else { Open_Popup(3); }
+            if (u == null) { Open_Popup(3); }
+
         }, null);
     }
 
@@ -113,7 +125,7 @@ public class UserCheck : MonoBehaviour
 
     }
 
-    public void Open_Information_Popup(int n)
+    public void Open_Popup(int n)
     {
         switch (n)
         {
@@ -126,21 +138,22 @@ public class UserCheck : MonoBehaviour
                 break;
             case 1:
             case 2:
+            case 3:
                 information_title.text = title_text[n];
                 information_content.text = content_text[n];
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(delegate { Close_Popup(Information_popup); });
                 anime.SetTrigger(info_on_hash);
                 break;
-            case 3:
+            case 4:
                 Login_Text_Clear();
                 anime.SetTrigger(login_on_hash);
                 break;
-            case 4:
+            case 5:
                 SignUp_Text_Clear();
                 anime.SetTrigger(signup_on_hash);
                 break;
-            case 5:
+            case 6:
                 Nickname_Text_Clear();
                 anime.SetTrigger(nick_on_hash);
                 break;
@@ -167,32 +180,32 @@ public class UserCheck : MonoBehaviour
     public void Open_Sign_Up()
     {
         Close_Popup(login_popup);
-        Open_Information_Popup(4);
+        Open_Popup(5);
     }
 
     public void Close_Sign_Up()
     {
         Close_Popup(signup_popup);
-        Open_Information_Popup(3);
+        Open_Popup(4);
     }
 
     public void Sign_Up_Check()
     {
         Close_Popup(signup_popup);
-        Open_Information_Popup(5);
+        Open_Popup(6);
     }
 
     public void Nickname_Check()
     {
         Sign_Up(signup_id.text, signup_pw.text,nickname_text.text);
         Close_Popup(nickname_popup);
-        Open_Information_Popup(0);
+        Open_Popup(0);
     }
 
     public void Close_Nickname_Complete()
     {
         Close_Popup(Information_popup);
-        Open_Information_Popup(3);
+        Open_Popup(4);
     }
 
     public void Close_Popup(GameObject pu)
@@ -227,7 +240,7 @@ public class UserCheck : MonoBehaviour
 }
 
 [DynamoDBTable("User_Info")]
-class User_Info
+public class User_Info
 {
     [DynamoDBProperty] public string id { get; set; }
     [DynamoDBProperty] public string pw { get; set; }

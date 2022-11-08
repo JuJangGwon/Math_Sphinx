@@ -13,6 +13,9 @@ public class AWS : MonoBehaviour
     public AmazonDynamoDBClient DBclient;
     public CognitoAWSCredentials credentials;
 
+    [Header("User_Info")]
+    public User_Info current_user;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -20,5 +23,11 @@ public class AWS : MonoBehaviour
         credentials = new CognitoAWSCredentials("ap-northeast-2:63ad9b58-0275-494b-8211-cf194cd20758", RegionEndpoint.APNortheast2);
         DBclient = new AmazonDynamoDBClient(credentials, RegionEndpoint.APNortheast2);
         context = new DynamoDBContext(DBclient);
+    }
+
+    public void Input_User(User_Info u)
+    {
+        current_user = u;
+        print("로그인 성공");
     }
 }
