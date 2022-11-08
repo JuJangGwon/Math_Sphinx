@@ -19,7 +19,7 @@ public class RugMathProblem : MonoBehaviour
 
     //public GameObject btStart;
 
-    public TextMeshProUGUI[] txAnsr;
+    public TEXDraw[] txAnsr;
 
 
 
@@ -52,7 +52,7 @@ public class RugMathProblem : MonoBehaviour
         cLearning = null;
         nLearning_Idx = 0;
 
-        txAnsr = new TextMeshProUGUI[btAnsr.Length];
+        txAnsr = new TEXDraw[btAnsr.Length];
         for (int i = 0; i < btAnsr.Length; ++i)
             txAnsr[i] = btAnsr[i].answer;
 
@@ -264,7 +264,7 @@ public class RugMathProblem : MonoBehaviour
 
     void Spawn_Rug()
     {
-        txAnsr = new TextMeshProUGUI[btAnsr.Length];
+        txAnsr = new TEXDraw[btAnsr.Length];
 
         GameObject rugs = Instantiate(rug_prefab, player.select_rug.transform.position + spawn_position, Quaternion.identity);
         for (int i = 0; i < btAnsr.Length; i++)
