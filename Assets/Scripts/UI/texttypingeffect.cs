@@ -17,13 +17,8 @@ public enum Now_text
     prog_game2,
     prog_game3,
     prog_game4,
-<<<<<<< HEAD
-    prog_game5
-
-=======
-    final_wrongProbelm,
->>>>>>> master
-
+    prog_game5,
+    final_wrongProbelm
 }
 
 public class texttypingeffect : MonoBehaviour, IPointerDownHandler
