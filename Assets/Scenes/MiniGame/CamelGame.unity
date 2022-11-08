@@ -821,9 +821,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f392d4ec9b6164d1bb788a61d4c90f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character_move_cs: {fileID: 0}
+  ingameManeger_cs: {fileID: 0}
+  findanswerway_cs: {fileID: 0}
+  character_nametag: {fileID: 0}
+  helper_nametag: {fileID: 0}
+  character_sprite: {fileID: 0}
+  helper_sprite: {fileID: 0}
+  character_img: {fileID: 0}
+  helper_img: {fileID: 0}
+  talkingcharacterilerstrate: []
   darkgb: {fileID: 1078951666}
   darkimg: {fileID: 1078951668}
-  ingameManeger_cs: {fileID: 0}
   text_board: {fileID: 192459131}
   joystick_b: {fileID: 0}
   dash_b: {fileID: 0}
@@ -1724,7 +1733,6 @@ MonoBehaviour:
   Answer_Selection:
   - 
   - 
-  Answer_num: 0
   Problem_Explain: 
   Answer_Count: 2
   WJAPI2: {fileID: 765580352}
@@ -2708,7 +2716,7 @@ RectTransform:
   m_GameObject: {fileID: 1515192376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1250715655}
@@ -2719,7 +2727,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 414.71}
-  m_SizeDelta: {x: 1936, y: 489}
+  m_SizeDelta: {x: 1886, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515192378
 MonoBehaviour:
@@ -2741,7 +2749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a1e75d2119f1e0d4d87907b23fa79a25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb429a8b3e1db874284b952aea30f8a2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
