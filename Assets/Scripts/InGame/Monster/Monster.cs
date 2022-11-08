@@ -93,7 +93,7 @@ void Layc()
             if (hitinf.collider != null)
             {
                 float now_dis = Mathf.Abs(Vector2.Distance(gameObject.transform.position, hitinf.collider.transform.position));
-                Debug.Log(hitinf.collider.transform);
+      //          Debug.Log(hitinf.collider.transform);
                   if (max_dis < now_dis)
                     {
                         next_dir = i;
@@ -102,8 +102,8 @@ void Layc()
             }
 
         }
-        Debug.Log(max_dis);
-        Debug.Log(next_dir);
+//        Debug.Log(max_dis);
+//        Debug.Log(next_dir);
 
         MonsterSetRotation((MonsterDirection)next_dir);
     }
