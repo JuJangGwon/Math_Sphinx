@@ -1628,18 +1628,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac722a3607bdecd4ba68ca4c55efdc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aws: {fileID: 0}
+  aws: {fileID: 96620949}
   anime: {fileID: 699230363}
   login_popup: {fileID: 398551521}
-  login_id: {fileID: 0}
-  login_pw: {fileID: 0}
-  login_pw_toggle: {fileID: 0}
+  login_id: {fileID: 1189112118}
+  login_pw: {fileID: 1166508938}
+  login_pw_toggle: {fileID: 441671133}
   signup_popup: {fileID: 245508847}
-  signup_id: {fileID: 0}
-  signup_pw: {fileID: 0}
-  signup_pw_toggle: {fileID: 0}
+  signup_id: {fileID: 808064492}
+  signup_pw: {fileID: 1224831874}
+  signup_pw_toggle: {fileID: 343070878}
   nickname_popup: {fileID: 1766001406}
-  nickname_text: {fileID: 0}
+  nickname_text: {fileID: 1930103976}
   Information_popup: {fileID: 1216276376}
   information_title: {fileID: 1868301354}
   information_content: {fileID: 1146911522}
