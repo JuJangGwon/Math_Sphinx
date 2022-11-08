@@ -46,6 +46,8 @@ public class CamelQuestion : MonoBehaviour
 
     void Awake()
     {
+        texttypingeffect_cs.prog_gametext5(0);
+
         StartCoroutine(CreateProblem());
 
         question_info.current_question_count++;

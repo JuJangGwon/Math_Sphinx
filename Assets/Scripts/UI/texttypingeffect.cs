@@ -16,7 +16,8 @@ public enum Now_text
     prog_game,
     prog_game2,
     prog_game3,
-    prog_game4
+    prog_game4,
+    prog_game5
 
 
 }
@@ -29,12 +30,14 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     public GameObject character_nametag;
     public GameObject helper_nametag;
-//    public GameObject camel_nametag;
+    public GameObject camel_nametag;
 
     public GameObject character_sprite;
     public GameObject helper_sprite;
+    public GameObject camel_sprite;
     public Image character_img;
     public Image helper_img;
+    public Image camel_img;
 
     public Sprite   [] talkingcharacterilerstrate;  // 1. 주인공 평범 , 2. 주인공 놀람, 3. 주인공 웃음 ,4 조력자 평범 5. 조력자 놀람, 6. 조력자 웃음 , 7 낙타 
     public GameObject darkgb;               
@@ -93,17 +96,23 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     };
     //낙타게임
+    Vector2[] camel_result = { new Vector2(7, 0) };
     string[] prog_game_text3 = { "7 : 덕분에 쉽게 올 수 있었어! \n 아마 이쪽으로 가면 보물이 나올 것 같은데?" };
+    Vector2[] camel_start = { new Vector2(7, 1), new Vector2(1, 7) };
     string[] prog_game_text4 = { "7 : 오는 길이 너무 헷갈렸어. \n 난 이제 쉬어야겠어." };
+    string[] prog_game_text5 = { "7 : 문제를 풀면 길에 대한 정보를 얻을 수 있어! \n 정답을 맞춰 알맞은 길을 찾아가자! 막이래~",
+                                 "1 : 가 보자고!"
+    };
 
     void whostalking(Vector2 v)
     {
         character_nametag.SetActive(false);
         helper_nametag.SetActive(false);
-//        camel_nametag.SetActive(false);
+        camel_nametag.SetActive(false);
 
         character_sprite.SetActive(false);
         helper_sprite.SetActive(false);
+        camel_sprite.SetActive(false);
         character_sprite.transform.localScale = new Vector3(1, 1, 1);
         helper_sprite.transform.localScale = new Vector3(1, 1, 1);
         character_img.color = new Color(255, 255, 255);
@@ -141,8 +150,10 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                 helper_sprite.SetActive(true);
                 helper_sprite.transform.localScale = new Vector3(1.1f, 1.1f, 1);
                 break;
-            case '7':
-           //     camel_nametag.SetActive(true);
+            case 7:
+                camel_nametag.SetActive(true);
+                camel_sprite.SetActive(true);
+                camel_sprite.transform.localScale = new Vector3(-1f, 1f, 1);
                 break;
         }
         switch ((int)v.y)
@@ -171,8 +182,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                 helper_sprite.SetActive(true);
                 helper_img.color = new Color(0.5f, 0.5f, 0.5f);
                 break;
-            case '7':
-            //    camel_nametag.SetActive(true);
+            case 7:
+                camel_sprite.SetActive(true);
+                camel_img.color = new Color(0.5f, 0.5f, 0.5f);
                 break;
         }
 
@@ -345,12 +357,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     public void prog_gametext3(int i)
     {
-        darkgb.SetActive(true);
         now_textline = i;
         now_text = Now_text.prog_game3;
         if (i != 1)
         {
             StartCoroutine(Typing(1, prog_game_text3[i], m_Speed));
+            whostalking(camel_result[i]);
         }
         if (i >= 1)
         {
@@ -364,12 +376,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
 
     public void prog_gametext4(int i)
     {
-        darkgb.SetActive(true);
         now_textline = i;
         now_text = Now_text.prog_game4;
         if (i != 1)
         {
             StartCoroutine(Typing(1, prog_game_text4[i], m_Speed));
+            whostalking(camel_result[i]);
         }
         if (i >= 1)
         {
@@ -377,6 +389,24 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             now_text = Now_text.none;
             text_board.SetActive(false);
             darkgb.SetActive(false);
+            InGameManeger.gameState = GameState.playingInGame;
+        }
+    }
+
+    public void prog_gametext5(int i)
+    {
+        now_textline = i;
+        now_text = Now_text.prog_game5;
+        if (i != 2)
+        {
+            StartCoroutine(Typing(1, prog_game_text5[i], m_Speed));
+            whostalking(camel_start[i]);
+        }
+        if (i >= 2)
+        {
+            now_textline = 0;
+            now_text = Now_text.none;
+            text_board.SetActive(false);
             InGameManeger.gameState = GameState.playingInGame;
         }
     }
@@ -440,6 +470,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.prog_game4:
                     prog_gametext4(++now_textline);
+                    break;
+                case Now_text.prog_game5:
+                    prog_gametext5(++now_textline);
                     break;
                 case Now_text.findkey:
                     findkey(++now_textline);
