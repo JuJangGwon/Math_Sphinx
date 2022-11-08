@@ -13,15 +13,12 @@ public class Character_trigger : MonoBehaviour
 
     void selectedFootboard(int i)
     {
-        if (InGameManeger.ingamestate == InGameState._4selectgame)
-        {
             _stage1cs.selected_answer(i);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "treasurefind" && InGameManeger.ingamestate == InGameState.finalarea)
+        if (other.gameObject.tag == "treasurefind" &&( InGameManeger.ingamestate == InGameState.finalareaing || InGameManeger.ingamestate == InGameState.problemclear))
         {
             Destroy(other.gameObject);
         }

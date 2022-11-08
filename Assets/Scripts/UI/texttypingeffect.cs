@@ -16,8 +16,8 @@ public enum Now_text
     prog_game,
     prog_game2,
     prog_game3,
-    prog_game4
-
+    prog_game4,
+    final_wrongProbelm,
 
 }
 
@@ -70,6 +70,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     Vector2[] findtreasure_who = { new Vector2(2, 4), new Vector2(2, 4), new Vector2(6, 1), new Vector2(4, 1), new Vector2(6,1) };
     string[] findkey_text = { "1 : 키를 발견했어!" };
     Vector2[] findkey_who = { new Vector2(1, 4) };
+
+
+    string[] final_wrongproblem_text = {"1 : 틀린 발판을 밟았군 탐험가...",
+                                    "1 : 내가 특별히 다시 한번 기회를 주지...."};
+    Vector2[] final_wrongproblem_who = { new Vector2(4, 1), new Vector2(4, 1) };
+
 
     string[] minigame1_text = { "2 : 어머 낭떠러지야..!",
                                 "2 : 더 이상 지나갈 수 없겠는걸 ...?",
@@ -210,6 +216,23 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             hideUI(false);
             findanswerway_cs.ShowProblempopup(true);
             InGameManeger.ingamestate = InGameState._4selectgame;
+        }
+    }
+
+    public void final_wrongProbelm(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.final_wrongProbelm;
+        if (i != 2)
+        {
+            StartCoroutine(Typing(1, final_wrongproblem_text[i], m_Speed));
+            whostalking(final_wrongproblem_who[i]);
+        }
+        else if (i >= 2)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.finalarea;
         }
     }
 
@@ -458,6 +481,9 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.findtresure_not_foundkey:
                     findtreasure_notfoundkey(++now_textline);
+                    break;
+                case Now_text.final_wrongProbelm:
+                    final_wrongProbelm(++now_textline);
                     break;
             }
         }

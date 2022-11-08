@@ -15,27 +15,27 @@ public class Loadpirordata : MonoBehaviour
 
     void setDefaultPirorData()
     {
-        PlayerPrefs.SetInt("playerpos",3);
+        PlayerPrefs.SetInt("playerpos",1);
         PlayerPrefs.SetFloat("max_handlight",30);
         PlayerPrefs.SetFloat("playerpos", 30);
-        PlayerPrefs.SetInt("newgame", 0);
+        PlayerPrefs.SetInt("newgame", 1);
     }
 
     public void setPirorData(int i)   // i = 1 시작지점 ,  i = 2 낙타게임,   i = 3 양탄자게임 
     {
         
         PlayerPrefs.SetInt("playerpos", i + 1);
-        PlayerPrefs.SetFloat("max_handlight", handLightsystem_cs.Max_handlight_time);
-        PlayerPrefs.SetFloat("playerpos", handLightsystem_cs.handlight_now_left_time);
-        PlayerPrefs.SetInt("newgame", 0);
+        //PlayerPrefs.SetFloat("max_handlight", handLightsystem_cs.Max_handlight_time);
+        //PlayerPrefs.SetFloat("playerpos", handLightsystem_cs.handlight_now_left_time);
+        PlayerPrefs.SetInt("newgame", 1);
     }
 
     public void getPirorData()
     {
         setDefaultPirorData();
-        playerpos = 2;
-        max_handlight = PlayerPrefs.GetFloat("max_handlight");
-        now_handlgiht = PlayerPrefs.GetFloat("now_handlgiht");
+        playerpos = PlayerPrefs.GetInt("playerpos");
+        //max_handlight = PlayerPrefs.GetFloat("max_handlight");
+        //now_handlgiht = PlayerPrefs.GetFloat("now_handlgiht");
         newgame = PlayerPrefs.GetInt("newgame");
         switch(playerpos)
         {

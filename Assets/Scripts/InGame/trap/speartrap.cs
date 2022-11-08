@@ -16,31 +16,34 @@ public class speartrap : MonoBehaviour
 
     void Update()
     {
-        if (!operation)
+        if (InGameManeger.ingamestate == InGameState.finalarea)
         {
-            _time += Time.smoothDeltaTime;
-            if (start_time < _time)
+            if (!operation)
             {
-                _time = 0;
-                operation = true;
-            }
-        }
-        else
-        {
-            _time += Time.smoothDeltaTime;
-            if (_time > operator_cycle)
-            {
-                _time = 0;
-                if (_spear)
-                    _spear = false;
-                else
+                _time += Time.smoothDeltaTime;
+                if (start_time < _time)
                 {
-                    _spear = true;
-                    spear_col.SetActive(true);
-                    spear_gb.SetActive(true);
+                    _time = 0;
+                    operation = true;
                 }
-                animator.SetBool("setspear", _spear);
+            }
+            else
+            {
+                _time += Time.smoothDeltaTime;
+                if (_time > operator_cycle)
+                {
+                    _time = 0;
+                    if (_spear)
+                        _spear = false;
+                    else
+                    {
+                        _spear = true;
+                        spear_col.SetActive(true);
+                        spear_gb.SetActive(true);
+                    }
+                    animator.SetBool("setspear", _spear);
 
+                }
             }
         }
     }

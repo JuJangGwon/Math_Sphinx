@@ -38,15 +38,20 @@ public class stage1 : MonoBehaviour
                 Destroy(startgameanswertrigger[i]);
             }
         }
-        else if (InGameManeger.ingamestate == InGameState.finalarea)
+        else if (InGameManeger.ingamestate == InGameState.finalareaing)
         {
             bool _clear = findAnswerWay_cs.AnswerCheck(answer);
             findAnswerWay_cs.PlayerSelectAnswer2(answer);
 
-//            if (_clear == true)
+            if (_clear == true)
             {
-               
-            }
+                findAnswerWay_cs.ShowProblempopup(false);
+                InGameManeger.ingamestate = InGameState.problemclear;
+                 for (int i = 0; i < 12; i++)
+                {
+                    Destroy(spears[i]);
+                }
+            }   
         }
     }
 
