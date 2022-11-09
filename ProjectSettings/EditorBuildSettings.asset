@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MiniGame/CamelGame.unity
     guid: 9f7ed9c2ffec79f449c9aae587aae4bf
   - enabled: 1
+    path: Assets/Scenes/LogoScene.unity
+    guid: 294c1e39fb61a44888b6da85afa993b4
+  - enabled: 1
     path: Assets/Scenes/LoadingScene/TestLoading.unity
     guid: e8239b34f892f524a90a013bc4ddba66
   - enabled: 1
