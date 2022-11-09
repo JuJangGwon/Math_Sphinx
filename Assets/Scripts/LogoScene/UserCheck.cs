@@ -8,7 +8,7 @@ using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using System.Text.RegularExpressions;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class UserCheck : MonoBehaviour
 {
@@ -115,7 +115,7 @@ public class UserCheck : MonoBehaviour
                     Save_User_Info(u);
                     Close_Popup(login_popup);
                     panel.enabled = false;
-                    EditorSceneManager.LoadScene("InGameScene");
+                    SceneManager.LoadScene("MainHomeScene");
                 }
                 else { Open_Popup(3); }
             }
