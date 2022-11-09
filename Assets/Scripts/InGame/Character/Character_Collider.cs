@@ -50,6 +50,14 @@ public class Character_Collider : MonoBehaviour
             Destroy(stage1_cs.stargame_gb);
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag == "key2")
+        {
+            InGameManeger.ingamestate = InGameState.findkey;
+            findAnswerWay_cs.ShowProblempopup(false);
+            stage1_cs.is_key2 = true;
+            Destroy(stage1_cs.stargame_gb);
+            Destroy(other.gameObject);
+        }
         if (other.gameObject.tag == "Minigame1")
         {
             InGameManeger.ingamestate = InGameState.minigame1;
