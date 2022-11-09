@@ -6482,6 +6482,7 @@ MonoBehaviour:
   findanswerway_cs: {fileID: 1928188633}
   handlightsystem_cs: {fileID: 998994339}
   texttypingeffect_cs: {fileID: 1681007946}
+  character_animator_cs: {fileID: 1090585965}
   stage1_cs: {fileID: 715325063}
   _time: 0
 --- !u!114 &715325062
@@ -9201,6 +9202,8 @@ MonoBehaviour:
   handlight_now_left_time: 20
   warning_time: 15
   inGameManeger_cs: {fileID: 715325061}
+  dark_gb: {fileID: 1200896942}
+  dark_img: {fileID: 1200896944}
   edge_dark_obj: {fileID: 906850003}
   edge_dark_img: {fileID: 906850004}
   handlight_img: {fileID: 1339333449}
@@ -9218,7 +9221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
