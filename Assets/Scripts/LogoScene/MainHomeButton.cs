@@ -14,7 +14,7 @@ public class MainHomeButton : MonoBehaviour
                 PlayerPrefs.SetInt("newgame", 1);
                 PlayerPrefs.SetFloat("max_handlight", 80f);
                 PlayerPrefs.SetFloat("now_handlgiht", 80f);
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("InGameScene");
                 break;
             case 2:
                 break;

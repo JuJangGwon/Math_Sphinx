@@ -109,40 +109,51 @@ void Layc()
     }
     private void Update()
     {
-        _time += Time.deltaTime;
-        if (_time >1f)
+        if (InGameManeger.gameState == GameState.playingInGame)
         {
-            _time = 0;
-            if (v.x == (int)transform.position.x && v.y == (int)transform.position.y)
+            _time += Time.deltaTime;
+            if (_time > 1f)
             {
-                Layc();
+                _time = 0;
+                if (v.x == (int)transform.position.x && v.y == (int)transform.position.y)
+                {
+                    Layc();
+                }
+                v = new Vector3((int)transform.position.x, (int)transform.position.y, 0);
             }
-            v = new Vector3((int)transform.position.x, (int)transform.position.y, 0);
+            if (collider_b == true)
+            {
+                coollider_time += Time.deltaTime;
+                if (coollider_time > 0.7f)
+                {
+                    collider_b = false;
+                    coollider_time = 0;
+                }
+            }
         }
-        if (collider_b == true)
+        else                                    // 플레이어 죽거나, 게임 진행 아닐시 몬스터 행동 중단
         {
-            coollider_time += Time.deltaTime;
-            if (coollider_time > 0.7f)
-            {
-                collider_b = false;
-                coollider_time = 0;
-            }
+            animator.SetBool("move", false);
+            rid2d.velocity = Vector2.zero;
         }
     }
     void FixedUpdate()
-        {
+    {
 
+        if (InGameManeger.gameState == GameState.playingInGame)
+        {
             if (monsterstate == MonsterState.move)
             {
                 animator.SetBool("move", true);
                 Movetranslate();
-        }
-        else
+            }
+            else
             {
                 animator.SetBool("move", false);
 
             }
         }
+     }
     void OnCollisionEnter2D(Collision2D other)
     {
         if (collider_b == false)

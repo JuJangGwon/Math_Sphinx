@@ -31,7 +31,8 @@ public enum InGameState
     finalareaing,
     problemclear,
     victory,
-
+    playerdeath,
+    playerdetah2,
 }
 
 public class InGameManeger : MonoBehaviour
@@ -47,6 +48,7 @@ public class InGameManeger : MonoBehaviour
     public FindAnswerWay findanswerway_cs;
     public HandLightSystem handlightsystem_cs;
     public texttypingeffect texttypingeffect_cs;
+    public Character_Animator character_animator_cs;
 
     public stage1 stage1_cs;
     public float _time = 0;
@@ -57,19 +59,20 @@ public class InGameManeger : MonoBehaviour
     }
     void Update()
     {
-        
-
         if (ingamestate == InGameState.createMap)
         {
+            character_animator_cs.Start();
             mapcreater_cs.CreateMap();
             Loadpirordata_cs.getPirorData();
+            handlightsystem_cs.startFadein(false);
             gameState = GameState.playingInGame;
+            stage1_cs.stage1_createproblem();
+
             ingamestate++;
         }
         if (ingamestate == InGameState.darkfadeout)
         {
-            stage1_cs.stage1_createproblem();
-            ingamestate++;
+            // default
         }
         if(ingamestate == InGameState.texttyping)
         {
@@ -115,6 +118,11 @@ public class InGameManeger : MonoBehaviour
         {
             stage1_cs.final_game_settgings();
             findanswerway_cs.ShowProblempopup(true);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.playerdeath)
+        {
+            Character_move._characterstate = CharacterState.die;
             ingamestate++;
         }
     }

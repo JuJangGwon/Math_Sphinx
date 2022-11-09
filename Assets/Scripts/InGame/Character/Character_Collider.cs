@@ -53,7 +53,6 @@ public class Character_Collider : MonoBehaviour
         if (other.gameObject.tag == "key2")
         {
             InGameManeger.ingamestate = InGameState.findkey;
-            findAnswerWay_cs.ShowProblempopup(false);
             stage1_cs.is_key2 = true;
             Destroy(stage1_cs.stargame_gb);
             Destroy(other.gameObject);
@@ -67,7 +66,7 @@ public class Character_Collider : MonoBehaviour
         {
             loadpirordata_cs.setPirorData(3);
             InGameManeger.ingamestate = InGameState.createMap;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("CarpetGame");
                 
         }
         if (other.gameObject.tag == "Minigame2")
@@ -79,9 +78,13 @@ public class Character_Collider : MonoBehaviour
         {
             loadpirordata_cs.setPirorData(2);
             InGameManeger.ingamestate = InGameState.createMap;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("CamelGame");
         }
-
+        if (other.gameObject.tag == "Monster")
+        { 
+            InGameManeger.ingamestate = InGameState.playerdeath;
+            InGameManeger.gameState = GameState.death; 
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
