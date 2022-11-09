@@ -31,7 +31,8 @@ public enum InGameState
     finalareaing,
     problemclear,
     victory,
-
+    playerdeath,
+    playerdetah2,
 }
 
 public class InGameManeger : MonoBehaviour
@@ -115,6 +116,11 @@ public class InGameManeger : MonoBehaviour
         {
             stage1_cs.final_game_settgings();
             findanswerway_cs.ShowProblempopup(true);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.playerdeath)
+        {
+            Character_move._characterstate = CharacterState.die;
             ingamestate++;
         }
     }

@@ -80,7 +80,11 @@ public class Character_Collider : MonoBehaviour
             InGameManeger.ingamestate = InGameState.createMap;
             SceneManager.LoadScene("CamelGame");
         }
-
+        if (other.gameObject.tag == "Monster")
+        { 
+            InGameManeger.ingamestate = InGameState.playerdeath;
+            InGameManeger.gameState = GameState.death; 
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
