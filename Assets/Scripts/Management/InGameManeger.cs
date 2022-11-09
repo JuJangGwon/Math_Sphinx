@@ -100,7 +100,7 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.treasurefind)
         {
-            if (stage1_cs.is_key1 == true)
+            if (stage1_cs.is_key1 == true || stage1_cs.is_key2 == true)
             {
                 texttypingeffect_cs.findtreasure(0);
                 ingamestate = InGameState.texttyping2;
