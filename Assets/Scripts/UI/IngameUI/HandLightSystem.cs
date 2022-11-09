@@ -116,18 +116,18 @@ public class HandLightSystem : MonoBehaviour
         {
             case 1:
                 edge_dark_obj.SetActive(true);
-                edge_dark_obj.transform.localScale = new Vector3(2.6f, 2.3f, 1);
-                for (int i = 0; i <= 10; i++)
+                edge_dark_obj.transform.localScale = new Vector3(1.3f, 1.5f, 1);
+                for (int i = 0; i <= 12; i++)
                 {
-                    edge_dark_obj.transform.localScale = new Vector3(2.6f - (0.06f * i), 2.3f - (0.05f * i), 1f);
+                    edge_dark_obj.transform.localScale = new Vector3(1.3f - (0.02f * i), 1.5f - (0.04f * i), 1f);
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
             case 2:                                                   // 아주 많이 어둡
-                edge_dark_obj.transform.localScale = new Vector3(2.0f, 1.8f, 1);
-                for (int i = 0; i <= 12; i++)
+                edge_dark_obj.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+                for (int i = 0; i <= 3; i++)
                 {
-                    edge_dark_obj.transform.localScale = new Vector3(2.0f - (0.08f * i), 1.8f - (0.06f * i), 1f);
+                    edge_dark_obj.transform.localScale = new Vector3(1.0f - (0.08f * i), 1.0f - (0.06f * i), 1f);
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
