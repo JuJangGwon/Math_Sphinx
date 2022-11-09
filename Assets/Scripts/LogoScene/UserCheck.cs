@@ -64,6 +64,8 @@ public class UserCheck : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.DeleteAll();
+
         if (PlayerPrefs.GetString(user_id) != "")
         {
             login_id.text = PlayerPrefs.GetString(user_id);
