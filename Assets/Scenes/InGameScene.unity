@@ -6356,7 +6356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c5191ba8da6494592a12855704b368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handLightsystem_cs: {fileID: 0}
+  handLightsystem_cs: {fileID: 998994339}
   character: {fileID: 1090585956}
   playerpos: 0
   max_handlight: 0
@@ -9254,6 +9254,10 @@ PrefabInstance:
     - target: {fileID: 3249031815647761139, guid: f49b351be600d4715af6f537adc2b1cc, type: 3}
       propertyPath: m_Name
       value: water
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249031815647761139, guid: f49b351be600d4715af6f537adc2b1cc, type: 3}
+      propertyPath: m_TagString
+      value: key2
       objectReference: {fileID: 0}
     - target: {fileID: 7642475378447741750, guid: f49b351be600d4715af6f537adc2b1cc, type: 3}
       propertyPath: m_RootOrder

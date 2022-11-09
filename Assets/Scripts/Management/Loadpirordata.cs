@@ -18,16 +18,16 @@ public class Loadpirordata : MonoBehaviour
     {
         Debug.Log(i);
         PlayerPrefs.SetInt("pos", i);
-        //PlayerPrefs.SetFloat("max_handlight", handLightsystem_cs.Max_handlight_time);
-        //PlayerPrefs.SetFloat("now_handlgiht", handLightsystem_cs.handlight_now_left_time);
+        PlayerPrefs.SetFloat("max_handlight", handLightsystem_cs.Max_handlight_time);
+        PlayerPrefs.SetFloat("now_handlgiht", handLightsystem_cs.handlight_now_left_time);
         PlayerPrefs.SetInt("newgame", 0);
     }
 
     public void getPirorData()
     {
         playerpos = PlayerPrefs.GetInt("pos");
-        //max_handlight = PlayerPrefs.GetFloat("max_handlight");
-        //now_handlgiht = PlayerPrefs.GetFloat("now_handlgiht");
+        handLightsystem_cs.Max_handlight_time = PlayerPrefs.GetFloat("max_handlight");
+        handLightsystem_cs.handlight_now_left_time = PlayerPrefs.GetFloat("now_handlgiht");
         newgame = PlayerPrefs.GetInt("newgame");
         switch(PlayerPrefs.GetInt("pos"))
         {
