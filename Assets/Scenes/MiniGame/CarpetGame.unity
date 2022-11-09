@@ -761,7 +761,7 @@ MonoBehaviour:
   question_info:
     question_count: 8
     current_question_count: 0
-    target_correct_value: 0
+    target_correct_value: 5
     current_correct_value: 0
   fade_io: {fileID: 902225939}
   infomation_anime: {fileID: 0}

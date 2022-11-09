@@ -1,21 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-
-public class AWS : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-=======
 using Amazon;
 using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
@@ -44,6 +29,5 @@ public class AWS : MonoBehaviour
     {
         current_user = u;
         print("로그인 성공");
->>>>>>> DynamoDB
     }
 }

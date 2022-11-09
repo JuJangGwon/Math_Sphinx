@@ -1693,9 +1693,9 @@ MonoBehaviour:
   camera_camel: {fileID: 1484770670}
   player_anime: {fileID: 1484770673}
   question_info:
-    question_count: 1
+    question_count: 8
     current_question_count: 0
-    target_correct_value: 1
+    target_correct_value: 5
     current_correct_value: 0
   camel_dialogue:
   - "\uB355\uBD84\uC5D0 \uC27D\uAC8C \uC62C \uC218 \uC788\uC5C8\uC5B4!\n\uC544\uB9C8
