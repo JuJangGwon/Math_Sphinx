@@ -27,6 +27,7 @@ TagManager:
   - treasurefind
   - spear
   - endpoint
+  - key2
   layers:
   - Default
   - TransparentFX
