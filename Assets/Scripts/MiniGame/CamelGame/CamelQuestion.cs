@@ -16,6 +16,7 @@ public class CamelQuestion : MonoBehaviour
     public TEXDraw tdr;
     //public TextMeshProUGUI[] texSelection;
     public TEXDraw[] texSelection;
+    public Aswer_Box[] aswer_box;
 
     [Header("대사 상자")]
     public Image dialogue_box;
@@ -34,19 +35,28 @@ public class CamelQuestion : MonoBehaviour
         [Header("현재 정답 수")] public int current_correct_value;
     }
 
+    [System.Serializable] public struct Aswer_Box
+    {
+        public TEXDraw[] texSelection;
+    }
+
     [Header("게임 세팅")]
     public Question_Info question_info;
     [TextArea] public string[] camel_dialogue = new string[2]; // 0: 목표치 달성 시 1: 목표치 달성 못할 시
     public GameObject reward_item;
     public float bg_speed;
     public GameObject bg_image;
+    public GameObject answer_image;
     public Vector3 bg_move_position;
+    public Vector3 answer_image_position;
     public texttypingeffect texttypingeffect_cs;
     WaitForSeconds wait_time = new WaitForSeconds(1f);
 
     void Awake()
     {
         texttypingeffect_cs.prog_gametext5(0);
+
+        texSelection = aswer_box[question_info.current_question_count].texSelection;
 
         StartCoroutine(CreateProblem());
 
@@ -62,6 +72,7 @@ public class CamelQuestion : MonoBehaviour
         if (player_anime.GetBool(move_hash_code))
         {
             bg_image.transform.localPosition = Vector3.MoveTowards(bg_image.transform.localPosition, bg_move_position, Time.deltaTime * bg_speed);
+            answer_image.transform.localPosition = Vector3.MoveTowards(answer_image.transform.localPosition, answer_image_position, Time.deltaTime * bg_speed);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) { SceneManager.LoadScene("ProblemHistory"); }
@@ -96,6 +107,7 @@ public class CamelQuestion : MonoBehaviour
 
         if (question_info.current_question_count < question_info.question_count)
         {
+            texSelection = aswer_box[question_info.current_question_count].texSelection;
             scWJAPI.OnClick_Ansr(_nIndex);
             question_info.current_question_count++;
         }
@@ -120,7 +132,8 @@ public class CamelQuestion : MonoBehaviour
     {
         Clear_Answer_Box(true);
         player_anime.SetBool(move_hash_code, true);
-        bg_move_position = new Vector3(bg_image.transform.localPosition.x - 1000, bg_image.transform.localPosition.y + 0, bg_image.transform.localPosition.z);
+        bg_move_position = new Vector3(bg_image.transform.localPosition.x - 2000, bg_image.transform.localPosition.y + 0, bg_image.transform.localPosition.z);
+        answer_image_position = new Vector3(answer_image.transform.localPosition.x - 2000, bg_image.transform.localPosition.y + 0, bg_image.transform.localPosition.z);
         question_info.current_correct_value++;
     }
 
