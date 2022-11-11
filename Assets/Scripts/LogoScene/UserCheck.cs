@@ -44,7 +44,7 @@ public class UserCheck : MonoBehaviour
     public TextMeshProUGUI information_content;
     public Button btn;
     public string[] title_text;
-    public string[] content_text;
+    [TextArea]public string[] content_text;
 
     string user_id = "ID";
     string user_pw = "PW";
@@ -73,7 +73,7 @@ public class UserCheck : MonoBehaviour
         }
         else
         { 
-            Open_Popup(4);
+            Open_Popup(6);
         }
     }
 
@@ -133,7 +133,9 @@ public class UserCheck : MonoBehaviour
         {
             id = ID,
             pw = PW,
-            nickname = Nickname
+            nickname = Nickname,
+            money = 6000,
+            score = 0
         };
 
         aws.context.SaveAsync(u, (result) =>
@@ -145,9 +147,10 @@ public class UserCheck : MonoBehaviour
         });
     }
 
-    void Set_User_ID()
+    bool Sign_Up_Restriction(string s, int a, int b)
     {
-
+        if(s.Length < a || s.Length > b) { return false; }
+        else { return true; }
     }
 
     public void Open_Popup(int n)
@@ -164,21 +167,23 @@ public class UserCheck : MonoBehaviour
             case 1:
             case 2:
             case 3:
+            case 4:
+            case 5:
                 information_title.text = title_text[n];
                 information_content.text = content_text[n];
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(delegate { Close_Popup(Information_popup); });
                 anime.SetTrigger(info_on_hash);
                 break;
-            case 4:
+            case 6:
                 Login_Text_Clear();
                 anime.SetTrigger(login_on_hash);
                 break;
-            case 5:
+            case 7:
                 SignUp_Text_Clear();
                 anime.SetTrigger(signup_on_hash);
                 break;
-            case 6:
+            case 8:
                 Nickname_Text_Clear();
                 anime.SetTrigger(nick_on_hash);
                 break;
@@ -205,32 +210,46 @@ public class UserCheck : MonoBehaviour
     public void Open_Sign_Up()
     {
         Close_Popup(login_popup);
-        Open_Popup(5);
+        Open_Popup(7);
     }
 
     public void Close_Sign_Up()
     {
         Close_Popup(signup_popup);
-        Open_Popup(4);
+        Open_Popup(5);
     }
 
     public void Sign_Up_Check()
     {
-        Close_Popup(signup_popup);
-        Open_Popup(6);
+        if(!Sign_Up_Restriction(signup_id.text, 5, 15) || !Sign_Up_Restriction(signup_pw.text, 8, 20))
+        {
+            Open_Popup(4);
+        }
+        else
+        {
+            Close_Popup(signup_popup);
+            Open_Popup(8);
+        }
     }
 
     public void Nickname_Check()
     {
-        Sign_Up(signup_id.text, signup_pw.text,nickname_text.text);
-        Close_Popup(nickname_popup);
-        Open_Popup(0);
+        if (!Sign_Up_Restriction(nickname_text.text, 2, 12))
+        {
+            Open_Popup(5);
+        }
+        else
+        {
+            Sign_Up(signup_id.text, signup_pw.text, nickname_text.text);
+            Close_Popup(nickname_popup);
+            Open_Popup(0);
+        }
     }
 
     public void Close_Nickname_Complete()
     {
         Close_Popup(Information_popup);
-        Open_Popup(4);
+        Open_Popup(6);
     }
 
     public void Close_Popup(GameObject pu)
@@ -262,12 +281,4 @@ public class UserCheck : MonoBehaviour
         if (t.isOn) { ifd.contentType = TMP_InputField.ContentType.Standard; }
         else { ifd.contentType = TMP_InputField.ContentType.Password; }
     }
-}
-
-[DynamoDBTable("User_Info")]
-public class User_Info
-{
-    [DynamoDBProperty] public string id { get; set; }
-    [DynamoDBProperty] public string pw { get; set; }
-    [DynamoDBProperty] public string nickname { get; set; }
 }

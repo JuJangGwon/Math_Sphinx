@@ -51,9 +51,13 @@ public class CamelQuestion : MonoBehaviour
     public Vector3 answer_image_position;
     public texttypingeffect texttypingeffect_cs;
     WaitForSeconds wait_time = new WaitForSeconds(1f);
+    public Animator fade_io;
+    int fade_in_hashcode = Animator.StringToHash("In");
+    int fade_out_hashcode = Animator.StringToHash("Out");
 
     void Awake()
     {
+        fade_io.SetTrigger(fade_in_hashcode);
         texttypingeffect_cs.prog_gametext5(0);
 
         texSelection = aswer_box[question_info.current_question_count].texSelection;
@@ -179,7 +183,7 @@ public class CamelQuestion : MonoBehaviour
 
     public void Exit_Camel_Game()
     {
-        SceneManager.LoadScene("InGameScene");
+        fade_io.SetTrigger(fade_out_hashcode);
     }
 
     void Change_Main_Scene()

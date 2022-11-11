@@ -15,6 +15,10 @@ public class MainHomeButton : MonoBehaviour
     int open = Animator.StringToHash("Open");
     int close = Animator.StringToHash("Close");
 
+    [Header("메뉴")]
+    public GameObject menu;
+    public GameObject credit;
+
     public void ButtonManager(int i)
     {
         switch(i)
@@ -42,6 +46,23 @@ public class MainHomeButton : MonoBehaviour
     {
         fade_io_anime.SetTrigger(open_ph);
     }
-    public void Open() { menu_anime.SetTrigger(open); }
+    public void Open()
+    {
+        menu.SetActive(true);
+        credit.SetActive(false);
+        menu_anime.SetTrigger(open);
+    }
     public void Close() { menu_anime.SetTrigger(close); }
+
+    public void On_Credit()
+    {
+        menu.SetActive(false);
+        credit.SetActive(true);
+    }
+
+    public void Off_Credit()
+    {
+        menu.SetActive(true);
+        credit.SetActive(false);
+    }
 }

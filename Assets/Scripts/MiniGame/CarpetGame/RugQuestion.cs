@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,6 +71,8 @@ public class RugQuestion : MonoBehaviour
 
     public void Click_Answer(int _nIndex)
     {
+        ProblemHistoryData.instance.Save_Problem(DateTime.Now.ToString("yyyy³â MM¿ù ddÀÏ"), tdr, texSelection, texSelection[_nIndex]);
+
         if (Check_Answer(_nIndex))
             Move_Camel();
         else
@@ -91,7 +94,10 @@ public class RugQuestion : MonoBehaviour
     bool Check_Answer(int button_num)
     {
         if (texSelection[button_num].text == scWJAPI.Problem_Answer)
+        {
+            ProblemHistoryData.instance.Check_Correct();
             return true;
+        }
         else
             return false;
     }

@@ -725,7 +725,6 @@ MonoBehaviour:
   Problem_Explain: 
   Answer_Count: 2
   WJAPI2: {fileID: 900341298}
-  txQuestion: {fileID: 1764782521}
   eState: 0
 --- !u!114 &900341300
 MonoBehaviour:
@@ -759,7 +758,7 @@ MonoBehaviour:
   player: {fileID: 1458013122}
   spawn_position: {x: 0, y: 3.5, z: 0}
   question_info:
-    question_count: 8
+    question_count: 1
     current_question_count: 0
     target_correct_value: 5
     current_correct_value: 0
@@ -919,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &902225938
 RectTransform:
   m_ObjectHideFlags: 0
