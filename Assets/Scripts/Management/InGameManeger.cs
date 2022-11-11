@@ -10,7 +10,15 @@ public enum GameState
     playingMiniGame,
     timeout,
     texting,
-    death
+    death,
+}
+public enum DeathReason
+{
+    none,
+    trap,
+    timemout,
+    mummy,
+
 }
 public enum InGameState
 {
@@ -39,7 +47,7 @@ public class InGameManeger : MonoBehaviour
 {
     public static GameState gameState = GameState.none;
     public static InGameState ingamestate = InGameState.createMap;
-
+    public static DeathReason deathreason = DeathReason.none;
 
     public GameObject proces_text;
 
@@ -49,13 +57,16 @@ public class InGameManeger : MonoBehaviour
     public HandLightSystem handlightsystem_cs;
     public texttypingeffect texttypingeffect_cs;
     public Character_Animator character_animator_cs;
+    public Character_move character_move_cs;
 
     public stage1 stage1_cs;
     public float _time = 0;
 
     private void Start()
     {
+        gameState = GameState.none; 
         ingamestate = InGameState.createMap;
+        deathreason = DeathReason.none;
     }
     void Update()
     {
@@ -123,6 +134,7 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.playerdeath)
         {
             Character_move._characterstate = CharacterState.die;
+            character_move_cs.ShowDeathReason(deathreason);
             ingamestate++;
         }
     }

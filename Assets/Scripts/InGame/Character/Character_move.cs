@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CharacterState
 {
@@ -29,6 +30,9 @@ public class Character_move : MonoBehaviour
     Animator _animator;
     Rigidbody2D _rigidbody2D;
     float Character_speed = 10f;
+    public GameObject death_reason_gb;
+    public Text deathreason_text;
+
 
     public void Set_character_speed(bool _buttonOn)
     {
@@ -54,9 +58,27 @@ public class Character_move : MonoBehaviour
         if (_stop)
         {
             _characterstate = CharacterState.none;
-            _rigidbody2D.velocity = Vector2.zero;
+           _rigidbody2D.velocity = Vector2.zero;
             _animator.SetBool("move", false);
 
+        }
+    }
+
+
+    public void ShowDeathReason(DeathReason reason)
+    {
+        death_reason_gb.SetActive(true);
+        switch (reason)
+        {
+            case DeathReason.trap:
+                deathreason_text.text = "함정에 의해 죽었습니다.";
+                break;
+            case DeathReason.mummy:
+                deathreason_text.text = "미라에게 습격당했습니다.";
+                break;
+            case DeathReason.timemout:
+                deathreason_text.text = "손전등 배터리가 다 떨어졌습니다.";
+                break;
         }
     }
 

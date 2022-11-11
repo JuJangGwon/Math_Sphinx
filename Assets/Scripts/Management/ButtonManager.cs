@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public void MoveMainHome()
+    {
+        SceneManager.LoadScene("MainHomeScene");
+    }
     public void DashButtonTouchDown()
     {
        // Character_move._dash_button_pushed = true;
