@@ -46,10 +46,6 @@ public class UserCheck : MonoBehaviour
     public string[] title_text;
     public string[] content_text;
 
-    [Space]
-    [Header("ÆÇ³Ú")]
-    public Image panel;
-
     string user_id = "ID";
     string user_pw = "PW";
 
@@ -78,7 +74,6 @@ public class UserCheck : MonoBehaviour
         else
         { 
             Open_Popup(4);
-            panel.enabled = true;
         }
     }
 
@@ -116,7 +111,6 @@ public class UserCheck : MonoBehaviour
                     aws.Input_User(u);
                     Save_User_Info(u);
                     Close_Popup(login_popup);
-                    panel.enabled = false;
                     SceneManager.LoadScene("MainHomeScene");
                 }
                 else { Open_Popup(3); }
@@ -178,7 +172,6 @@ public class UserCheck : MonoBehaviour
                 break;
             case 4:
                 Login_Text_Clear();
-                panel.enabled = true;
                 anime.SetTrigger(login_on_hash);
                 break;
             case 5:
