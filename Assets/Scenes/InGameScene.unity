@@ -878,7 +878,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1681007945}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1158,7 +1158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &131109299
 Transform:
   m_ObjectHideFlags: 0
@@ -3166,13 +3166,14 @@ GameObject:
   - component: {fileID: 454915575}
   - component: {fileID: 454915574}
   - component: {fileID: 454915573}
+  - component: {fileID: 454915576}
   m_Layer: 5
   m_Name: deathpage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &454915572
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3187,7 +3188,7 @@ RectTransform:
   m_Children:
   - {fileID: 1925254063}
   m_Father: {fileID: 1681007945}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3238,13 +3239,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 454915576}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: MoveMainHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3288,6 +3289,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454915571}
   m_CullTransparentMesh: 1
+--- !u!114 &454915576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454915571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94ca7608d770420a8b5b1775ed823bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dark_fade: {fileID: 124656171}
 --- !u!1 &457257046
 GameObject:
   m_ObjectHideFlags: 0
@@ -6579,7 +6593,7 @@ MonoBehaviour:
   handlightsystem_cs: {fileID: 998994339}
   texttypingeffect_cs: {fileID: 1681007946}
   character_animator_cs: {fileID: 1090585965}
-  character_move_cs: {fileID: 0}
+  character_move_cs: {fileID: 1090585959}
   stage1_cs: {fileID: 715325063}
   _time: 0
 --- !u!114 &715325062
@@ -6689,6 +6703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ca7608d770420a8b5b1775ed823bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dark_fade: {fileID: 0}
 --- !u!1 &716833934
 GameObject:
   m_ObjectHideFlags: 0
@@ -11698,7 +11713,6 @@ MonoBehaviour:
   Problem_Explain: 
   Answer_Count: 4
   WJAPI2: {fileID: 1293377701}
-  txQuestion: {fileID: 0}
   eState: 0
 --- !u!4 &1293377703
 Transform:
@@ -11727,6 +11741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ca7608d770420a8b5b1775ed823bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dark_fade: {fileID: 0}
 --- !u!1 &1323437628
 GameObject:
   m_ObjectHideFlags: 0
@@ -16238,8 +16253,8 @@ Transform:
   - {fileID: 1928188630}
   - {fileID: 482132388}
   - {fileID: 1200896943}
-  - {fileID: 124656172}
   - {fileID: 454915572}
+  - {fileID: 124656172}
   m_Father: {fileID: 126088356}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

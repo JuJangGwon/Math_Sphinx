@@ -50,6 +50,7 @@ public class InGameManeger : MonoBehaviour
     public static DeathReason deathreason = DeathReason.none;
 
     public GameObject proces_text;
+    public GameObject end_gb;
 
     public Loadpirordata Loadpirordata_cs;
     public MapCreater mapcreater_cs;
@@ -135,6 +136,7 @@ public class InGameManeger : MonoBehaviour
         {
             Character_move._characterstate = CharacterState.die;
             character_move_cs.ShowDeathReason(deathreason);
+            end_gb.SetActive(true);
             ingamestate++;
         }
     }

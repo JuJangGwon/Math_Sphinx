@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameObject dark_fade;
+    
     public void MoveMainHome()
     {
-        SceneManager.LoadScene("MainHomeScene");
+        dark_fade.SetActive(true);
+        Invoke("movescene", 2f);
     }
-    public void DashButtonTouchDown()
+    public void movescene()
     {
-       // Character_move._dash_button_pushed = true;
+        SceneManager.LoadScene("MainHomeScene");
     }
     public void DashButtonTouchUp()
     {
