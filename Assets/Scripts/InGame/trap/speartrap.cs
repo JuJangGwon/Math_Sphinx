@@ -5,7 +5,7 @@ using UnityEngine;
 public class speartrap : MonoBehaviour
 {
     public Animator animator;
-    public float operator_cycle = 3f;
+    public float operator_cycle = 2.5f;
     public float start_time = 0f;
     public GameObject spear_gb;
     public GameObject spear_col;
@@ -16,7 +16,7 @@ public class speartrap : MonoBehaviour
 
     void Update()
     {
-        if (InGameManeger.ingamestate == InGameState.finalarea)
+        if (InGameManeger.ingamestate != InGameState.problemclear)
         {
             if (!operation)
             {
