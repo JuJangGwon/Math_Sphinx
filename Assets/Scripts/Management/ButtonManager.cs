@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public void DashButtonTouchDown()
+    public GameObject dark_fade;
+    
+    public void MoveMainHome()
     {
-       // Character_move._dash_button_pushed = true;
+        dark_fade.SetActive(true);
+        Invoke("movescene", 2f);
+    }
+    public void movescene()
+    {
+        SceneManager.LoadScene("MainHomeScene");
     }
     public void DashButtonTouchUp()
     {

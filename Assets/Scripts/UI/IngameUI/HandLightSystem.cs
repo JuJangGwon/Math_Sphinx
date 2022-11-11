@@ -23,6 +23,8 @@ public class HandLightSystem : MonoBehaviour
     public GameObject dark_gb;
     public Image dark_img;
 
+    public GameObject circledark_gb;
+
   //  public GameObject edge_dark2_obj;                           // 죽을때 가에 띄울 어둠 
     public GameObject edge_dark_obj;
     public Image edge_dark_img;
@@ -46,7 +48,9 @@ public class HandLightSystem : MonoBehaviour
             Character_move._characterstate = CharacterState.die;
             battery_lv = Battery_lv.none;
             StartCoroutine(CircleFadeIn(3));
-            InGameManeger.gameState = GameState.timeout;
+            InGameManeger.deathreason = DeathReason.timemout;
+            InGameManeger.gameState = GameState.death;
+            InGameManeger.ingamestate = InGameState.playerdeath;
         }
         else if (handlight_left_battery_percentage <= 0.1f)
         {
@@ -94,8 +98,7 @@ public class HandLightSystem : MonoBehaviour
         edge_dark_obj.SetActive(false);
     }
 
-
-
+   
 
     // 코루틴
 

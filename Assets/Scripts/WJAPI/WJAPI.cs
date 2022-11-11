@@ -18,7 +18,7 @@ public class WJAPI : MonoBehaviour
     //
 
     public WJAPI2 WJAPI2;
-    public TextMeshProUGUI txQuestion;
+    //public TextMeshProUGUI txQuestion;
     //public Rug[] btAnsr = new Rug[2];
 
     //public GameObject btStart;
@@ -149,7 +149,7 @@ public class WJAPI : MonoBehaviour
         string[] tmWrAnswer;
 
         Problem_Explain = WJAPI2.GetLatexCode(_qstCn);
-        txQuestion.text = Problem_Explain;  // <- 문제 지문임 라텍스 변환 필요
+//        txQuestion.text = Problem_Explain;  // <- 문제 지문임 라텍스 변환 필요
 
         Problem_Answer = _qstCransr;                      // 문제 정답          
         tmWrAnswer = _qstWransr.Split(SEP, System.StringSplitOptions.None);   // 답을 제외한 선택지 받아주는 코드  , 단위로 스플릿해줌 

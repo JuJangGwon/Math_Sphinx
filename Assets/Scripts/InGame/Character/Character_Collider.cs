@@ -81,56 +81,19 @@ public class Character_Collider : MonoBehaviour
             SceneManager.LoadScene("CamelGame");
         }
         if (other.gameObject.tag == "Monster")
-        { 
+        {
+            InGameManeger.gameState = GameState.death;
+            InGameManeger.deathreason = DeathReason.mummy;
             InGameManeger.ingamestate = InGameState.playerdeath;
-            InGameManeger.gameState = GameState.death; 
         }
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "ABC")
+        if (other.gameObject.tag == "spear")
         {
-            Problem_popup.SetActive(true);
-        }
-
-
-        //    정답 발판 충돌 처리
-
-        if (other.gameObject.tag == "Battery")
-        {
-            handlightsystem_cs.Get_handlightbettery();
-        }
-        if (other.gameObject.tag == "prog_next_stage")
-        {
-            mapcreate_cs.progstage();
-            findAnswerWay_cs.progress();
-            Destroy(other.gameObject);
-        }
-        if (other.gameObject.tag == "potal")
-        {
-    
-            Destroy(other.gameObject);
-          //  InGameManeger.ingamestate = InGameState.batteryex3;
-        }
-        if (other.gameObject.tag == "return")
-        {
-            handlightsystem_cs.handlight_now_left_time = 8;
-            handlightsystem_cs.handlight_now_left_time = 1;
-            StartCoroutine(DarkfadeIn());
+            InGameManeger.deathreason = DeathReason.trap;
+            InGameManeger.gameState = GameState.death;
+            InGameManeger.ingamestate = InGameState.playerdeath;
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-      /*  if (other.gameObject.tag == "AnswerFootBoard1" || other.gameObject.tag == "AnswerFootBoard2" ||
-            other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
-        {
-            nowPushedFootboard = NowPushedFootBoard.none;
-            _boxcollider2d.isTrigger = false;
-                Debug.Log("발판 땜");
-        }
-      */
-    }
     public IEnumerator DarkfadeIn()
     {
         yield return new WaitForSeconds(2f);
