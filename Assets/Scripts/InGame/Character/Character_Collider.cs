@@ -36,11 +36,6 @@ public class Character_Collider : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "AnswerFootBoard1" || other.gameObject.tag == "AnswerFootBoard2" ||
-             other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
-        {
-            _boxcollider2d.isTrigger = true;
-        }
         if (other.gameObject.tag == "key")
         {
             InGameManeger.ingamestate = InGameState.findkey;

@@ -9,7 +9,6 @@ public class Character_Animator : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("들어왓슝 ");
         _charactor_animator.SetBool("_isFront", true);
         _charactor_animator.SetBool("_isMove", false);
         //_charactor_animator.GetComponent<Animator>();

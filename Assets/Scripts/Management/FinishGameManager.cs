@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class FinishGameManager : MonoBehaviour
 {
+    // 보물 상자 관련 
+    public GameObject treasureBox;
+    public Sprite Open_treasurebox_sprite;
+
+    
     public GameObject darkgb;
     public Image darkimg;
     public GameObject death_reason_gb;
@@ -36,4 +41,9 @@ public class FinishGameManager : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
     }
+    public void SetTresasureBox()
+    {
+        treasureBox.GetComponent<SpriteRenderer>().sprite = Open_treasurebox_sprite;
+    }
+    
 }

@@ -55,15 +55,6 @@ public class stage1 : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
-
-
     public void selected_answer(int answer)
     {
         if (InGameManeger.ingamestate == InGameState._4selectgame)
