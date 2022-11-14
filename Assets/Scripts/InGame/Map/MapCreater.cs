@@ -81,6 +81,25 @@ public class MapCreater : MonoBehaviour
                                             { 1,0,0,0,0,0,0,0,0,0,1},
                                             { 1,1,1,1,1,1,1,1,1,1,1}
 };
+    public int[,] tutorial_map = new int[,] { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+                                              { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
+
+    };
+
     public static int[,] map = new int[,] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,-1, -1, -1,-1,1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                                             { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,-1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                                             { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,-1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -140,29 +159,33 @@ public class MapCreater : MonoBehaviour
     {
         gb = Instantiate(prefebs[num]);
     }
-
+    void CreateTutorialMap()
+    {
+       // for (int )
+    }
     public void CreateMap()
     {
-        /*
-        for (int i = 0; i < 5; i++)
+        int y = 0;
+        int x = 0;
+        if (InGameManeger.seletedStage == Stage.stage1)
         {
-            for (int j = 0; j < 11; j++)
-            {
-                int num = startArea[i, j];
-                if (num == -1)
-                    continue;
-                GameObject gb = Instantiate(prefebs[num + 1]);
-                gb.transform.SetParent(MapParent.transform);
-                gb.transform.localPosition = new Vector3((i * tileX / 2) + (j * -tileX / 2), (i * tileY / 2) + (j * tileY / 2), 0);
-            }
-
+            y = 35;
+            x = 36;
         }
-        */
-        for (int i = 0; i < 35; i++)
+        if (InGameManeger.seletedStage == Stage.tutorial)
         {
-            for (int j = 0; j < 36; j++)
+            y = 35;
+            x = 36;
+        }
+        for (int i = 0; i < y; i++)
+        {
+            for (int j = 0; j < x; j++)
             {
-                int num = map[i, j];
+                int num = 0 ;
+                if (InGameManeger.seletedStage == Stage.stage1)
+                    num = map[i, j];
+                if (InGameManeger.seletedStage == Stage.tutorial)
+                    num = tutorial_map[i, j];
                 GameObject gb;
                 if (num == -1)
                     continue;

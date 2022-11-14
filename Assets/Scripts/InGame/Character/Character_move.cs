@@ -32,6 +32,7 @@ public class Character_move : MonoBehaviour
     float Character_speed = 10f;
     public GameObject death_reason_gb;
     public Text deathreason_text;
+    public AudioSource audiosource;
 
 
     public void Set_character_speed(bool _buttonOn)
@@ -88,6 +89,7 @@ public class Character_move : MonoBehaviour
         {
             //transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir, Time.deltaTime * Character_speed);
             _rigidbody2D.velocity = move_dir * Character_speed;
+            audiosource.mute = false;
             if (move_dir.x >= 0)
             {
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -107,6 +109,7 @@ public class Character_move : MonoBehaviour
         }
         else
         {
+            audiosource.mute = true;
             _rigidbody2D.velocity = move_dir * 0;
         }
     }
