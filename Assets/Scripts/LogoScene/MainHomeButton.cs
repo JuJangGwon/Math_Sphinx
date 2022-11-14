@@ -22,8 +22,10 @@ public class MainHomeButton : MonoBehaviour
             case 1:     // 탐험하기버튼
                 PlayerPrefs.SetInt("pos", 1);
                 PlayerPrefs.SetInt("newgame", 1);
-                PlayerPrefs.SetFloat("max_handlight", 100f);
-                PlayerPrefs.SetFloat("now_handlgiht", 100f);
+                PlayerPrefs.SetFloat("max_handlight", 115f);
+                PlayerPrefs.SetFloat("now_handlgiht", 115f);
+                PlayerPrefs.SetInt("is_key1", System.Convert.ToInt16(false));
+                PlayerPrefs.SetInt("is_key2", System.Convert.ToInt16(false));
                 SceneManager.LoadScene("InGameScene");
                 break;
             case 2:

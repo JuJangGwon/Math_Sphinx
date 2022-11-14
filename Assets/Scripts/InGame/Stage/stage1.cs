@@ -7,8 +7,17 @@ public class stage1 : MonoBehaviour
 {
     bool trigger = false;
 
+    // UI - key
     public bool is_key1 = false;
     public bool is_key2 = false;
+
+    public GameObject UI_key1;
+    public GameObject UI_key2;
+
+    public Sprite nonekey;
+    public Sprite iskey;
+
+    //
 
     public GameObject character_prefebs;
     public GameObject character_parent;
@@ -31,6 +40,29 @@ public class stage1 : MonoBehaviour
     // -95.26 74 .88  2.1   | -62 86 2.1   |   -59.3, 74.2 , 2.1               | -38.8  , 33.6 2 
 
     //public void stage1
+
+    public void SetKey_UI()
+    {
+        if (!is_key1)
+            UI_key1.GetComponent<Image>().sprite = nonekey;
+        else
+            UI_key1.GetComponent<Image>().sprite = iskey;
+        if (!is_key2)
+            UI_key2.GetComponent<Image>().sprite = nonekey;
+        else
+            UI_key2.GetComponent<Image>().sprite = iskey;
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     public void selected_answer(int answer)
     {

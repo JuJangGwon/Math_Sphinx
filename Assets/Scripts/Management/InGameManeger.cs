@@ -148,6 +148,7 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.findkey)
         {
             texttypingeffect_cs.findkey(0);
+            stage1_cs.SetKey_UI();
             ingamestate = InGameState.texttyping2;
         }
         if (ingamestate == InGameState.minigame1)
