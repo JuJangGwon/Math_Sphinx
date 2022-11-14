@@ -10,6 +10,9 @@ public class stage1 : MonoBehaviour
     public bool is_key1 = false;
     public bool is_key2 = false;
 
+    public GameObject character_prefebs;
+    public GameObject character_parent;
+
     public GameObject[] startgameanswertrigger;
     public GameObject stargame_gb;
 
@@ -60,6 +63,22 @@ public class stage1 : MonoBehaviour
         findAnswerWay_cs.CreateProblem();
         trigger = true;
     }
+    public void createCharacter()
+    {
+        inGameManeger_cs.character = Instantiate(character_prefebs, character_parent.transform);
+        inGameManeger_cs.character.GetComponent<Character_Collider>().handlightsystem_cs = inGameManeger_cs.handlightsystem_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().findAnswerWay_cs = inGameManeger_cs.findanswerway_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().stage1_cs = inGameManeger_cs.stage1_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().mapcreate_cs = inGameManeger_cs.mapcreater_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().loadpirordata_cs = inGameManeger_cs.Loadpirordata_cs;
+        inGameManeger_cs.character.GetComponentInChildren<Character_trigger>()._stage1cs = inGameManeger_cs.stage1_cs;
+        inGameManeger_cs.character_animator_cs = inGameManeger_cs.character.GetComponent<Character_Animator>();
+        inGameManeger_cs.character_move_cs = inGameManeger_cs.character.GetComponent<Character_move>();
+        inGameManeger_cs.camera_move_cs.character = inGameManeger_cs.character;
+        inGameManeger_cs.JoystickScripts_cs.cm = inGameManeger_cs.character_move_cs;
+        inGameManeger_cs.Loadpirordata_cs.character = inGameManeger_cs.character;
+
+    }
     public void final_game_settgings()
     {
         stage1_createproblem();
@@ -104,4 +123,5 @@ public class stage1 : MonoBehaviour
             }
         }
     }
+  
 }

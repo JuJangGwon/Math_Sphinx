@@ -55,6 +55,8 @@ public enum InGameState
 
 public class InGameManeger : MonoBehaviour
 {
+    public GameObject character;
+
     public static GameState gameState = GameState.none;
     public static InGameState ingamestate = InGameState.createMap;
     public static DeathReason deathreason = DeathReason.none;
@@ -70,13 +72,17 @@ public class InGameManeger : MonoBehaviour
     public texttypingeffect texttypingeffect_cs;
     public Character_Animator character_animator_cs;
     public Character_move character_move_cs;
+    public JoystickScripts JoystickScripts_cs;
+    public FinishGameManager finishgamemanager_cs;
 
+    public CameraMove camera_move_cs;
     public stage1 stage1_cs;
     public tutorial tutoral_cs;
     public float _time = 0;
 
     private void Start()
     {
+        seletedStage = Stage.stage1;
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
@@ -113,11 +119,12 @@ public class InGameManeger : MonoBehaviour
     {
         if (ingamestate == InGameState.createMap)
         {
-            character_animator_cs.Start();
             mapcreater_cs.CreateMap();
+            stage1_cs.createCharacter();
             Loadpirordata_cs.getPirorData();
             handlightsystem_cs.startFadein(false);
             gameState = GameState.playingInGame;
+            character_animator_cs.Start();
             stage1_cs.stage1_createproblem();
 
             ingamestate++;
@@ -175,7 +182,7 @@ public class InGameManeger : MonoBehaviour
         if (ingamestate == InGameState.playerdeath)
         {
             Character_move._characterstate = CharacterState.die;
-            character_move_cs.ShowDeathReason(deathreason);
+            finishgamemanager_cs.ShowDeathReason(deathreason);
             end_gb.SetActive(true);
             ingamestate++;
 

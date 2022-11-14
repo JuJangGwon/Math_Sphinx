@@ -27,11 +27,9 @@ public class Character_move : MonoBehaviour
     public static CharacterState _characterstate = 0; // 캐릭터 상태
     public static CharacterDirection _characterdirection = 0;
     public Vector3 move_dir;
-    Animator _animator;
-    Rigidbody2D _rigidbody2D;
+    public Animator _animator;
+    public Rigidbody2D _rigidbody2D;
     float Character_speed = 10f;
-    public GameObject death_reason_gb;
-    public Text deathreason_text;
     public AudioSource audiosource;
 
 
@@ -48,11 +46,7 @@ public class Character_move : MonoBehaviour
             _animator.speed = 1.5f;
         }
     }
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+   
   
     public void CharacterStop(bool _stop)
     {
@@ -66,22 +60,7 @@ public class Character_move : MonoBehaviour
     }
 
 
-    public void ShowDeathReason(DeathReason reason)
-    {
-        death_reason_gb.SetActive(true);
-        switch (reason)
-        {
-            case DeathReason.trap:
-                deathreason_text.text = "함정에 의해 죽었습니다.";
-                break;
-            case DeathReason.mummy:
-                deathreason_text.text = "미라에게 습격당했습니다.";
-                break;
-            case DeathReason.timemout:
-                deathreason_text.text = "손전등 배터리가 다 떨어졌습니다.";
-                break;
-        }
-    }
+   
 
     void Update()
     {
