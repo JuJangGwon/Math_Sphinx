@@ -11,7 +11,7 @@ public class RunMonster2 : MonoBehaviour
         Rigidbody2D rid2d;
         public MonsterState monsterstate = MonsterState.move;
         public MonsterDirection monsterdirction = MonsterDirection.downleft;
-        float monster_speed = 11f;
+        float monster_speed = 6f;
         Vector3 monster_dir;
         Vector2[] move_forward = new Vector2[4];
 
