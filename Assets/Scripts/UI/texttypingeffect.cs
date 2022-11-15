@@ -125,10 +125,14 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                          };
     Vector2[] tutorial_who = { new Vector2(6, 0), new Vector2(4, 0) };
     Vector2[] tutorial2_who = { new Vector2(6, 0), new Vector2(4, 0), new Vector2(4, 0) };
-    string[] tutorial_text3 = {"1 : 이번 시간은 조작키, 게임 규칙에 대해 알려주는 시간을 가질거야" ,
-                                   "1 : 먼저 캐릭터는 왼쪽에있는 조이스틱을 이용하여 조작 할 수 있어!",
+    string[] tutorial_text3 = {"1 : 엇.. 미로가 나타났어" ,
+                               "1 : 내가 힌트를 줄께, 내가 내주는 문제의 답이 적혀있는 표지판이 있는 길에 들어가봐"
                          };
-    Vector2[] tutorial3_who = { new Vector2(6, 0), new Vector2(4, 0) };
+    Vector2[] tutorial3_who = { new Vector2(2, 4), new Vector2(4, 2) };
+    string[] tutorial_text4 = {"1 : 잘했어!" ,
+                               "1 : 이제 저기 앞에있는 열쇠를 주워보자!"
+                         };
+    Vector2[] tutorial4_who = { new Vector2(5, 0), new Vector2(4, 0) };
 
     public CamelQuestion cq;
 
@@ -345,7 +349,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             Debug.Log("B");
             hideUI(false);
             InGameManeger.ingamestate = InGameState.playgame;
-            Invoke("scheduler_texttyping", 8f);
+            Invoke("scheduler_texttyping", 3f);
         }
     }
     public void tutorial2(int i)
@@ -369,14 +373,33 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         hideUI(true);
         now_textline = i;
         now_text = Now_text.tutorial3;
-        if (i != 3)
+        if (i != 2)
         {
             StartCoroutine(Typing(1, tutorial_text3[i], m_Speed));
             whostalking(tutorial3_who[i]);
         }
-        else if (i >= 3)
+        else if (i >= 2)
         {
             hideUI(false);
+            findanswerway_cs.ShowProblempopup(true);
+            findanswerway_cs.txdraw.text = "4 + 3 = ";
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+    public void tutorial4(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.tutorial3;
+        if (i != 2)
+        {
+            StartCoroutine(Typing(1, tutorial_text4[i], m_Speed));
+            whostalking(tutorial4_who[i]);
+        }
+        else if (i >= 2)
+        {
+            hideUI(false);
+            findanswerway_cs.ShowProblempopup(false);
             InGameManeger.ingamestate = InGameState.playgame;
         }
     }
@@ -597,12 +620,17 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                 case Now_text.tutorial2:
                     tutorial2(++now_textline);
                     break;
+                case Now_text.tutorial3:
+                    tutorial3(++now_textline);
+                    break;
+                case Now_text.tutorial4:
+                    tutorial4(++now_textline);
+                    break;
             }
         }
     }
     public void scheduler_texttyping()
     {
-        Debug.Log("a");
         InGameManeger.ingamestate = InGameState.texttyping;
     }
 }

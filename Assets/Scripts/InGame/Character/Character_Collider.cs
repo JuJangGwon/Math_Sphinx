@@ -89,6 +89,7 @@ public class Character_Collider : MonoBehaviour
         if (other.gameObject.tag == "potal")
         {
             InGameManeger.ingamestate = InGameState.texttyping;
+            Destroy(other.gameObject);
         }
     }
 

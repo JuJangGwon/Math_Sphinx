@@ -83,7 +83,7 @@ public class InGameManeger : MonoBehaviour
 
     private void Start()
     {
-        seletedStage = Stage.stage1;
+        seletedStage = Stage.tutorial;
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
@@ -128,6 +128,14 @@ public class InGameManeger : MonoBehaviour
             else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial3)
             {
                 texttypingeffect_cs.tutorial3(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial4)
+            {
+                texttypingeffect_cs.tutorial4(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial5)
+            {
+                texttypingeffect_cs.tutorial5(0);
             }
         }
     }
