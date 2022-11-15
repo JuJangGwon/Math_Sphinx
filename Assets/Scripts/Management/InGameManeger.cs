@@ -49,6 +49,7 @@ public enum InGameState
     finalareaing,
     problemclear,
     victory,
+    victory2,
     playerdeath,
     playerdetah2,
 }
@@ -82,7 +83,7 @@ public class InGameManeger : MonoBehaviour
 
     private void Start()
     {
-        seletedStage = Stage.tutorial;
+        seletedStage = Stage.stage1;
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
@@ -204,6 +205,10 @@ public class InGameManeger : MonoBehaviour
             ingamestate++;
 
         }
-
+        if (ingamestate == InGameState.victory)
+        {
+            stage1_cs.open_treasurebox();
+            ingamestate++;
+        }
     }
 }
