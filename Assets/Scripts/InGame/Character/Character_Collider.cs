@@ -19,8 +19,7 @@ public class Character_Collider : MonoBehaviour
     BoxCollider2D _boxcollider2d;
     //public WJAPI WJAPI_CS;
 
-    public GameObject darkgb;
-    public Image darkimg;
+
     public HandLightSystem handlightsystem_cs;
     public FindAnswerWay findAnswerWay_cs;
     public GameObject Problem_popup;
@@ -37,11 +36,6 @@ public class Character_Collider : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "AnswerFootBoard1" || other.gameObject.tag == "AnswerFootBoard2" ||
-             other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
-        {
-            _boxcollider2d.isTrigger = true;
-        }
         if (other.gameObject.tag == "key")
         {
             InGameManeger.ingamestate = InGameState.findkey;
@@ -94,17 +88,7 @@ public class Character_Collider : MonoBehaviour
         }
     }
 
-    public IEnumerator DarkfadeIn()
-    {
-        yield return new WaitForSeconds(2f);
-        darkgb.SetActive(true);
-        for (int i = 0; i < 33; i++)
-        {
-            darkimg.color = new Vector4(0, 0, 0, 0 + i * 0.03f);
-            yield return new WaitForSeconds(0.03f);
-        }
-        //InGameManeger.ingamestate = InGameState.batteryex4;
-    }
+
 }
 
 

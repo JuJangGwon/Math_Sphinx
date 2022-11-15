@@ -52,18 +52,11 @@ public class Character_trigger : MonoBehaviour
             selectedFootboard(4);
             Debug.Log("4번 정답 발판 밟음");
         }
-
-
-        if (other.gameObject.tag == "AnswerFootBoard1" || other.gameObject.tag == "AnswerFootBoard2" ||
-             other.gameObject.tag == "AnswerFootBoard3" || other.gameObject.tag == "AnswerFootBoard4")
+        else if (other.gameObject.tag == "gold")
         {
-          //  findAnswerWay_cs.PlayerSelectAnswer((int)nowPushedFootboard);
-          //  if (mapcreate_cs.stage == 3)
-            {
-                //       InGameManeger.ingamestate = InGameState.batteryex;
-           //     findAnswerWay_cs.delete_answerboard();
-            }
+          //  PlayerPrefs.SetInt("Gold",)
         }
+
     }
     private void Update()
     {

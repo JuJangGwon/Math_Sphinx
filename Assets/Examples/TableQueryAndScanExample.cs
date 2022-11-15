@@ -13,7 +13,6 @@
 // limitations under the License.
 //
 
-/*
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -530,4 +529,3 @@ namespace AWSSDK.Examples
         }
     }
 }
-*/

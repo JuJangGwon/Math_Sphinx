@@ -7,8 +7,20 @@ public class stage1 : MonoBehaviour
 {
     bool trigger = false;
 
+    // UI - key
     public bool is_key1 = false;
     public bool is_key2 = false;
+
+    public GameObject UI_key1;
+    public GameObject UI_key2;
+
+    public Sprite nonekey;
+    public Sprite iskey;
+
+    //
+
+    public GameObject character_prefebs;
+    public GameObject character_parent;
 
     public GameObject[] startgameanswertrigger;
     public GameObject stargame_gb;
@@ -28,6 +40,20 @@ public class stage1 : MonoBehaviour
     // -95.26 74 .88  2.1   | -62 86 2.1   |   -59.3, 74.2 , 2.1               | -38.8  , 33.6 2 
 
     //public void stage1
+
+    public void SetKey_UI()
+    {
+        if (!is_key1)
+            UI_key1.GetComponent<Image>().sprite = nonekey;
+        else
+            UI_key1.GetComponent<Image>().sprite = iskey;
+        if (!is_key2)
+            UI_key2.GetComponent<Image>().sprite = nonekey;
+        else
+            UI_key2.GetComponent<Image>().sprite = iskey;
+
+    }
+
 
     public void selected_answer(int answer)
     {
@@ -59,6 +85,22 @@ public class stage1 : MonoBehaviour
     {
         findAnswerWay_cs.CreateProblem();
         trigger = true;
+    }
+    public void createCharacter()
+    {
+        inGameManeger_cs.character = Instantiate(character_prefebs, character_parent.transform);
+        inGameManeger_cs.character.GetComponent<Character_Collider>().handlightsystem_cs = inGameManeger_cs.handlightsystem_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().findAnswerWay_cs = inGameManeger_cs.findanswerway_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().stage1_cs = inGameManeger_cs.stage1_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().mapcreate_cs = inGameManeger_cs.mapcreater_cs;
+        inGameManeger_cs.character.GetComponent<Character_Collider>().loadpirordata_cs = inGameManeger_cs.Loadpirordata_cs;
+        inGameManeger_cs.character.GetComponentInChildren<Character_trigger>()._stage1cs = inGameManeger_cs.stage1_cs;
+        inGameManeger_cs.character_animator_cs = inGameManeger_cs.character.GetComponent<Character_Animator>();
+        inGameManeger_cs.character_move_cs = inGameManeger_cs.character.GetComponent<Character_move>();
+        inGameManeger_cs.camera_move_cs.character = inGameManeger_cs.character;
+        inGameManeger_cs.JoystickScripts_cs.cm = inGameManeger_cs.character_move_cs;
+        inGameManeger_cs.Loadpirordata_cs.character = inGameManeger_cs.character;
+
     }
     public void final_game_settgings()
     {
@@ -104,4 +146,5 @@ public class stage1 : MonoBehaviour
             }
         }
     }
+  
 }

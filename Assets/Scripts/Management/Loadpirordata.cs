@@ -5,6 +5,7 @@ using UnityEngine;
 public class Loadpirordata : MonoBehaviour
 {
     public HandLightSystem handLightsystem_cs;
+    public stage1 stage1_cs;
 
     public GameObject character;
     public int playerpos;
@@ -20,6 +21,8 @@ public class Loadpirordata : MonoBehaviour
         PlayerPrefs.SetInt("pos", i);
         PlayerPrefs.SetFloat("max_handlight", handLightsystem_cs.Max_handlight_time);
         PlayerPrefs.SetFloat("now_handlgiht", handLightsystem_cs.handlight_now_left_time);
+        PlayerPrefs.SetInt("is_key1", System.Convert.ToInt16(stage1_cs.is_key1));
+        PlayerPrefs.SetInt("is_key2", System.Convert.ToInt16(stage1_cs.is_key2));
         PlayerPrefs.SetInt("newgame", 0);
     }
 
@@ -28,6 +31,8 @@ public class Loadpirordata : MonoBehaviour
         playerpos = PlayerPrefs.GetInt("pos");
         handLightsystem_cs.Max_handlight_time = PlayerPrefs.GetFloat("max_handlight");
         handLightsystem_cs.handlight_now_left_time = PlayerPrefs.GetFloat("now_handlgiht");
+        stage1_cs.is_key1 = System.Convert.ToBoolean(PlayerPrefs.GetInt("is_key1"));
+        stage1_cs.is_key2 = System.Convert.ToBoolean(PlayerPrefs.GetInt("is_key2"));
         newgame = PlayerPrefs.GetInt("newgame");
         switch(PlayerPrefs.GetInt("pos"))
         {

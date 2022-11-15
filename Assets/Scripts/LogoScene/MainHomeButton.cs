@@ -34,6 +34,11 @@ public class MainHomeButton : MonoBehaviour
                 PlayerPrefs.SetFloat("now_handlgiht", 100f);
                 //SceneManager.LoadScene("InGameScene");
                 LoadingScene.Load_Scene("InGameScene");
+                PlayerPrefs.SetFloat("max_handlight", 115f);
+                PlayerPrefs.SetFloat("now_handlgiht", 115f);
+                PlayerPrefs.SetInt("is_key1", System.Convert.ToInt16(false));
+                PlayerPrefs.SetInt("is_key2", System.Convert.ToInt16(false));
+                SceneManager.LoadScene("InGameScene");
                 break;
             case 2:
                 problem_history.SetActive(true);

@@ -13,7 +13,6 @@
 // limitations under the License.
 //
 
-/*
 using UnityEngine;
 using System.Collections;
 using Amazon.DynamoDBv2.DataModel;
@@ -125,4 +124,3 @@ namespace AWSSDK.Examples
         public List<string> BookAuthors { get; set; }
     }
 }
-*/
