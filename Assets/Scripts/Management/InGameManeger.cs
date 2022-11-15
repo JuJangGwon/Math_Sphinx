@@ -82,7 +82,7 @@ public class InGameManeger : MonoBehaviour
 
     private void Start()
     {
-        seletedStage = Stage.tutorial;
+        seletedStage = Stage.stage1;
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
