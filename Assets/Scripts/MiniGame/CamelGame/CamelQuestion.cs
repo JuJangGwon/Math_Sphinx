@@ -54,6 +54,7 @@ public class CamelQuestion : MonoBehaviour
     public Animator fade_io;
     int fade_in_hashcode = Animator.StringToHash("In");
     int fade_out_hashcode = Animator.StringToHash("Out");
+    bool can_solve = false;
 
     void Awake()
     {
@@ -97,27 +98,40 @@ public class CamelQuestion : MonoBehaviour
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = scWJAPI.Answer_Selection[i];
 
-        tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
+        //tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
+        tdr.text = ProblemText.Retext_Problems(scWJAPI.Problem_Explain);
+
+        can_solve = true;
     }
 
     public void Click_Answer(int _nIndex)
     {
-        ProblemHistoryData.instance.Save_Problem(DateTime.Now.ToString("yyyy년 MM월 dd일"), tdr, texSelection, texSelection[_nIndex]);
-
-        if (Check_Answer(_nIndex))
-            Move_Camel();
-        else
-            Panelty();
-
-        if (question_info.current_question_count < question_info.question_count)
+        if(can_solve)
         {
-            texSelection = aswer_box[question_info.current_question_count].texSelection;
-            scWJAPI.OnClick_Ansr(_nIndex);
-            question_info.current_question_count++;
-        }
-        else
-        {
-            Result();
+            ProblemHistoryData.instance.Save_Problem(DateTime.Now.ToString("yyyy년 MM월 dd일"), tdr, texSelection, texSelection[_nIndex]);
+
+            if (Check_Answer(_nIndex))
+            {
+                for (int i = 0; i < texSelection.Length; i++)
+                    texSelection[i].text = scWJAPI.Answer_Selection[i];
+
+                texSelection = aswer_box[question_info.current_question_count].texSelection;
+                Move_Camel();
+            }
+            else
+                Panelty();
+
+            if (question_info.current_question_count < question_info.question_count)
+            {
+                scWJAPI.OnClick_Ansr(_nIndex);
+                question_info.current_question_count++;
+            }
+            else
+            {
+                Result();
+            }
+
+            can_solve = false;
         }
     }
 

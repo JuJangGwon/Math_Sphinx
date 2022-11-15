@@ -29,7 +29,7 @@ public class ProblemHistory : MonoBehaviour
     int open = Animator.StringToHash("open");
     int close = Animator.StringToHash("close");
 
-    int sovled_problem_index = 0;
+    public int sovled_problem_index = 0;
 
     void OnEnable()
     {
@@ -49,54 +49,54 @@ public class ProblemHistory : MonoBehaviour
         {
             nothing.gameObject.SetActive(false);
             page_[0].page_0.SetActive(true);
-            Setting(i);
+            Setting(i, 0);
             if (ProblemHistoryData.instance.solved_problem_list.Count > i + 1)
             {
                 page_[1].page_0.SetActive(true);
-                Setting(i + 1);
+                Setting(i + 1, 1);
             }
             else { page_[1].page_0.SetActive(false); }
         }
     }
 
-    void Setting(int i)
+    void Setting(int i, int j)
     {
         for (int c = 0; c < 4; c++)
-            page_[i].answer_0[c].enabled = false;
+            page_[j].answer_0[c].enabled = false;
 
         output_plroblem = ProblemHistoryData.instance.solved_problem_list[i];
 
-        page_[i].date_0.text = (sovled_problem_index + 1).ToString("D2") + output_plroblem.date_text;
-        page_[i].problem_0.text = output_plroblem.problem_text;
+        page_[j].date_0.text = (sovled_problem_index + 1).ToString("D2") + output_plroblem.date_text;
+        page_[j].problem_0.text = output_plroblem.problem_text;
         for (int c = 0; c < output_plroblem.answer_text.Length; c++)
         {
-            page_[i].answer_0[c].enabled = true;
-            page_[i].answer_0[c].text = output_plroblem.answer_text[c];
+            page_[j].answer_0[c].enabled = true;
+            page_[j].answer_0[c].text = output_plroblem.answer_text[c];
         }
-        page_[i].select_answer_0.text = output_plroblem.select_answer_text;
+        page_[j].select_answer_0.text = output_plroblem.select_answer_text;
 
         if (output_plroblem.is_correct)
         {
-            page_[i].correct_stamp_0.sprite = correct_image[0];
-            page_[i].correct_text.text = "정 답 !";
+            page_[j].correct_stamp_0.sprite = correct_image[0];
+            page_[j].correct_text.text = "정 답 !";
         }
         else
         {
-            page_[i].correct_stamp_0.sprite = correct_image[1];
-            page_[i].correct_text.text = "오 답 !";
+            page_[j].correct_stamp_0.sprite = correct_image[1];
+            page_[j].correct_text.text = "오 답 !";
         }
     }
 
     public void Next_Histroy()
     {
-        if (sovled_problem_index + 2 !> ProblemHistoryData.instance.solved_problem_list.Count - 2)
+        if (sovled_problem_index + 2 <= ProblemHistoryData.instance.solved_problem_list.Count - 1)
             sovled_problem_index += 2;
         Setting_Problem_History(sovled_problem_index);
     }
 
     public void Previous_Histroy()
     {
-        if(sovled_problem_index - 2 != 0)
+        if(sovled_problem_index - 2 >= 0)
             sovled_problem_index -= 2;
         Setting_Problem_History(sovled_problem_index);
     }

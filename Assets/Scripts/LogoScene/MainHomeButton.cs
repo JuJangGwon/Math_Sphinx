@@ -19,6 +19,10 @@ public class MainHomeButton : MonoBehaviour
     public GameObject menu;
     public GameObject credit;
 
+    [Header("화면 좌우 이동 슥슥")]
+    public Animation scene_anime;
+    public List<string> scene_anime_array = new List<string>();
+
     public void ButtonManager(int i)
     {
         switch(i)
@@ -28,7 +32,8 @@ public class MainHomeButton : MonoBehaviour
                 PlayerPrefs.SetInt("newgame", 1);
                 PlayerPrefs.SetFloat("max_handlight", 100f);
                 PlayerPrefs.SetFloat("now_handlgiht", 100f);
-                SceneManager.LoadScene("InGameScene");
+                //SceneManager.LoadScene("InGameScene");
+                LoadingScene.Load_Scene("InGameScene");
                 break;
             case 2:
                 problem_history.SetActive(true);
@@ -63,5 +68,18 @@ public class MainHomeButton : MonoBehaviour
     {
         menu.SetActive(true);
         credit.SetActive(false);
+    }
+
+    public void Go_Stage_Select(bool b)
+    {
+        AnimationArray();
+        if (b) { scene_anime.Play(scene_anime_array[0]); }
+        else { scene_anime.Play(scene_anime_array[1]); }
+    }
+
+    void AnimationArray()
+    {
+        foreach (AnimationState state in scene_anime)
+            scene_anime_array.Add(state.name);
     }
 }

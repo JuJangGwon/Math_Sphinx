@@ -13,6 +13,7 @@ public class AWS : MonoBehaviour
     public DynamoDBContext context;
     public AmazonDynamoDBClient DBclient;
     public CognitoAWSCredentials credentials;
+    public TEXDraw text;
 
     [Header("User_Info")]
     public User_Info current_user;
@@ -30,6 +31,7 @@ public class AWS : MonoBehaviour
 
     void Awake()
     {
+        ProblemText.Setting_Dictionary(); //따로 만들기 귀찮아서 여기다가 넣음
         Initialization();
     }
 

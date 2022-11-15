@@ -41,6 +41,7 @@ public class RugQuestion : MonoBehaviour
     int fade_in_hashcode = Animator.StringToHash("In");
     int fade_out_hashcode = Animator.StringToHash("Out");
     public Animation infomation_anime;
+    bool can_solve = false;
 
     void Awake()
     {
@@ -67,28 +68,34 @@ public class RugQuestion : MonoBehaviour
             texSelection[i].text = scWJAPI.Answer_Selection[i];
 
         tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
+
+        can_solve = true;
     }
 
     public void Click_Answer(int _nIndex)
     {
-        ProblemHistoryData.instance.Save_Problem(DateTime.Now.ToString("yyyy년 MM월 dd일"), tdr, texSelection, texSelection[_nIndex]);
-
-        if (Check_Answer(_nIndex))
-            Move_Camel();
-        else
-            Panelty();
-
-        if (question_info.current_question_count < question_info.question_count)
+        if (can_solve)
         {
-            scWJAPI.OnClick_Ansr(_nIndex);
-            Spawn_Rug();
-            StartCoroutine(Selection_Text_Setting());
+            ProblemHistoryData.instance.Save_Problem(DateTime.Now.ToString("yyyy년 MM월 dd일"), tdr, texSelection, texSelection[_nIndex]);
+
+            if (Check_Answer(_nIndex))
+                Move_Camel();
+            else
+                Panelty();
+
+            if (question_info.current_question_count < question_info.question_count)
+            {
+                scWJAPI.OnClick_Ansr(_nIndex);
+                Spawn_Rug();
+                StartCoroutine(Selection_Text_Setting());
+            }
+            else
+            {
+                Result();
+            }
+            question_info.current_question_count++;
+            can_solve = false;
         }
-        else
-        {
-            Result();
-        }
-        question_info.current_question_count++;
     }
 
     bool Check_Answer(int button_num)

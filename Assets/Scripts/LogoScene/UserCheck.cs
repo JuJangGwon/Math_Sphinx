@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -91,6 +89,7 @@ public class UserCheck : MonoBehaviour
     public void Log_In()
     {
         User_Info u = null;
+        print(login_id.text);
         aws.context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
         {
             u = null;
