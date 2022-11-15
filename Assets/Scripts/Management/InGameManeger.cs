@@ -83,7 +83,7 @@ public class InGameManeger : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt("Gold", 0);
-        seletedStage = Stage.stage1;
+        seletedStage = Stage.tutorial;
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
