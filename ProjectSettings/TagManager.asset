@@ -28,6 +28,7 @@ TagManager:
   - spear
   - endpoint
   - key2
+  - gold
   layers:
   - Default
   - TransparentFX

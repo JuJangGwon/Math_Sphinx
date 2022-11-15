@@ -18,7 +18,13 @@ public enum Now_text
     prog_game3,
     prog_game4,
     prog_game5,
-    final_wrongProbelm
+    final_wrongProbelm,
+    tutorial1,
+    tutorial2,
+    tutorial3,
+    tutorial4,
+    tutorial5,
+    tutorial6,
 }
 
 public class texttypingeffect : MonoBehaviour, IPointerDownHandler
@@ -51,6 +57,8 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     public static Now_text now_text = Now_text.none;
 
     float m_Speed = 0.04f;
+
+
 
     string[] start1stage_text= {"1 : 분명히 여기에 보물이 있다고 했는데? 어? 이상하다?" ,
                                    "4 : 뭐라? 감히 내게 반말이라니! 용서할 수 없다!",
@@ -108,6 +116,15 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     string[] prog_game_text5 = { "7 : 문제를 풀면 길에 대한 정보를 얻을 수 있어! \n 정답을 맞춰 알맞은 길을 찾아가자! 막이래~",
                                  "1 : 가 보자고!"
     };
+    string[] tutorial_text1     = {"1 : 이번 시간은 조작키, 게임 규칙에 대해 알려주는 시간을 가질거야" ,
+                                   "1 : 먼저 캐릭터는 왼쪽에있는 조이스틱을 이용하여 조작 할 수 있어!",
+                         };
+    string[] tutorial_text2 = {"1 : 저기 봐... 저 앞에 미리가 있어" ,
+                               "1 : 만약 너가 저 미라에게 붙잡히게 된다면... 보물을 찾을 수 없어",
+                               "1 : 우리 한번 미라를 피해 저 앞까지 걸어가보자!"
+                         };
+    Vector2[] tutorial_who = { new Vector2(6, 0), new Vector2(4, 0) };
+    Vector2[] tutorial2_who = { new Vector2(6, 0), new Vector2(4, 0), new Vector2(4, 0) };
 
     public CamelQuestion cq;
 
@@ -309,7 +326,40 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         }
     }
 
-
+    public void tutorial1(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.tutorial1;
+        if (i != 2)
+        {
+            StartCoroutine(Typing(1, tutorial_text1[i], m_Speed));
+            whostalking(tutorial_who[i]);
+        }
+        else if (i >= 2)
+        {
+            Debug.Log("B");
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+            Invoke("scheduler_texttyping", 8f);
+        }
+    }
+    public void tutorial2(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.tutorial2;
+        if (i != 3)
+        {
+            StartCoroutine(Typing(1, tutorial_text2[i], m_Speed));
+            whostalking(tutorial2_who[i]);
+        }
+        else if (i >= 3)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
     public void findkey(int i)
     {
         hideUI(true);
@@ -521,7 +571,18 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                 case Now_text.final_wrongProbelm:
                     final_wrongProbelm(++now_textline);
                     break;
+                case Now_text.tutorial1:
+                    tutorial1(++now_textline);
+                    break;
+                case Now_text.tutorial2:
+                    tutorial2(++now_textline);
+                    break;
             }
         }
+    }
+    public void scheduler_texttyping()
+    {
+        Debug.Log("a");
+        InGameManeger.ingamestate = InGameState.texttyping;
     }
 }

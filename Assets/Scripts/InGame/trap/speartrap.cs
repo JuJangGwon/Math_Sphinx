@@ -16,7 +16,7 @@ public class speartrap : MonoBehaviour
 
     void Update()
     {
-        if (InGameManeger.ingamestate != InGameState.problemclear)
+        if (InGameManeger.ingamestate != InGameState.problemclear || InGameManeger.ingamestate != InGameState.victory)
         {
             if (!operation)
             {

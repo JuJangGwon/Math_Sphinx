@@ -33,6 +33,12 @@ public class Character_move : MonoBehaviour
     public AudioSource audiosource;
 
 
+    private void Awake()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+
     public void Set_character_speed(bool _buttonOn)
     {
         if (_buttonOn)
