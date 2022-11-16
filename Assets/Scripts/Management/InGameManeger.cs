@@ -83,7 +83,15 @@ public class InGameManeger : MonoBehaviour
 
     private void Start()
     {
-        seletedStage = Stage.tutorial;
+        int a = PlayerPrefs.GetInt("Mode");
+        if (a == 1)
+        {
+            seletedStage = Stage.tutorial;
+        }
+        if (a == 2)
+        {
+            seletedStage = Stage.stage1;
+        }
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
@@ -135,15 +143,34 @@ public class InGameManeger : MonoBehaviour
             }
             else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial5)
             {
+                tutoral_cs.ChangeKey();
                 texttypingeffect_cs.tutorial5(0);
             }
             else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial6)
             {
                 texttypingeffect_cs.tutorial6(0);
             }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial7)
+            {
+                texttypingeffect_cs.tutorial7(0);
+            }
         }
         if (ingamestate == InGameState.playerdeath)
         {
+            Character_move._characterstate = CharacterState.die;
+            _time += Time.deltaTime;
+            if (_time > 2f)
+            {
+                ingamestate = InGameState.playerdetah2;
+                _time = 0;
+            }
+        }
+        if (ingamestate == InGameState.playerdetah2)
+        {
+            Character_move._characterstate = CharacterState.idle;
+            character_move_cs.liveCharacter();
+
+
             if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial1 || tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial2)
             {
                 character.transform.localPosition = new Vector3(6, 11, 1);
@@ -157,8 +184,6 @@ public class InGameManeger : MonoBehaviour
                 gameState = GameState.playingInGame;
             }
         }
-
-
     }
 
     void stage1()

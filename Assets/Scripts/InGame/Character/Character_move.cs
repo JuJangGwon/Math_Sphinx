@@ -58,9 +58,13 @@ public class Character_move : MonoBehaviour
 
         }
     }
+    public void liveCharacter()
+    {
+        _animator.SetBool("_isDie", false);
+
+    }
 
 
-   
 
     void Update()
     {

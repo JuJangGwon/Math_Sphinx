@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Tutorial_stage
 {
@@ -27,6 +28,9 @@ public class tutorial : MonoBehaviour
    // public GameObject Character;
     public GameObject Character_prefebs;
 
+    public Image key;
+    public Sprite new_key;
+
     public void TutorialSettings()
     {
 
@@ -45,5 +49,9 @@ public class tutorial : MonoBehaviour
         inGameManeger_cs.JoystickScripts_cs.cm = inGameManeger_cs.character_move_cs;
         inGameManeger_cs.texttypingeffect_cs.character_move_cs = inGameManeger_cs.character_move_cs;
 
+    }
+    public void ChangeKey()
+    {
+        key.sprite = new_key;
     }
 }

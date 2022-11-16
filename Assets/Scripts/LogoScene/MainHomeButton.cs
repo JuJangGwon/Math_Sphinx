@@ -28,6 +28,7 @@ public class MainHomeButton : MonoBehaviour
         switch(i)
         {
             case 1:     // 탐험하기버튼
+                PlayerPrefs.SetInt("Mode",2);
                 PlayerPrefs.SetInt("pos", 1);
                 PlayerPrefs.SetInt("newgame", 1);
                 PlayerPrefs.SetFloat("max_handlight", 100f);
@@ -38,10 +39,25 @@ public class MainHomeButton : MonoBehaviour
                 PlayerPrefs.SetFloat("now_handlgiht", 115f);
                 PlayerPrefs.SetInt("is_key1", System.Convert.ToInt16(false));
                 PlayerPrefs.SetInt("is_key2", System.Convert.ToInt16(false));
+                PlayerPrefs.SetInt("is_key2", System.Convert.ToInt16(false));
                 SceneManager.LoadScene("InGameScene");
                 break;
+
             case 2:
                 problem_history.SetActive(true);
+                break;
+            case 3:     // 튜토리얼
+                PlayerPrefs.SetInt("Mode", 3);
+                PlayerPrefs.SetInt("pos", 1);
+                PlayerPrefs.SetInt("newgame", 1);
+                PlayerPrefs.SetFloat("max_handlight", 100f);
+                PlayerPrefs.SetFloat("now_handlgiht", 100f);
+                //SceneManager.LoadScene("InGameScene");
+                LoadingScene.Load_Scene("TutorialScene");
+                PlayerPrefs.SetFloat("max_handlight", 115f);
+                PlayerPrefs.SetFloat("now_handlgiht", 115f);
+  
+                SceneManager.LoadScene("TutorialScene");
                 break;
         }
     }
