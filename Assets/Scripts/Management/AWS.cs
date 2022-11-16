@@ -18,6 +18,8 @@ public class AWS : MonoBehaviour
     [Header("User_Info")]
     public User_Info current_user;
 
+    public ProblemText pt;
+
     static AWS aws;
     public static AWS instance
     {
@@ -31,7 +33,6 @@ public class AWS : MonoBehaviour
 
     void Awake()
     {
-        ProblemText.Setting_Dictionary(); //따로 만들기 귀찮아서 여기다가 넣음
         Initialization();
     }
 

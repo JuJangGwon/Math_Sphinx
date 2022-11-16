@@ -82,6 +82,12 @@ public class MainHomeButton : MonoBehaviour
         else { scene_anime.Play(scene_anime_array[1]); }
     }
 
+    public void Go_Shop_Button()
+    {
+        AnimationArray();
+        scene_anime.Play(scene_anime_array[2]);
+    }
+
     void AnimationArray()
     {
         foreach (AnimationState state in scene_anime)
