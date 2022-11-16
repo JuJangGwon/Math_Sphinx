@@ -76,7 +76,7 @@ public class HandLightSystem : MonoBehaviour
     }
     void Update()
     {
-        if (InGameManeger.gameState == GameState.playingInGame)
+        if (InGameManeger.gameState == GameState.playingInGame && InGameManeger.ingamestate != InGameState.texttyping)
         {
             handlight_now_left_time -= Time.deltaTime;
             handlight_left_battery_percentage = handlight_now_left_time / Max_handlight_time;

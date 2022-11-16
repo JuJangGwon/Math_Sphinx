@@ -132,8 +132,16 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     string[] tutorial_text4 = {"1 : 잘했어!" ,
                                "1 : 이제 저기 앞에있는 열쇠를 주워보자!"
                          };
-    Vector2[] tutorial4_who = { new Vector2(5, 0), new Vector2(4, 0) };
-
+    Vector2[] tutorial4_who = { new Vector2(4, 0), new Vector2(4, 0) };
+    string[] tutorial_text5 = {"1 : 열쇠를 발견했어!" ,
+                               "1 : 이 열쇠는 보물상자를 여는데 꼭 필요하고, 운이 좋다면 피라미드를 탐험하다가 마주칠 수 있을거야!",
+                         };
+    Vector2[] tutorial5_who = { new Vector2(3, 4), new Vector2(4, 1) };
+    string[] tutorial_text6 = {"1 : 엇.. 이제 손전등 배터리가 얼마남지 않았어!" ,
+                               "1 : 손전등 배터리가 다 떨어진다면 우린 보물을 찾을 수 없어.. ",
+                               "1 : 화면 오른쪽 위에서 손전등 배터리를 확인 할 수 있으니, 이 부분을 참고해서 빠르게 빠르게 보물 상자를 찾아보자구!"
+                         };
+    Vector2[] tutorial6_who = { new Vector2(3, 4), new Vector2(4, 1) };
     public CamelQuestion cq;
 
     void whostalking(Vector2 v)
@@ -349,7 +357,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
             Debug.Log("B");
             hideUI(false);
             InGameManeger.ingamestate = InGameState.playgame;
-            Invoke("scheduler_texttyping", 3f);
+            Invoke("scheduler_texttyping", 2f);
         }
     }
     public void tutorial2(int i)
@@ -390,7 +398,7 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
     {
         hideUI(true);
         now_textline = i;
-        now_text = Now_text.tutorial3;
+        now_text = Now_text.tutorial4;
         if (i != 2)
         {
             StartCoroutine(Typing(1, tutorial_text4[i], m_Speed));
@@ -400,6 +408,38 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         {
             hideUI(false);
             findanswerway_cs.ShowProblempopup(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+    public void tutorial5(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.tutorial5;
+        if (i != 2)
+        {
+            StartCoroutine(Typing(1, tutorial_text5[i], m_Speed));
+            whostalking(tutorial5_who[i]);
+        }
+        else if (i >= 2)
+        {
+            hideUI(false);
+            InGameManeger.ingamestate = InGameState.playgame;
+        }
+    }
+    public void tutorial6(int i)
+    {
+        hideUI(true);
+        now_textline = i;
+        now_text = Now_text.tutorial6;
+        if (i != 2)
+        {
+            StartCoroutine(Typing(1, tutorial_text6[i], m_Speed));
+            whostalking(tutorial6_who[i]);
+        }
+        else if (i >= 2)
+        {
+            hideUI(false);
             InGameManeger.ingamestate = InGameState.playgame;
         }
     }
@@ -625,6 +665,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                     break;
                 case Now_text.tutorial4:
                     tutorial4(++now_textline);
+                    break;
+                case Now_text.tutorial5:
+                    tutorial5(++now_textline);
+                    break;
+                case Now_text.tutorial6:
+                    tutorial6(++now_textline);
                     break;
             }
         }

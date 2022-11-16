@@ -31,7 +31,7 @@ public class tutorial : MonoBehaviour
     {
 
         inGameManeger_cs.character = Instantiate(Character_prefebs, ingame_parent.transform);
-        inGameManeger_cs.character.transform.localPosition = new Vector3(0, 15, 0);
+        inGameManeger_cs.character.transform.localPosition = new Vector3(6, 11, 1);
 
         inGameManeger_cs.character.GetComponent<Character_Collider>().handlightsystem_cs = inGameManeger_cs.handlightsystem_cs;
         inGameManeger_cs.character.GetComponent<Character_Collider>().findAnswerWay_cs = inGameManeger_cs.findanswerway_cs;

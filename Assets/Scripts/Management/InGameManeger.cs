@@ -137,7 +137,28 @@ public class InGameManeger : MonoBehaviour
             {
                 texttypingeffect_cs.tutorial5(0);
             }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial6)
+            {
+                texttypingeffect_cs.tutorial6(0);
+            }
         }
+        if (ingamestate == InGameState.playerdeath)
+        {
+            if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial1 || tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial2)
+            {
+                character.transform.localPosition = new Vector3(6, 11, 1);
+                ingamestate = InGameState.playgame;
+                gameState = GameState.playingInGame;
+            }
+            else
+            {
+                character.transform.localPosition = new Vector3(19.6f, 41, 1);
+                ingamestate = InGameState.playgame;
+                gameState = GameState.playingInGame;
+            }
+        }
+
+
     }
 
     void stage1()
