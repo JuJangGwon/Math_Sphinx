@@ -49,6 +49,7 @@ public enum InGameState
     finalareaing,
     problemclear,
     victory,
+    victory2,
     playerdeath,
     playerdetah2,
 }
@@ -60,7 +61,7 @@ public class InGameManeger : MonoBehaviour
     public static GameState gameState = GameState.none;
     public static InGameState ingamestate = InGameState.createMap;
     public static DeathReason deathreason = DeathReason.none;
-    public static Stage seletedStage = Stage.stage1;
+    public static Stage seletedStage = Stage.tutorial;
 
     public GameObject proces_text;
     public GameObject end_gb;
@@ -82,16 +83,15 @@ public class InGameManeger : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Gold", 0);
-        seletedStage = Stage.stage1;
+        seletedStage = Stage.tutorial;
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
     }
-  
+
     void Update()
     {
-        switch(seletedStage)
+        switch (seletedStage)
         {
             case Stage.tutorial:
                 tutorial();
@@ -107,12 +107,36 @@ public class InGameManeger : MonoBehaviour
     {
         if (ingamestate == InGameState.createMap)
         {
-            character_animator_cs.Start();
             mapcreater_cs.CreateMap();
-            handlightsystem_cs.startFadein(false);
-            gameState = GameState.playingInGame;
             tutoral_cs.TutorialSettings();
-            ingamestate++;
+            handlightsystem_cs.startFadein(false);
+            ingamestate = InGameState.texttyping2;
+        }
+        if (ingamestate == InGameState.texttyping)
+        {
+            ingamestate = InGameState.texttyping2;
+            tutoral_cs.now_tutorial_stage++;
+            Debug.Log(tutoral_cs.now_tutorial_stage);
+            if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial1)
+            {
+                texttypingeffect_cs.tutorial1(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial2)
+            {
+                texttypingeffect_cs.tutorial2(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial3)
+            {
+                texttypingeffect_cs.tutorial3(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial4)
+            {
+                texttypingeffect_cs.tutorial4(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial5)
+            {
+                texttypingeffect_cs.tutorial5(0);
+            }
         }
     }
 
@@ -189,6 +213,10 @@ public class InGameManeger : MonoBehaviour
             ingamestate++;
 
         }
-
+        if (ingamestate == InGameState.victory)
+        {
+            stage1_cs.open_treasurebox();
+            ingamestate++;
+        }
     }
 }

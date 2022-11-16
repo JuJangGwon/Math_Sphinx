@@ -36,6 +36,9 @@ public class stage1 : MonoBehaviour
     public FindAnswerWay findAnswerWay_cs;
     public InGameManeger inGameManeger_cs;
 
+    public GameObject treasurebox;
+    public Sprite treasurebox_sprite;
+
     // -65, 66 (180  | -59, 52,(-30 | -56.9, 61 (180
     // -95.26 74 .88  2.1   | -62 86 2.1   |   -59.3, 74.2 , 2.1               | -38.8  , 33.6 2 
 
@@ -100,7 +103,12 @@ public class stage1 : MonoBehaviour
         inGameManeger_cs.camera_move_cs.character = inGameManeger_cs.character;
         inGameManeger_cs.JoystickScripts_cs.cm = inGameManeger_cs.character_move_cs;
         inGameManeger_cs.Loadpirordata_cs.character = inGameManeger_cs.character;
+        inGameManeger_cs.texttypingeffect_cs.character_move_cs = inGameManeger_cs.character_move_cs;
 
+    }
+    public void open_treasurebox()
+    {
+        treasurebox.GetComponent<SpriteRenderer>().sprite = treasurebox_sprite;
     }
     public void final_game_settgings()
     {
@@ -146,5 +154,6 @@ public class stage1 : MonoBehaviour
             }
         }
     }
+
   
 }

@@ -86,6 +86,11 @@ public class Character_Collider : MonoBehaviour
             InGameManeger.gameState = GameState.death;
             InGameManeger.ingamestate = InGameState.playerdeath;
         }
+        if (other.gameObject.tag == "potal")
+        {
+            InGameManeger.ingamestate = InGameState.texttyping;
+            Destroy(other.gameObject);
+        }
     }
 
 
