@@ -99,7 +99,7 @@ public class CamelQuestion : MonoBehaviour
             texSelection[i].text = scWJAPI.Answer_Selection[i];
 
         //tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
-        tdr.text = ProblemText.Retext_Problems(scWJAPI.Problem_Explain);
+        tdr.text = AWS.instance.pt.Retext_Problems(scWJAPI.Problem_Explain);
 
         can_solve = true;
     }
