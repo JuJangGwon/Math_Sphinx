@@ -28,6 +28,8 @@ public class tutorial : MonoBehaviour
    // public GameObject Character;
     public GameObject Character_prefebs;
 
+    public GameObject treasure_box;
+
     public Image key;
     public Sprite new_key;
 
@@ -53,5 +55,9 @@ public class tutorial : MonoBehaviour
     public void ChangeKey()
     {
         key.sprite = new_key;
+    }
+    public void ChangeBox()
+    {
+        treasure_box.SetActive(true);
     }
 }

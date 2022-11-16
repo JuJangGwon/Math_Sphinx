@@ -189,34 +189,13 @@ public class MapCreater : MonoBehaviour
                 GameObject gb;
                 if (num == -1)
                     continue;
-                if (num == 3)
-                {
-                    gb = Instantiate(prefebs[1]);
-                    GameObject ngb = Instantiate(answerboard_prefeb);
-                    ngb.transform.SetParent(MapParent.transform);
-                    ngb.transform.localPosition = new Vector3((i * 3.4f) + (j * -3.7f), (i * 3f) + (j * 3.1f), 0);
-                    ngb.transform.tag = "return";
-
-                }
-                else if (num == 5)
-                {
-                    gb = Instantiate(prefebs[1]);
-
-                }
-                else if (num == 6)
-                {
-                    gb = Instantiate(prefebs[1]);
-                    GameObject ngb= Instantiate(answerboard_prefeb);
-                    ngb.transform.SetParent(MapParent.transform);
-                    ngb.transform.localPosition = new Vector3((i * 3.4f) + (j * -3.7f), (i * 3f) + (j * 3.1f), 0);
-                    ngb.transform.tag = "prog_next_stage";
-                }
-                else
-                {
-                    gb = Instantiate(prefebs[num+1]);
-                }
+                gb = Instantiate(prefebs[num+1]);
                 gb.transform.SetParent(MapParent.transform);
-                gb.transform.localPosition = new Vector3((i * tileX/2) + (j * -tileX/2), (i * tileY/2) + (j * tileY/2),0 );
+                if (num == 0)
+                    gb.transform.localPosition = new Vector3((i * tileX/2) + (j * -tileX/2), (i * tileY/2) + (j * tileY/2),1 );
+                else
+                    gb.transform.localPosition = new Vector3((i * tileX / 2) + (j * -tileX / 2), (i * tileY / 2) + (j * tileY / 2), 0);
+
                 //first(gb, i, j);
             }
         }

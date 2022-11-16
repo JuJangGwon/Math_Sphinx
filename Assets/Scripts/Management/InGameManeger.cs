@@ -84,6 +84,7 @@ public class InGameManeger : MonoBehaviour
     private void Start()
     {
         int a = PlayerPrefs.GetInt("Mode");
+        a = 1;
         if (a == 1)
         {
             seletedStage = Stage.tutorial;
@@ -152,6 +153,7 @@ public class InGameManeger : MonoBehaviour
             }
             else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial7)
             {
+                tutoral_cs.ChangeBox();
                 texttypingeffect_cs.tutorial7(0);
             }
         }
