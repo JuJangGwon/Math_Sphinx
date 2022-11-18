@@ -66,9 +66,11 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
                                    "1 : 아아?? 근데 여기 정말 보물이 많아?",
                                    "4 : 물론이다.피라미드 안에 미로가 있고, 그 끝에 값비싼 보물들이 많다.\n 여기까지 탐험을 온 네 용기를 높게 사 기회를 주마.",
                                    "1 : 좋다. 이것으로 널 테스트하지.",
-                                   "1 : 이곳으로 간다면 피라미드로 가는 길이 있다.",
-                                   "1 : 하지만 여러 갈래의 길이 있고, 어떤 길을 선택하느냐에 따라 \n 네가 마주하는 피라미드가 달라질 것이다. 음하하하."};
-    Vector2[] start1stage_who = { new Vector2(2, 4), new Vector2(5, 2), new Vector2(1, 5), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1) };
+                                   "1 : 여기 이 피라미드에서는 총 2개의 열쇠가 필요하다 ",
+                                   "1 : 그중에 첫 열쇠의 위치는 내가 도움을 주지...",
+                                   "1 : 내가 문제를 하나 내줄테니, 너가 이 문제의 답을 찾게 된다면 너는 쉽게 첫 열쇠를 찾을 수 있을거야...."
+    };
+    Vector2[] start1stage_who = { new Vector2(2, 4), new Vector2(5, 2), new Vector2(1, 5), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1), new Vector2(4, 1) };
     string[] findtreasure_text = { "1 : 엇 보물 상자가 나왔어",
                                    "1 : 하지만... 함정때문에 다가갈 수 없어..!",
                                    "4 : 후후 여기서부터는 내가 도움을 주지",
@@ -258,12 +260,12 @@ public class texttypingeffect : MonoBehaviour, IPointerDownHandler
         hideUI(true);
         now_textline = i;
         now_text = Now_text.start1stage;
-        if (i != 6)
+        if (i != 7)
         {
             StartCoroutine(Typing(1, start1stage_text[i], m_Speed));
             whostalking(start1stage_who[i]);
         }
-        else if (i >= 6)
+        else if (i >= 7)
         {
             hideUI(false);
             findanswerway_cs.ShowProblempopup(true);

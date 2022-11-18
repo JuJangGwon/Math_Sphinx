@@ -37,13 +37,13 @@ public class Loadpirordata : MonoBehaviour
         switch(PlayerPrefs.GetInt("pos"))
         {
             case 1:
-                character.transform.localPosition = new Vector3(-72, 49, 0);
+                character.transform.localPosition = new Vector3(-72, 49, 1);
                 break;
             case 2:
-                character.transform.localPosition = new Vector3(-14.4f, 102.8f, 0);
+                character.transform.localPosition = new Vector3(-14.4f, 102.8f, 1);
                 break;
             case 3:
-                character.transform.localPosition = new Vector3(-11.2f, 14.6f, 0);
+                character.transform.localPosition = new Vector3(-11.2f, 14.6f, 1);
                 break;
         }
     }

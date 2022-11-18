@@ -84,7 +84,7 @@ public class InGameManeger : MonoBehaviour
     private void Start()
     {
         int a = PlayerPrefs.GetInt("Mode");
-        a = 1;
+        a = 2;
         if (a == 1)
         {
             seletedStage = Stage.tutorial;
