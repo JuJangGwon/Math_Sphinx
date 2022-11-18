@@ -18,6 +18,13 @@ public class stage1 : MonoBehaviour
     public Sprite iskey;
 
     //
+    public GameObject Endpopup;
+    public GameObject Endpopup_retryBTN;
+    public GameObject Endpopup_yesBTN;
+    public Image endpopup_retryimg;
+    public Image endpopup_yesimg;
+
+
 
     public GameObject character_prefebs;
     public GameObject character_parent;
@@ -83,6 +90,10 @@ public class stage1 : MonoBehaviour
             }   
         }
     }
+    public void ShowClearpopup()
+    {
+        StartCoroutine(ClearPopup());
+    }
 
     public void stage1_createproblem()
     {
@@ -91,6 +102,7 @@ public class stage1 : MonoBehaviour
     }
     public void createCharacter()
     {
+        Endpopup.SetActive(false);
         inGameManeger_cs.character = Instantiate(character_prefebs, character_parent.transform);
         inGameManeger_cs.character.GetComponent<Character_Collider>().handlightsystem_cs = inGameManeger_cs.handlightsystem_cs;
         inGameManeger_cs.character.GetComponent<Character_Collider>().findAnswerWay_cs = inGameManeger_cs.findanswerway_cs;
@@ -121,6 +133,7 @@ public class stage1 : MonoBehaviour
     public void first_game_setttings()
     {
         key_prefebs = Instantiate(key_prefebs);
+        key_prefebs.transform.tag = "key";
         for (int i = 0; i < 4; i++)
         {
              first_game_text[i].text = findAnswerWay_cs.getselection_text(i);
@@ -155,5 +168,45 @@ public class stage1 : MonoBehaviour
         }
     }
 
-  
+    IEnumerator ClearPopup()
+    {
+        yield return new WaitForSeconds(1f);
+
+        Endpopup.SetActive(true);
+        Endpopup.transform.localPosition = new Vector3(0, 2000, 0);
+        for (int i =20; i < 100; i++)
+        {
+            if (Endpopup.transform.localPosition.y < 20)
+            {
+                Endpopup.transform.localPosition = new Vector3(0, 0, 0);
+                break;
+            }
+            Endpopup.transform.localPosition = new Vector3(0, 2000- Mathf.Pow(1.12f,i) *8, 0);
+            yield return new WaitForSeconds(0.02f);
+        }
+        yield return new WaitForSeconds(1f);
+
+
+        ///
+        Endpopup_yesBTN.SetActive(true);
+
+        Color color2 = endpopup_yesimg.color;
+        for (float i = 0.2f; i <= 1; i += 0.1f)
+        {
+            color2.a = i;
+            endpopup_yesimg.color = color2;
+            yield return new WaitForSeconds(0.06f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        Endpopup_retryBTN.SetActive(true);
+
+        Color color1 = endpopup_retryimg.color;
+        for (float i = 0.2f; i <= 1; i+=0.1f)
+        {
+            color1.a = i;
+            endpopup_retryimg.color = color1;
+            yield return new WaitForSeconds(0.06f);
+        }
+
+    }
 }

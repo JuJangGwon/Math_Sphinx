@@ -33,6 +33,7 @@ public class Loadpirordata : MonoBehaviour
         handLightsystem_cs.handlight_now_left_time = PlayerPrefs.GetFloat("now_handlgiht");
         stage1_cs.is_key1 = System.Convert.ToBoolean(PlayerPrefs.GetInt("is_key1"));
         stage1_cs.is_key2 = System.Convert.ToBoolean(PlayerPrefs.GetInt("is_key2"));
+        stage1_cs.SetKey_UI();
         newgame = PlayerPrefs.GetInt("newgame");
         switch(PlayerPrefs.GetInt("pos"))
         {

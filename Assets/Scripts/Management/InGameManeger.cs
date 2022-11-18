@@ -100,6 +100,8 @@ public class InGameManeger : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(ingamestate);
+
         switch (seletedStage)
         {
             case Stage.tutorial:
@@ -199,7 +201,7 @@ public class InGameManeger : MonoBehaviour
             gameState = GameState.playingInGame;
             character_animator_cs.Start();
             stage1_cs.stage1_createproblem();
-
+           
             ingamestate++;
         }
         if (ingamestate == InGameState.darkfadeout)
@@ -236,7 +238,7 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.treasurefind)
         {
-            if (stage1_cs.is_key1 == true || stage1_cs.is_key2 == true)
+            if (stage1_cs.is_key1 == true && stage1_cs.is_key2 == true)
             {
                 texttypingeffect_cs.findtreasure(0);
                 ingamestate = InGameState.texttyping2;
@@ -263,8 +265,10 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.victory)
         {
+            stage1_cs.ShowClearpopup();
             stage1_cs.open_treasurebox();
             ingamestate++;
         }
     }
+
 }
