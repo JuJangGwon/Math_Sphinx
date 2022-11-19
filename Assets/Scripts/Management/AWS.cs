@@ -36,6 +36,11 @@ public class AWS : MonoBehaviour
         Initialization();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B)) { PlayerPrefs.DeleteAll(); }
+    }
+
     void Initialization()
     {
         if (aws == null)
@@ -90,6 +95,7 @@ public class Info_Udate
             {
                 money_text.text = value.ToString();
                 AWS.instance.current_user.money = value;
+                PlayerPrefs.SetInt("Money", AWS.instance.current_user.money);
             }
         }
     }
@@ -103,6 +109,7 @@ public class Info_Udate
             {
                 score_text.text = value.ToString();
                 AWS.instance.current_user.score = value;
+                PlayerPrefs.SetInt("Score", AWS.instance.current_user.score);
             }
         }
     }

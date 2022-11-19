@@ -137,7 +137,7 @@ public class CamelQuestion : MonoBehaviour
 
     bool Check_Answer(int button_num)
     {
-        if (texSelection[button_num].text == scWJAPI.Problem_Answer)
+        if (scWJAPI.Answer_Selection[button_num] == scWJAPI.Problem_Answer)
         {
             ProblemHistoryData.instance.Check_Correct();
             return true;

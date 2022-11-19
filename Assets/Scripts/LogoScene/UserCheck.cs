@@ -61,8 +61,6 @@ public class UserCheck : MonoBehaviour
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
-
         if (PlayerPrefs.GetString(user_id) != "")
         {
             login_id.text = PlayerPrefs.GetString(user_id);
@@ -112,6 +110,7 @@ public class UserCheck : MonoBehaviour
                         aws.Input_User(u);
                         Save_User_Info(u);
                         Close_Popup(login_popup);
+
                         SceneManager.LoadScene("MainHomeScene");
                     }
                     else { Open_Popup(3); }
@@ -124,6 +123,9 @@ public class UserCheck : MonoBehaviour
     {
         PlayerPrefs.SetString(user_id, u.id);
         PlayerPrefs.SetString(user_pw, u.pw);
+        AWS.instance.current_user.money = PlayerPrefs.GetInt("Money");
+        AWS.instance.current_user.score = PlayerPrefs.GetInt("Score");
+
     }
 
     public void Sign_Up(string ID, string PW, string Nickname)
@@ -134,7 +136,7 @@ public class UserCheck : MonoBehaviour
             pw = PW,
             nickname = Nickname,
             money = 6000,
-            score = 0
+            score = 1000
         };
 
         aws.context.SaveAsync(u, (result) =>
