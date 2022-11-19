@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Tutorial_stage
 {
@@ -27,11 +28,16 @@ public class tutorial : MonoBehaviour
    // public GameObject Character;
     public GameObject Character_prefebs;
 
+    public GameObject treasure_box;
+
+    public Image key;
+    public Sprite new_key;
+
     public void TutorialSettings()
     {
 
         inGameManeger_cs.character = Instantiate(Character_prefebs, ingame_parent.transform);
-        inGameManeger_cs.character.transform.localPosition = new Vector3(0, 15, 0);
+        inGameManeger_cs.character.transform.localPosition = new Vector3(6, 11, 1);
 
         inGameManeger_cs.character.GetComponent<Character_Collider>().handlightsystem_cs = inGameManeger_cs.handlightsystem_cs;
         inGameManeger_cs.character.GetComponent<Character_Collider>().findAnswerWay_cs = inGameManeger_cs.findanswerway_cs;
@@ -45,5 +51,13 @@ public class tutorial : MonoBehaviour
         inGameManeger_cs.JoystickScripts_cs.cm = inGameManeger_cs.character_move_cs;
         inGameManeger_cs.texttypingeffect_cs.character_move_cs = inGameManeger_cs.character_move_cs;
 
+    }
+    public void ChangeKey()
+    {
+        key.sprite = new_key;
+    }
+    public void ChangeBox()
+    {
+        treasure_box.SetActive(true);
     }
 }

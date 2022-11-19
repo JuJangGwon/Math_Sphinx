@@ -40,6 +40,7 @@ public class Character_Collider : MonoBehaviour
         {
             InGameManeger.ingamestate = InGameState.findkey;
             findAnswerWay_cs.ShowProblempopup(false);
+            PlayerPrefs.SetInt("is_key1", System.Convert.ToInt16(true));
             stage1_cs.is_key1 = true;
             Destroy(stage1_cs.stargame_gb);
             Destroy(other.gameObject);
@@ -48,6 +49,7 @@ public class Character_Collider : MonoBehaviour
         {
             InGameManeger.ingamestate = InGameState.findkey;
             stage1_cs.is_key2 = true;
+            PlayerPrefs.SetInt("is_key2", System.Convert.ToInt16(true));
             Destroy(stage1_cs.stargame_gb);
             Destroy(other.gameObject);
         }

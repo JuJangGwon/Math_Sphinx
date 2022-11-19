@@ -83,7 +83,20 @@ public class InGameManeger : MonoBehaviour
 
     private void Start()
     {
-        seletedStage = Stage.stage1;
+        int a = PlayerPrefs.GetInt("Mode");
+        a = 3;
+        if (a == 1)
+        {
+            seletedStage = Stage.tutorial;
+        }
+        if (a == 2)
+        {
+            seletedStage = Stage.stage1;
+        }
+        if (a == 3)
+        {
+            seletedStage = Stage.stage2;
+        }
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
@@ -99,11 +112,34 @@ public class InGameManeger : MonoBehaviour
             case Stage.stage1:
                 stage1();
                 break;
+            case Stage.stage2:
+                stage2();
+                break;
+        }
+    }
+    void stage2()
+    {
+        if (ingamestate == InGameState.createMap)
+        {
+            mapcreater_cs.CreateMap();
+            stage1_cs.createCharacter();
+            Loadpirordata_cs.getPirorData();
+            handlightsystem_cs.startFadein(false);
+            gameState = GameState.playingInGame;
+            character_animator_cs.Start();
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.darkfadeout)
+        {
+            // default
+        }
+        if (ingamestate == InGameState.texttyping)
+        {
+      
         }
     }
 
-
-    void tutorial()
+        void tutorial()
     {
         if (ingamestate == InGameState.createMap)
         {
@@ -135,7 +171,46 @@ public class InGameManeger : MonoBehaviour
             }
             else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial5)
             {
-                //texttypingeffect_cs.tutorial5(0);
+                tutoral_cs.ChangeKey();
+                texttypingeffect_cs.tutorial5(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial6)
+            {
+                texttypingeffect_cs.tutorial6(0);
+            }
+            else if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial7)
+            {
+                tutoral_cs.ChangeBox();
+                texttypingeffect_cs.tutorial7(0);
+            }
+        }
+        if (ingamestate == InGameState.playerdeath)
+        {
+            Character_move._characterstate = CharacterState.die;
+            _time += Time.deltaTime;
+            if (_time > 2f)
+            {
+                ingamestate = InGameState.playerdetah2;
+                _time = 0;
+            }
+        }
+        if (ingamestate == InGameState.playerdetah2)
+        {
+            Character_move._characterstate = CharacterState.idle;
+            character_move_cs.liveCharacter();
+
+
+            if (tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial1 || tutoral_cs.now_tutorial_stage == Tutorial_stage.tutorial2)
+            {
+                character.transform.localPosition = new Vector3(6, 11, 1);
+                ingamestate = InGameState.playgame;
+                gameState = GameState.playingInGame;
+            }
+            else
+            {
+                character.transform.localPosition = new Vector3(19.6f, 41, 1);
+                ingamestate = InGameState.playgame;
+                gameState = GameState.playingInGame;
             }
         }
     }
@@ -151,7 +226,7 @@ public class InGameManeger : MonoBehaviour
             gameState = GameState.playingInGame;
             character_animator_cs.Start();
             stage1_cs.stage1_createproblem();
-
+           
             ingamestate++;
         }
         if (ingamestate == InGameState.darkfadeout)
@@ -188,7 +263,7 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.treasurefind)
         {
-            if (stage1_cs.is_key1 == true || stage1_cs.is_key2 == true)
+            if (stage1_cs.is_key1 == true && stage1_cs.is_key2 == true)
             {
                 texttypingeffect_cs.findtreasure(0);
                 ingamestate = InGameState.texttyping2;
@@ -215,8 +290,10 @@ public class InGameManeger : MonoBehaviour
         }
         if (ingamestate == InGameState.victory)
         {
+            stage1_cs.ShowClearpopup();
             stage1_cs.open_treasurebox();
             ingamestate++;
         }
     }
+
 }

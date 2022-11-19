@@ -38,25 +38,33 @@ public class HandLightSystem : MonoBehaviour
     {
         InGameManeger.gameState = GameState.playingInGame;
         battery_lv = Battery_lv.Full;
-        light_img.color = new Color(255, 255, 255, 255);
+       // light_img.color = new Color(255, 255, 255, 255);
     }
 
     void battery_management()
     {
         if (handlight_left_battery_percentage <= 0f)            // 배터리나갔을때
         {
-            Character_move._characterstate = CharacterState.die;
-            battery_lv = Battery_lv.none;
-            StartCoroutine(CircleFadeIn(3));
-            InGameManeger.deathreason = DeathReason.timemout;
-            InGameManeger.gameState = GameState.death;
-            InGameManeger.ingamestate = InGameState.playerdeath;
+            if (InGameManeger.seletedStage == Stage.tutorial)
+            {
+                InGameManeger.gameState = GameState.death;
+                InGameManeger.ingamestate = InGameState.playerdeath;
+                handlight_now_left_time = 25f;
+            }
+            else
+            {
+                Character_move._characterstate = CharacterState.die;
+                battery_lv = Battery_lv.none;
+                InGameManeger.deathreason = DeathReason.timemout;
+                InGameManeger.gameState = GameState.death;
+                InGameManeger.ingamestate = InGameState.playerdeath;
+            }
         }
         else if (handlight_left_battery_percentage <= 0.1f)
         {
             if (battery_lv != Battery_lv.less)
             {
-                StartCoroutine(LightBlink_cor(3, 0));
+//                StartCoroutine(LightBlink_cor(3, 0));
                 StartCoroutine(CircleFadeIn(2));
                 battery_lv = Battery_lv.less;
             }
@@ -65,7 +73,7 @@ public class HandLightSystem : MonoBehaviour
         {
             if (battery_lv != Battery_lv.half)
             {
-                StartCoroutine(LightBlink_cor(3, 0.4f));
+     //           StartCoroutine(LightBlink_cor(3, 0.4f));
                 StartCoroutine(CircleFadeIn(1));
                 battery_lv = Battery_lv.half;
             }
@@ -76,7 +84,7 @@ public class HandLightSystem : MonoBehaviour
     }
     void Update()
     {
-        if (InGameManeger.gameState == GameState.playingInGame)
+        if (InGameManeger.gameState == GameState.playingInGame && (InGameManeger.ingamestate == InGameState.playgame ||InGameManeger.ingamestate == InGameState.finalareaing || InGameManeger.ingamestate == InGameState.problemclear))
         {
             handlight_now_left_time -= Time.deltaTime;
             handlight_left_battery_percentage = handlight_now_left_time / Max_handlight_time;
@@ -101,7 +109,7 @@ public class HandLightSystem : MonoBehaviour
    
 
     // 코루틴
-
+    /*
 
     IEnumerator LightBlink_cor(int time, float opacity)   // 손전등 빛 깜빡 깜박 (횟수 , 사용 후 img 투명도)
     {
@@ -116,7 +124,7 @@ public class HandLightSystem : MonoBehaviour
         light_img.color = new Color(255, 255, 255, opacity);
         yield return new WaitForSeconds(0.1f);
     }
-
+    */
     IEnumerator FadeIn(bool onoff)   // 손전등 빛 깜빡 깜박 (횟수 , 사용 후 img 투명도)
     {
         if (!onoff)

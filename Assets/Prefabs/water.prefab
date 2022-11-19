@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 803089905871013061}
   m_Layer: 0
   m_Name: water
-  m_TagString: key
+  m_TagString: key2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 727a5c273be044aa3ab1536aa41215f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c984150cac5544a69e74562569f226e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5076923, y: 4.340385}
+    oldSize: {x: 1.01, y: 1.42}
     newSize: {x: 9.071, y: 9.071}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
