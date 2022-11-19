@@ -32,20 +32,6 @@ public class Character_move : MonoBehaviour
     float Character_speed = 10f;
     public AudioSource audiosource;
 
-
-    public void Set_character_speed(bool _buttonOn)
-    {
-        if (_buttonOn)
-        {
-            Character_speed = 15f;
-            _animator.speed = 1.5f;
-        }
-        else
-        {
-            Character_speed = 10f;
-            _animator.speed = 1.5f;
-        }
-    }
    
   
     public void CharacterStop(bool _stop)
@@ -68,6 +54,16 @@ public class Character_move : MonoBehaviour
 
     void Update()
     {
+        if (CharacterDashButton.Dashbutton_onoff)
+        {
+            Character_speed = 14f;
+            _animator.speed = 1.5f;
+        }
+        if (!CharacterDashButton.Dashbutton_onoff)
+        {
+            Character_speed = 10f;
+            _animator.speed = 1.0f;
+        }
         if (_characterstate == CharacterState.move && InGameManeger.gameState == GameState.playingInGame)
         {
             //transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + move_dir, Time.deltaTime * Character_speed);

@@ -71,7 +71,7 @@ public class MainHomeButton : MonoBehaviour
                 problem_history.SetActive(true);
                 break;
             case 3:     // 튜토리얼
-                PlayerPrefs.SetInt("Mode", 3);
+                PlayerPrefs.SetInt("Mode", 1);
                 PlayerPrefs.SetInt("pos", 1);
                 PlayerPrefs.SetInt("newgame", 1);
                 PlayerPrefs.SetFloat("max_handlight", 100f);
@@ -83,6 +83,17 @@ public class MainHomeButton : MonoBehaviour
   
                 SceneManager.LoadScene("TutorialScene");
                 break;
+            case 4:     // 2스테이지
+                PlayerPrefs.SetInt("Mode", 3);
+                PlayerPrefs.SetInt("pos", 1);
+                PlayerPrefs.SetInt("newgame", 1);
+                PlayerPrefs.SetFloat("max_handlight", 90f);
+                PlayerPrefs.SetFloat("now_handlgiht", 90f);
+                //SceneManager.LoadScene("InGameScene");
+                LoadingScene.Load_Scene("Stage2");
+                SceneManager.LoadScene("Stage2");
+                break;
+
         }
     }
 

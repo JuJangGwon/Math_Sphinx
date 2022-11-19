@@ -127,19 +127,78 @@ public class InGameManeger : MonoBehaviour
             handlightsystem_cs.startFadein(false);
             gameState = GameState.playingInGame;
             character_animator_cs.Start();
+            stage1_cs.stage2_createproblem();
             ingamestate++;
         }
-        if (ingamestate == InGameState.darkfadeout)
+         if (ingamestate == InGameState.darkfadeout)
         {
             // default
         }
         if (ingamestate == InGameState.texttyping)
         {
-      
+            if (Loadpirordata_cs.getNewgame() == 1)
+            {
+                texttypingeffect_cs.start1stage(0);
+                ingamestate = InGameState._4selectgame;
+            }
+            else
+            {
+                ingamestate = InGameState.playgame;
+            }
+        }
+        if (ingamestate == InGameState.findkey)
+        {
+            texttypingeffect_cs.findkey(0);
+            stage1_cs.SetKey_UI();
+            ingamestate = InGameState.texttyping2;
+        }
+        if (ingamestate == InGameState.minigame1)
+        {
+            texttypingeffect_cs.minigame1(0);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.minigame2)
+        {
+            texttypingeffect_cs.minigame2(0);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.treasurefind)
+        {
+            if (stage1_cs.is_key1 == true && stage1_cs.is_key2 == true)
+            {
+                texttypingeffect_cs.findtreasure(0);
+                ingamestate = InGameState.texttyping2;
+            }
+            else
+            {
+                texttypingeffect_cs.findtreasure_notfoundkey(0);
+                ingamestate = InGameState.texttyping2;
+            }
+        }
+        if (ingamestate == InGameState.finalarea)
+        {
+            stage1_cs.final_game_settgings();
+            findanswerway_cs.ShowProblempopup(true);
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.playerdeath)
+        {
+            Character_move._characterstate = CharacterState.die;
+            finishgamemanager_cs.ShowDeathReason(deathreason);
+            end_gb.SetActive(true);
+            ingamestate++;
+
+        }
+        if (ingamestate == InGameState.victory)
+        {
+            stage1_cs.ShowClearpopup();
+            stage1_cs.open_treasurebox();
+            ingamestate++;
         }
     }
+ 
 
-        void tutorial()
+    void tutorial()
     {
         if (ingamestate == InGameState.createMap)
         {

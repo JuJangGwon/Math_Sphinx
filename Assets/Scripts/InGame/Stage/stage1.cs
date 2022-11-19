@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class stage1 : MonoBehaviour
 {
     bool trigger = false;
-
+    bool trigger2 = false;
     // UI - key
     public bool is_key1 = false;
     public bool is_key2 = false;
@@ -24,8 +25,8 @@ public class stage1 : MonoBehaviour
     public Image endpopup_retryimg;
     public Image endpopup_yesimg;
 
-    public Text goldtext;
-    public Text scoretext;
+    public TextMeshProUGUI goldtext;
+    public TextMeshProUGUI scoretext;
 
     public GameObject character_prefebs;
     public GameObject character_parent;
@@ -101,6 +102,19 @@ public class stage1 : MonoBehaviour
         findAnswerWay_cs.CreateProblem();
         trigger = true;
     }
+    public void stage2_createproblem()
+    {
+        findAnswerWay_cs.SetAnswerCreateProblem(3);
+        trigger2 = true;
+    }
+
+    public void secondgamesettings()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            first_game_text[i].text = findAnswerWay_cs.getselection_text(i);
+        }
+    }
     public void createCharacter()
     {
         Endpopup.SetActive(false);
@@ -167,6 +181,15 @@ public class stage1 : MonoBehaviour
                 findAnswerWay_cs.makeProblemProgress = MakeProblemProgress.none;
             }
         }
+        if (trigger2 == true)
+        {
+            if (findAnswerWay_cs.makeProblemProgress == MakeProblemProgress.finish)
+            {
+                secondgamesettings();
+                trigger2 = false;
+                findAnswerWay_cs.makeProblemProgress = MakeProblemProgress.none;
+            }
+        }
     }
 
     IEnumerator ClearPopup()
@@ -175,6 +198,19 @@ public class stage1 : MonoBehaviour
 
         Endpopup.SetActive(true);
         Endpopup.transform.localPosition = new Vector3(0, 2000, 0);
+
+        // 텍스트 바뀌는거
+
+        int goldo = PlayerPrefs.GetInt("Money") + 500;
+        int scoreo = PlayerPrefs.GetInt("Score") + 7;
+
+        goldtext.text = goldo.ToString();
+        scoretext.text = scoreo.ToString();
+
+        PlayerPrefs.SetInt("Money", goldo);
+        PlayerPrefs.SetInt("Score", scoreo);
+
+
         for (int i =20; i < 100; i++)
         {
             if (Endpopup.transform.localPosition.y < 20)
@@ -187,18 +223,8 @@ public class stage1 : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
-        // 텍스트 바뀌는거
-        /*
-         int goldo = PlayerPrefs.GetInt() + 500;
-         int scoreo = PlayerPrefs.GetInt() + 7;
 
-        goldtext.text = goldo.ToString();
-        scoreo.text = scoreo.ToString();
-
-        PlayerPrefs.SetInt(,goldo);
-        PlayerPrefs.SetInt(,scoreo);
-
-        */
+        
 
 
         /// 버튼 생기는거
