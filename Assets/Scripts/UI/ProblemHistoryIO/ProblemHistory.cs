@@ -7,6 +7,7 @@ using TMPro;
 public class ProblemHistory : MonoBehaviour
 {
     public ProblemInformation output_plroblem;
+    public MainHomeButton mhb;
 
     [Header("UI")]
     public Image nothing;
@@ -14,6 +15,7 @@ public class ProblemHistory : MonoBehaviour
     [Header("∆‰¿Ã¡ˆ")]
     public Sprite[] correct_image;
     public List<Page> page_;
+
     [System.Serializable]public struct Page
     {
         public GameObject page_0;
@@ -66,7 +68,7 @@ public class ProblemHistory : MonoBehaviour
 
         output_plroblem = ProblemHistoryData.instance.solved_problem_list[i];
 
-        page_[j].date_0.text = (sovled_problem_index + 1).ToString("D2") + output_plroblem.date_text;
+        page_[j].date_0.text = (sovled_problem_index + 1 + j).ToString("D2") + output_plroblem.date_text;
         page_[j].problem_0.text = output_plroblem.problem_text;
         for (int c = 0; c < output_plroblem.answer_text.Length; c++)
         {
@@ -101,7 +103,7 @@ public class ProblemHistory : MonoBehaviour
         Setting_Problem_History(sovled_problem_index);
     }
 
-    public void Open_PBH() {gameObject.SetActive(true); anime.SetTrigger(open); }
-    public void Close_PBH() { anime.SetTrigger(close); }
+    public void Open_PBH() {gameObject.SetActive(true); anime.SetTrigger(open); mhb.Bproblem_history_popup = true; }
+    public void Close_PBH() { anime.SetTrigger(close); mhb.Bproblem_history_popup = false; }
     public void Set_Active_False() { gameObject.SetActive(false); }
 }

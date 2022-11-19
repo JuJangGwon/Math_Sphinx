@@ -120,8 +120,15 @@ public class Info_Udate
     //    }
     //}
 
-    //string Ranking_Udpate(User_Info u)
-    //{
-    //    return "-";
-    //}
+    string Ranking_Udpate(User_Info u)
+    {
+
+        return "-";
+    }
 }
+
+//public class GetItemRequest
+//{
+//    public string TableName { get; set; }
+//    public Dictionary<string, string> Key { get; set; }
+//}

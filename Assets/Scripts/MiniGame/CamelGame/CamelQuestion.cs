@@ -96,10 +96,10 @@ public class CamelQuestion : MonoBehaviour
     {
         yield return wait_time;
         for (int i = 0; i < texSelection.Length; i++)
-            texSelection[i].text = scWJAPI.Answer_Selection[i];
+            texSelection[i].text = "\\katuri" + scWJAPI.Answer_Selection[i];
 
         //tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
-        tdr.text = AWS.instance.pt.Retext_Problems(scWJAPI.Problem_Explain);
+        tdr.text = "\\centering" + AWS.instance.pt.Retext_Problems(scWJAPI.Problem_Explain);
 
         can_solve = true;
     }
@@ -175,8 +175,8 @@ public class CamelQuestion : MonoBehaviour
         for (int i = 0; i < texSelection.Length; i++)
             texSelection[i].text = "";
 
-        if (b) { tdr.text = "\\scdd 정답이에요 !"; }
-        else { tdr.text = "\\scdd 틀렸어요...!"; }
+        if (b) { tdr.text = "\\katuri 정답이에요 !"; }
+        else { tdr.text = "\\katuri 틀렸어요...!"; }
     }
 
     void Result()

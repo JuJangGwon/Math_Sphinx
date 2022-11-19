@@ -1,9 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Amazon;
 using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.Model;
 using Amazon.DynamoDBv2.DataModel;
 using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
@@ -89,7 +92,6 @@ public class UserCheck : MonoBehaviour
     public void Log_In()
     {
         User_Info u = null;
-        print(login_id.text);
         aws.context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
         {
             u = null;
@@ -98,25 +100,23 @@ public class UserCheck : MonoBehaviour
                 Debug.LogException(result.Exception);
                 return;
             }
-            print(u);
-            u = result.Result;
-            print(u);
-            print(u.id);
-
-            if (u.id == login_id.text)
+            if(result.Result == null) { Open_Popup(3); }
+            else
             {
-                if(u.pw == login_pw.text)
-                {
-                    aws.Input_User(u);
-                    Save_User_Info(u);
-                    Close_Popup(login_popup);
-                    SceneManager.LoadScene("MainHomeScene");
-                }
-                else { Open_Popup(3); }
-            }
-            else { Open_Popup(3); }
-            if (u == null) { Open_Popup(3); }
+                u = result.Result;
 
+                if (u.id == login_id.text)
+                {
+                    if (u.pw == login_pw.text)
+                    {
+                        aws.Input_User(u);
+                        Save_User_Info(u);
+                        Close_Popup(login_popup);
+                        SceneManager.LoadScene("MainHomeScene");
+                    }
+                    else { Open_Popup(3); }
+                }
+            }
         }, null);
     }
 
@@ -215,7 +215,7 @@ public class UserCheck : MonoBehaviour
     public void Close_Sign_Up()
     {
         Close_Popup(signup_popup);
-        Open_Popup(5);
+        Open_Popup(6);
     }
 
     public void Sign_Up_Check()
@@ -226,8 +226,31 @@ public class UserCheck : MonoBehaviour
         }
         else
         {
-            Close_Popup(signup_popup);
-            Open_Popup(8);
+            User_Info u = null;
+            aws.context.LoadAsync<User_Info>(login_id.text, (AmazonDynamoDBResult<User_Info> result) =>
+            {
+                u = null;
+                if (result.Exception != null)
+                {
+                    Debug.LogException(result.Exception);
+                    return;
+                }
+                if (result.Result == null) { Open_Popup(3); }
+                else
+                {
+                    u = result.Result;
+
+                    if (u.id == login_id.text)
+                    {
+                        Open_Popup(1);
+                    }
+                    else
+                    {
+                        Close_Popup(signup_popup);
+                        Open_Popup(8);
+                    }
+                }
+            }, null);
         }
     }
 

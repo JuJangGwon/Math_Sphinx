@@ -65,9 +65,10 @@ public class RugQuestion : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < texSelection.Length; i++)
-            texSelection[i].text = scWJAPI.Answer_Selection[i];
+            texSelection[i].text = "\\katuri" + scWJAPI.Answer_Selection[i];
 
-        tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
+        //tdr.text = /*"\\scdd" +*/ "\\centering" + scWJAPI.Problem_Explain;
+        tdr.text = "\\centering" + AWS.instance.pt.Retext_Problems(scWJAPI.Problem_Explain);
 
         can_solve = true;
     }
@@ -111,8 +112,7 @@ public class RugQuestion : MonoBehaviour
 
     void Move_Camel()
     {
-        print("정답입니다.       양탄자 유지");
-        tdr.text = "\\scdd 정답이에요 !";
+        tdr.text = "\\katuri 정답이에요 !";
 
         question_info.current_correct_value++;
     }
@@ -134,8 +134,7 @@ public class RugQuestion : MonoBehaviour
 
     void Panelty()
     {
-        print("오답입니다.       양탄자 삭제 떨어지는 애니메이션");
-        tdr.text = "\\scdd 틀렸어요...!";
+        tdr.text = "\\katuri 틀렸어요...!";
         current_life--;
         life_images[current_life].sprite = life_imagess[1];
 

@@ -23,7 +23,7 @@ public class MainInformation : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.A)) { info_udater.Money -= 10; }
     }
 
     void Text_Setting()

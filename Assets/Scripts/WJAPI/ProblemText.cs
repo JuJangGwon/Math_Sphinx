@@ -66,9 +66,9 @@ public class ProblemText : MonoBehaviour
 
         problem_text.Add("2 + 3 = \\square", "\\katuri2 + 3");
 
-        problem_text.Add("\begin{align}  39~\\ -~~~23~\\ \\hline  \\square\\square \\end{align}", "\\katuri2 + 3");
+        problem_text.Add("\begin{align}  38~\\ -~~~13~\\ \\hline  \\square\\square \\end{align}", "\\katur38 - 13");
 
-        problem_text.Add("\begin{align}  38~\\ -~~~13~\\ \\hline  \\square\\square \\end{align} ", "\\katuri2 + 3");
+        problem_text.Add("\begin{align}  28~\\ -~~~26~\\ \\hline  \\square \\end{align}", "\\katur28 - 26");
     }
 
     public string Retext_Problems(string s)
