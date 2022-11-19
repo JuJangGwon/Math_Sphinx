@@ -84,7 +84,7 @@ public class InGameManeger : MonoBehaviour
     private void Start()
     {
         int a = PlayerPrefs.GetInt("Mode");
-        a = 2;
+        a = 3;
         if (a == 1)
         {
             seletedStage = Stage.tutorial;
@@ -93,6 +93,10 @@ public class InGameManeger : MonoBehaviour
         {
             seletedStage = Stage.stage1;
         }
+        if (a == 3)
+        {
+            seletedStage = Stage.stage2;
+        }
         gameState = GameState.none;
         ingamestate = InGameState.createMap;
         deathreason = DeathReason.none;
@@ -100,8 +104,6 @@ public class InGameManeger : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(ingamestate);
-
         switch (seletedStage)
         {
             case Stage.tutorial:
@@ -110,11 +112,34 @@ public class InGameManeger : MonoBehaviour
             case Stage.stage1:
                 stage1();
                 break;
+            case Stage.stage2:
+                stage2();
+                break;
+        }
+    }
+    void stage2()
+    {
+        if (ingamestate == InGameState.createMap)
+        {
+            mapcreater_cs.CreateMap();
+            stage1_cs.createCharacter();
+            Loadpirordata_cs.getPirorData();
+            handlightsystem_cs.startFadein(false);
+            gameState = GameState.playingInGame;
+            character_animator_cs.Start();
+            ingamestate++;
+        }
+        if (ingamestate == InGameState.darkfadeout)
+        {
+            // default
+        }
+        if (ingamestate == InGameState.texttyping)
+        {
+      
         }
     }
 
-
-    void tutorial()
+        void tutorial()
     {
         if (ingamestate == InGameState.createMap)
         {

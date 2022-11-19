@@ -24,7 +24,8 @@ public class stage1 : MonoBehaviour
     public Image endpopup_retryimg;
     public Image endpopup_yesimg;
 
-
+    public Text goldtext;
+    public Text scoretext;
 
     public GameObject character_prefebs;
     public GameObject character_parent;
@@ -186,8 +187,21 @@ public class stage1 : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
+        // 텍스트 바뀌는거
+        /*
+         int goldo = PlayerPrefs.GetInt() + 500;
+         int scoreo = PlayerPrefs.GetInt() + 7;
 
-        ///
+        goldtext.text = goldo.ToString();
+        scoreo.text = scoreo.ToString();
+
+        PlayerPrefs.SetInt(,goldo);
+        PlayerPrefs.SetInt(,scoreo);
+
+        */
+
+
+        /// 버튼 생기는거
         Endpopup_yesBTN.SetActive(true);
 
         Color color2 = endpopup_yesimg.color;

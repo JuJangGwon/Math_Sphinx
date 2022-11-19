@@ -35,17 +35,24 @@ public class Loadpirordata : MonoBehaviour
         stage1_cs.is_key2 = System.Convert.ToBoolean(PlayerPrefs.GetInt("is_key2"));
         stage1_cs.SetKey_UI();
         newgame = PlayerPrefs.GetInt("newgame");
-        switch(PlayerPrefs.GetInt("pos"))
+        if (InGameManeger.seletedStage == Stage.stage1)
         {
-            case 1:
-                character.transform.localPosition = new Vector3(-72, 49, 1);
-                break;
-            case 2:
-                character.transform.localPosition = new Vector3(-14.4f, 102.8f, 1);
-                break;
-            case 3:
-                character.transform.localPosition = new Vector3(-11.2f, 14.6f, 1);
-                break;
+            switch (PlayerPrefs.GetInt("pos"))
+            {
+                case 1:
+                    character.transform.localPosition = new Vector3(-72, 49, 1);
+                    break;
+                case 2:
+                    character.transform.localPosition = new Vector3(-14.4f, 102.8f, 1);
+                    break;
+                case 3:
+                    character.transform.localPosition = new Vector3(-11.2f, 14.6f, 1);
+                    break;
+            }
+        }
+       else if (InGameManeger.seletedStage == Stage.stage2)
+       {
+            character.transform.localPosition = new Vector3(-4.7f, 68f, 1);
         }
     }
    
