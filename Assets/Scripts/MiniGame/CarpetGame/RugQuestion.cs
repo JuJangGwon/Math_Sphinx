@@ -24,6 +24,7 @@ public class RugQuestion : MonoBehaviour
 
     [Header("플레이어")]
     public RugPlayer player;
+    public AudioSource player_audio;
 
     [System.Serializable]
     public struct Question_Info

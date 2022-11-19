@@ -22,6 +22,7 @@ public class MainHomeButton : MonoBehaviour
 
     [Header("화면 좌우 이동 슥슥")]
     public Animation scene_anime;
+    public Animation buy;
     public List<string> scene_anime_array = new List<string>();
 
     [Header("팝업 체크")]
@@ -36,6 +37,9 @@ public class MainHomeButton : MonoBehaviour
     public GameObject page_0;
     public GameObject page_1;
     public GameObject page_2;
+    public GameObject prepa;
+    public GameObject item;
+    public MainInformation mf;
 
     void Update()
     {
@@ -158,6 +162,16 @@ public class MainHomeButton : MonoBehaviour
         }
     }
 
+    public void Buy_Button(int i)
+    {
+        if(i == 0)
+        {
+            mf.info_udater.Money -= 1000;
+            buy.Play("buy");
+        }
+        else if(i == 1) { buy.Play("buy_close"); }
+    }
+
     public void Close_Exit() { scene_anime.Play("close_exit"); Bexit = false; }
 
     void AnimationArray()
@@ -173,18 +187,24 @@ public class MainHomeButton : MonoBehaviour
         {
             case 0:
                 page_0.SetActive(true);
+                item.SetActive(true);
                 page_1.SetActive(false);
                 page_2.SetActive(false);
+                prepa.SetActive(false);
                 break;
             case 1:
                 page_0.SetActive(false);
+                item.SetActive(false);
                 page_1.SetActive(true);
                 page_2.SetActive(false);
+                prepa.SetActive(true);
                 break;
             case 2:
                 page_0.SetActive(false);
+                item.SetActive(false);
                 page_1.SetActive(false);
                 page_2.SetActive(true);
+                prepa.SetActive(true);
                 break;
         }
     }

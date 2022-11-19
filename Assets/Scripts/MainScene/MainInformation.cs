@@ -5,7 +5,7 @@ using TMPro;
 
 public class MainInformation : MonoBehaviour
 {
-    Info_Udate info_udater;
+    public Info_Udate info_udater;
     public TextMeshProUGUI nickname_tmp;
     public TextMeshProUGUI money_tmp;
     public TextMeshProUGUI score_tmp;

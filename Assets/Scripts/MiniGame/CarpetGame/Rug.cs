@@ -25,6 +25,7 @@ public class Rug : MonoBehaviour
             if(player.transform.position == transform.position)
             {
                 player.is_moving = false;
+                player.rmp.player_audio.PlayOneShot(player.rmp.player_audio.clip);
                 player.anime.SetTrigger(player.ani_idle);
                 move = false;
             }

@@ -28,7 +28,7 @@ public class RugPlayer : MonoBehaviour
         {
             int destroy_num = (select_rug.answer_num == 0) ? 1 : 0;
             Destroy(rmp.btAnsr[destroy_num].gameObject);
-
+            //rmp.player_audio.PlayOneShot(rmp.player_audio.clip);
             rmp.Click_Answer(select_rug.answer_num);
 
             select_rug = null;
