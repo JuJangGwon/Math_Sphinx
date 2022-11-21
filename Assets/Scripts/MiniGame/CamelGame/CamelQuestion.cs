@@ -55,13 +55,14 @@ public class CamelQuestion : MonoBehaviour
     int fade_in_hashcode = Animator.StringToHash("In");
     int fade_out_hashcode = Animator.StringToHash("Out");
     bool can_solve = false;
+    public int answerbox_num = 0;
 
     void Awake()
     {
         fade_io.SetTrigger(fade_in_hashcode);
         texttypingeffect_cs.prog_gametext5(0);
 
-        texSelection = aswer_box[question_info.current_question_count].texSelection;
+        texSelection = aswer_box[answerbox_num].texSelection;
 
         StartCoroutine(CreateProblem());
 
@@ -115,7 +116,7 @@ public class CamelQuestion : MonoBehaviour
                 for (int i = 0; i < texSelection.Length; i++)
                     texSelection[i].text = scWJAPI.Answer_Selection[i];
 
-                texSelection = aswer_box[question_info.current_question_count].texSelection;
+                answerbox_num++;
                 Move_Camel();
             }
             else
@@ -130,7 +131,7 @@ public class CamelQuestion : MonoBehaviour
             {
                 Result();
             }
-
+            texSelection = aswer_box[answerbox_num].texSelection;
             can_solve = false;
         }
     }
